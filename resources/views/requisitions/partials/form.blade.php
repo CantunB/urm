@@ -4,8 +4,13 @@
     <div class="form-group row col-md-12">
         <label for="folio" class="col-md-2 offset-md-7 col-form-label"><strong>REQ. NO.</strong></label>
         <div class="col-md-3">
-          <input type="text" name="folio" class="form-control text-right" id="folio"
-          value="{{$user->asignado->areas->slug.$countreq.'/'.date('Y')}}">
+          <input type="text" name="folio" required readonly class="form-control text-right @error('folio') is-invalid @enderror" id="folio"
+          value="{{'SMAPAC-CAF/'.$countreq.'/'.date('Y')}}">
+            @error('folio')
+            <span class="invalid-feedback" role="alert">
+                         <strong>{{ $message }}</strong>
+                     </span>
+            @enderror
         </div>
     </div>
     @error('folio')
@@ -17,11 +22,9 @@
     <input type="hidden" name="user_id" value="{{$user->id}}">
 
     <div class="form-group row col-md-12">
-        <label for="inputEmail3" class="col-md-2 offset-md-7 col-form-label">Fecha de solicitud</label>
+        <label for="added_on" class="col-md-2 offset-md-7 col-form-label">&nbsp;</label>
         <div class="col-md-3">
-            <input type="date" name="added_on"
-                   class="form-control  @error('added_on') is-invalid @enderror"
-                     id="inputEmail3" placeholder="" value="{{old ('added_on')}}">
+            <input type="hidden" name="added_on" class="form-control  @error('added_on') is-invalid @enderror" id="added_on" value="{{now()}}" required>
                      @error('added_on')
                      <span class="invalid-feedback" role="alert">
                          <strong>{{ $message }}</strong>
@@ -33,29 +36,58 @@
         <label for="inputEmail3" class="col-md-2 col-form-label">Direccion</label>
         <div class="col-md-4">
             <input type="text" name="management"
-                   class="form-control" id="inputEmail3" placeholder="SMAPAC" value="SMAPAC">
+                   class="form-control @error('management') is-invalid @enderror" id="inputEmail3" placeholder="SMAPAC" value="SMAPAC" readonly>
+            @error('management')
+            <span class="invalid-feedback" role="alert">
+                         <strong>{{ $message }}</strong>
+                     </span>
+            @enderror
         </div>
     </div>
     <div class="form-group row col-md-12">
         <label for="inputEmail3" class="col-md-2 col-form-label">Coordinación</label>
-        <div class="col-md-4">
-                <input type="text"
-                       class="form-control" placeholder="" value="{{ $user->asignado->areas->coordinations->name }}">
+        <div class="col-md-6">
+            @if(Auth::user()->hasRole('super-admin') or Auth::user()->hasRole('admin'))
+                <select class="form-control" name="coordination_id" id="coordinacion" required >
+                    <option disabled selected>Selecciona una coordinacion</option>
+                @foreach($coordinaciones as $i => $coordinacion)
+                    <option value="{{$coordinacion->id}}">{{$coordinacion->name}}</option>
+                @endforeach
+                </select>
+            @else
+                <input type="text" class="form-control @error('coordination') is-invalid @enderror"  value="{{ $user->asignado->areas->coordinations->name }}" readonly>
+                <input type="hidden" class="form-control @error('coordination') is-invalid @enderror" name="coordination_id" value="{{ $user->asignado->areas->coordinations->id }}" readonly>
+            @error('coordination')
+            <span class="invalid-feedback" role="alert">
+                         <strong>{{ $message }}</strong>
+                     </span>
+            @enderror
+            @endif
+
         </div>
     </div>
     <div class="form-group row col-md-12">
         <label for="inputEmail3" class="col-md-2 col-form-label">Departamento</label>
-        <div class="col-md-4">
-                <input type="text"
-                class="form-control"
-                value="{{ $user->asignado->areas->departments->name }}">
-
+        <div class="col-md-6">
+            @if(Auth::user()->hasRole('super-admin') or Auth::user()->hasRole('admin'))
+                <select class="form-control" name="department_id" id="departamento">
+                    <option disabled selected>Selecciona un departamento</option>
+                </select>
+            @else
+                <input type="text" class="form-control @error('department') is-invalid @enderror" value="{{ $user->asignado->areas->departments->name }}" readonly>
+                <input type="hidden" class="form-control @error('department') is-invalid @enderror" name="department_id" value="{{ $user->asignado->areas->departments->id }}" readonly>
+            @endif
+            @error('department')
+            <span class="invalid-feedback" role="alert">
+                         <strong>{{ $message }}</strong>
+                     </span>
+            @enderror
         </div>
     </div>
     <div class="form-group row col-md-12">
         <label for="inputEmail3" class="col-md-2 col-form-label">Unidad Administrativa</label>
         <div class="col-md-6">
-            <input type="text" name="administrative_unit" class="form-control @error('administrative_unit') is-invalid @enderror" id="administrative_unit" placeholder="" value="">
+            <input type="text" name="administrative_unit" class="form-control @error('administrative_unit') is-invalid @enderror" id="administrative_unit" required value="{{old('administrative_unit')}}">
               @error('administrative_unit')
               <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -66,7 +98,7 @@
     <div class="form-group row col-md-12">
         <label for="inputEmail3" class="col-md-2 col-form-label">Fecha Para Requerir Material</label>
         <div class="col-md-3">
-            <input type="date" name="required_on" class="form-control @error('required_on') is-invalid @enderror" id="required_on" placeholder="" value="">
+            <input type="date" name="required_on" class="form-control @error('required_on') is-invalid @enderror" id="required_on" required value="{{old('required_on')}}">
             @error('required_on')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -76,9 +108,14 @@
     </div>
 
     <div class="form-group row col-md-12">
-        <label for="inputEmail3" class="col-md-2 col-form-label">Asunto</label>
+        <label for="issue" class="col-md-2 col-form-label">Asunto</label>
         <div class="col-md-6">
-            <input type="text" name="issue" class="form-control" id="inputEmail3" placeholder="" value="">
+            <input type="text" name="issue" class="form-control @error('issue') is-invalid @enderror" id="issue" required value="{{old('issue')}}">
+            @error('issue')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
     <div class="form-group row col-12">
@@ -97,29 +134,29 @@
                     <tbody class="field_wrapper">
                 <input class="form-control col-md-12" type="text" name="cont" id="cont" hidden>
                 <tr>
-                    <td ><input type="number" min="0" name="departure[]" id="departure[]" required
-                      class="form-control @error('departure[]') is-invalid @enderror">
+                    <td ><input type="number" min="0" name="departure[]" id="departure" required
+                      class="form-control @error('departure') is-invalid @enderror">
                       @error('departure[]')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
                       @enderror</td>
-                    <td ><input type="number" min="0" name="quantity[]" id="quantity[]" required
-                      class="form-control @error('quantity[]') is-invalid @enderror">
+                    <td ><input type="number" min="0" name="quantity[]" id="quantity" required
+                      class="form-control @error('quantity') is-invalid @enderror">
                         @error('quantity[]')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror</td>
-                    <td ><input type="text" name="unit[]" id="unit[]" required
-                      class="form-control  @error('unit[]') is-invalid @enderror">
+                    <td ><input type="text" name="unit[]" id="unit" required
+                      class="form-control  @error('unit') is-invalid @enderror">
                       @error('unit[]')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
                       @enderror</td>
-                    <td style="width:30rem"><textarea type="text" required name="concept[]" id="concept[]" class="form-control @error('concept[]') is-invalid @enderror"></textarea>
-                      @error('concept[]')
+                    <td style="width:30rem"><textarea type="text" required name="concept[]" id="concept[]" class="form-control @error('concept') is-invalid @enderror"></textarea>
+                      @error('concept')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
@@ -135,7 +172,7 @@
 <div class="form-group row col-md-12">
     <label for="inputEmail3" class="col-md-2 col-form-label">Observaciónes</label>
     <div class="col-md-10">
-        <input type="text" name="remark" class="form-control" id="inputEmail3" placeholder="" value="{{ old('remark')}}">
+        <input type="text" name="remark" class="form-control" id="inputEmail3" placeholder="" value="{{ old('remark')}}" required>
     </div>
 </div>
 
@@ -150,40 +187,3 @@
     </div>
 
 </div>
-<script src="{{ asset('js/app.js') }}" defer></script>
-<script src="{{ asset('js/app.js') }}" ></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        var maxField = 20; //Limitación de incremento de campos de entrada
-        var addButton = $('.add_button'); //Agregar selector de botones
-        var wrapper = $('.field_wrapper'); //Contenedor de campo de entrada
-        var fieldHTML = '<tr>'+
-            '<td><input type="number" min="0" name="departure[]" class="form-control" ></td>'+
-            '<td><input type="number" min="0" name="quantity[]" class="form-control"></td>'+
-            '<td><input type="text" name="unit[]" class="form-control"></td>'+
-            '<td><textarea type="text" name="concept[]" class="form-control"></textarea></td>'+
-            '<td><button type="button" class="remove_button btn btn-danger btn-sm"><i class="fas fa-minus-circle"></td></tr>';
-
-        var x = 1; //El contador de campo inicial es 1
-        document.getElementById("cont").value = x;
-        //Una vez que se hace clic en el botón Agregar
-
-        $(addButton).click(function(){
-            //Verifique el número máximo de campos de entrada
-            if(x < maxField){
-                x++; //Contador de campo de incremento
-                $(wrapper).append(fieldHTML); //Agregar campo html
-                document.getElementById("cont").value = x;
-            }
-        });
-
-        $(wrapper).on('click', '.remove_button', function(e){
-            e.preventDefault();
-            $(this).parent().parent().remove();
-            x--;
-            document.getElementById("cont").value = x;
-        });
-
-    });
-
-</script>

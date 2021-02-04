@@ -36,10 +36,9 @@ class UserController extends Controller
             ->addColumn('action', function ($users) {
                 return '
                 <a href="' . route('usuarios.edit', $users->id) . '"
-                data-id="'.$users->id.'"
-                 class="btn btn-sm btn-warning"
+                 class="action icon"
                  title="Editar" >
-                 <i class="fas fa-pencil-alt "></i>
+                 <i class="mdi mdi-pencil"></i>
                  </a>';
             })
             ->make(true);
@@ -61,15 +60,10 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        return $request->all();
+        //return $request->all();
         $users = User::create($request->all());
-        $users->password = bcrypt($request->password);
         if($users->save())
         {
-            $users->coordinacion = $request->coordinacion;
-            $users->depto = $request->departamento;
-            $users->save();
-
             $users->roles()->attach($request->get('roles'));
             $area = AssignedAreas::where('coordination_id','=',$request->coordinacion)
             ->where('department_id','=',$request->departamento)
@@ -115,21 +109,15 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
-       // return $request->all();
         $user = User::findOrFail($id);
         $user->update($request->all());
-        $user->password = bcrypt($request->password);
-        $user->save();
-
-        $user->coordinacion = $request->coordinacion;
-        $user->depto = $request->departamento;
         $user->save();
 
         $user->roles()->sync($request->get('roles'));
         $area = AssignedAreas::where('coordination_id','=',$request->coordinacion)
             ->where('department_id','=',$request->departamento)
             ->first();
-        $user->asignar()->attach($area->id);
+        $user->asignar()->sync($area->id);
             return redirect('usuarios')->with('update', 'Usuario actualizado');
     }
 

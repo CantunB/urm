@@ -38,7 +38,6 @@ class UserRequest extends FormRequest
             // 'age' => 'required|numeric',
             // 'profession' => 'required',
             // 'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed',
             // 'address' => 'required',
             'roles' => 'required'
         ];

@@ -13,24 +13,18 @@
                             <div class="col-12">
                                 <div class="page-title-box">
                                     <div class="page-title-right">
-                                     <!--     <form class="form-inline">
+                                         <form id="date-range" class="form-inline">
                                           <div class="form-group">
                                                 <div class="input-group input-group-sm">
                                                     <input type="text" class="form-control border" id="dash-daterange">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text bg-blue border-blue text-white">
-                                                            <i class="mdi mdi-calendar-range"></i>
+                                                               <i class="mdi mdi-calendar-range"></i>
                                                         </span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href="javascript: void(0);" class="btn btn-blue btn-sm ml-2">
-                                                <i class="mdi mdi-autorenew"></i>
-                                            </a>
-                                            <a href="javascript: void(0);" class="btn btn-blue btn-sm ml-1">
-                                                <i class="mdi mdi-filter-variant"></i>
-                                            </a>
-                                        </form> -->
+                                        </form>
                                     </div>
                                     <h4 class="page-title">Dashboard</h4>
                                 </div>
@@ -149,6 +143,41 @@
 
                     </div> <!-- container -->
 @push('scripts')
+<script>
+    $("#dash-daterange").flatpickr(
+        {
+            altInput:!0,
+            mode:"range",
+            altFormat:"F j, y",
+            defaultDate:"today",
+            locale: {
+                firstDayOfWeek: 1,
+                weekdays: {
+                    shorthand: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+                    longhand: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                },
+                months: {
+                    shorthand: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Оct', 'Nov', 'Dic'],
+                    longhand: ['Enero', 'Febrero', 'Мarzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                },
+            },
+            onChange: function(selectedDates, dateStr, instance)     {
+               // alert(dateStr);
+                console.log(dateStr);
+                    var url="{!! route('home.daterange') !!}";
+                    $.ajax({
+                        type:"POST",
+                        url: url,
+                        data:dateStr,
+                        success: function(result){
+                            $("#prueba").html(result);
+                            //location.reload();
+                        }});
+                    return false;
+            }
+        });
+
+</script>
 <script>
 
     var $refresh = $("button[name='data-show-refresh']")

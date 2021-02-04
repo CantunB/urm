@@ -23,6 +23,9 @@
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <div class="text-sm-right">
+                            <a href="{{ url()->previous() }}"
+                               class="btn btn-sm btn-danger waves-effect waves-light mb-2">
+                                <i class="mdi mdi-menu-left-outline"></i> Regresar</a>
                         </div>
                     </div><!-- end col-->
                 </div>
@@ -32,6 +35,7 @@
                             <th style="text-align: center">Orden de compra</th>
                             <th style="text-align: center">Fecha</th>
                             <th style="text-align: center">Estado</th>
+                            <th>Observación</th>
                             <th style="text-align: center">Opciones</th>
                         </thead>
                         @foreach($purchaseorders as $key => $purchaseorder)
@@ -48,7 +52,7 @@
                                    <!-- <button type="button" class="btn btn-pill btn-sm btn-success">Completo</button> -->
                                 @endif
                                 </td>
-
+                                <td>{{$purchaseorder->purchaseorderid->observation}}</td>
                                 <td style="text-align: center">
                                     @can('read_quotes')
                                                     <a title="Orden de Compra"

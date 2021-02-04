@@ -48,8 +48,6 @@ class PermissionsTableSeeder extends Seeder
         'name' => 'Bernabe Cantun Dominguez',
         'no_seg_soc' => 'N/A',
         'categoria' => 'N/A',
-        'coordinacion' => 'N/A',
-        'depto' => 'N/A',
         'nivel' => 'N/A',
         'rfc' => 'N/A',
         'curp' => 'N/A',
@@ -59,7 +57,7 @@ class PermissionsTableSeeder extends Seeder
         'password' => bcrypt('CantunDominguez97.-'),
         'status' => '2'
     ]);
-  /*  $user_veronica = User::create([
+  /*  $user_veronica = UserSeeder::create([
         'NoEmpleado' => 'SMA001',
         'name' => 'Veronica',
         'no_seg_soc' => 'N/A',
@@ -74,7 +72,7 @@ class PermissionsTableSeeder extends Seeder
         'email' => 'veronica@gmail.com',
         'password' => bcrypt('1234')
     ]);
-    $user_victor = User::create([
+    $user_victor = UserSeeder::create([
         'NoEmpleado' => 'SMA002',
         'name' => 'Victor',
         'no_seg_soc' => 'N/A',

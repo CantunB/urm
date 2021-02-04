@@ -64,4 +64,7 @@
         </div> <!-- end card-->
     </div><!-- end col -->
 </div>
+@push('scripts')
+
+@endpush
 @endsection

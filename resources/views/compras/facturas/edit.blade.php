@@ -47,8 +47,8 @@
                             <div class="col-lg-4">
                                 <div class="form-group mb-3">
                                     <label for="type">Tipo de Factura(s)</label>
-                                        <select class="form-control" name="type" >
-                                            <option selected disabled>Seleccionar el tipo de factura</option>
+                                        <select required class="form-control" name="type">
+                                            <option selected disabled value="">Seleccionar el tipo de factura</option>
                                             <option value="Completa">Completa</option>
                                             <option value="Parcialidades">Parcialidades</option>
                                         </select>
@@ -78,12 +78,12 @@
                             <tr>
                                 <td>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="invoice_file" name="invoice_file[]">
+                                        <input required type="file" class="custom-file-input" id="invoice_file" name="invoice_file[]">
                                         <label class="custom-file-label" for="invoice_file">Elegir Archivo</label>
                                     </div>
                                 </td>
-                                <td><input type="text" name="amount[]" class="form-control" value=""></td>
-                                <td><input type="text" name="observation[]" class="form-control" value=""></td>
+                                <td><input type="text" id="amount-1" name="amount[]" class="form-control resta" required></td>
+                                <td><input type="text" name="observation[]" class="form-control" required></td>
 
                                 <td><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-minus-circle"></td>
                             </tr>
@@ -148,13 +148,14 @@
 @push('scripts')
 <script type="text/javascript">
     $(document).ready(function(){
+        var contador = $('.resta').length + 1;
         var maxField = 20; //Limitación de incremento de campos de entrada
         var addButton = $('.add_button'); //Agregar selector de botones
         var wrapper = $('.field_wrapper'); //Contenedor de campo de entrada
         var fieldHTML = '<tr>'+
-        '<td><div class="custom-file">'+'<input type="file" class="custom-file-input" id="invoice_file" name="invoice_file[]">'+'<label class="custom-file-label" for="invoice_file">Elegir Archivo</label>'+'</div></td>'+
-            '<td><input type="text" name="amount[]" class="form-control"></td>'+
-            '<td><input type="text" name="observation[]" class="form-control"></td>'+
+        '<td><div class="custom-file">'+'<input required type="file" class="custom-file-input" id="invoice_file" name="invoice_file[]">'+'<label class="custom-file-label" for="invoice_file">Elegir Archivo</label>'+'</div></td>'+
+            '<td><input required type="text" id="amount-'+contador+'" name="amount[]" class="form-control resta"></td>'+
+            '<td><input required type="text" name="observation[]" class="form-control"></td>'+
             '<td><button type="button" class="remove_button btn btn-danger btn-sm"><i class="fas fa-minus-circle"></td></tr>';
 
         var x = 1; //El contador de campo inicial es 1
@@ -176,6 +177,24 @@
             document.getElementById("cont").value = x;
         });
 
+    });
+</script>
+<script>
+    var valor_inicial = $('#total_order').val();
+
+    $( document ).ready(function() {
+        $('.resta').keyup(function () {
+            var valor = parseFloat(valor_inicial);
+            var valor_restar = 0;
+            $('.resta').each(function () {
+                if ($(this).val() > 0) {
+                    valor_restar += parseFloat($(this).val());
+                }
+            });
+
+            $('#total_order').val(valor - valor_restar);
+
+        });
     });
 </script>
 @endpush

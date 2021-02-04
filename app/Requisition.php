@@ -11,6 +11,8 @@ class Requisition extends Model
         'folio',
         'added_on',
         'management',
+        'coordination_id',
+        'department_id',
         'administrative_unit',
         'required_on',
         'issue',
@@ -43,6 +45,16 @@ class Requisition extends Model
     public function compras()
     {
         return $this->hasMany( Purchase::class);
+    }
+
+    public function coordinations()
+    {
+        return $this->belongsTo(Coordination::class,'coordination_id');
+    }
+
+    public function departments()
+    {
+        return $this->belongsTo(Department::class,'department_id');
     }
 
 }

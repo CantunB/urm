@@ -24,7 +24,7 @@
                     <div class="col-sm-6">
                         <div class="text-sm-left">
                             @if($purchaseorder->status <= 1)
-                                <a class="btn btn-sm btn-soft-danger waves-effect waves-light mb-2" href="{{route('ordenes.pdf',$purchaseorder->id)}}"><i class="mdi mdi-printer" ></i> Imprimir</a>
+                                <a class="btn btn-sm btn-soft-danger waves-effect waves-light mb-2" href="{{route('ordenes.pdf',$purchaseorder->id)}}" target="_blank"><i class="mdi mdi-printer" ></i> Imprimir</a>
                                 @can('update_compras')
                                 <a class="btn btn-sm btn-info waves-effect waves-light mb-2" href="{{route('autorizadas.edit', $purchaseorder->id)}}"><i class="mdi mdi-clipboard-alert-outline" ></i> Subir Orden(es) Firmada(s)</a>
                                 @endcan
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for=""><strong>Unidad Administrativa: </strong></label>
-                                        &nbsp;&nbsp;&nbsp;<span>{{$purchaseorder->detail->requisition->administrative_unit}}</span>
+                                        &nbsp;&nbsp;&nbsp;<span>{{$purchaseorder->detail->unit_administrative }}</span>
                                     </div>
                                 </div>
                                 <div class="row justify-content-start">
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for=""><strong>No. De Requisicion: </strong></label>
-                                        &nbsp;&nbsp;&nbsp;<span>{{$purchaseorder->detail->requisition->folio}}</span>
+                                        &nbsp;&nbsp;&nbsp;<span>{{$purchaseorder->detail->requisition->folio ?? ''}}</span>
                                     </div>
                                 </div>
                                 <br>
@@ -134,7 +134,7 @@
                                                         @if($loop->last)
                                                             <br><br><br><br><br><br><br><br><br><br><br><br>
                                                         <TABLE style="width: 100%;">
-                                                            SON: ( PESOS 00/100 M.N.)
+                                                            SON: ( {{$material->material->total_order}}  PESOS 00/100 M.N.)
                                                         </TABLE>
                                                         @endif
                                                     </td>

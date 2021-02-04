@@ -37,7 +37,7 @@
                                 <i class="mdi mdi-menu-left-outline"></i> Regresar</a>
                         @can('create_quotes')
                             <a href="{{ route('cotizaciones.nueva', $quotes[0]->requisition->asignado[0]->id ) }}" type="button"
-                            class="btn btn-sm btn-info waves-effect waves-light mb-2" data-toggle="modal" data-target="#custom-modal">
+                            class="btn btn-sm btn-info waves-effect waves-light mb-2">
                             <i class="mdi mdi-plus mr-1"></i>Nueva cotización</a>
                         @endcan
                         </div>
@@ -65,16 +65,15 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="text-center button-list">
-                            <a  href="{{asset('requisitions/cotizadas/'.$quote->quote_file  ) }}" target="__blank" class="btn btn-xs btn-primary waves-effect waves-light">Detalles</a>
+                            <a  href="{{asset('requisitions/cotizadas/'.$quote->quote_file  ) }}" target="__blank" class="btn btn-xs btn-primary waves-effect waves-light">Ver Cotizacion</a>
                         </div>
                     </div>
 
                     <div class="col-sm-2">
                         <div class="text-sm-right text-center mt-2 mt-sm-0">
-                            <a href="{{asset('requisitions/cotizadas/'.$quote->quote_file  ) }}" download class="action-icon"> <i class="mdi mdi-package-down"></i></a>
                         <!--     <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a> -->
                             @can('delete_quotes')
-                                <a href="javascript:void(0);"  data-toggle="modal" data-target="#delete" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                <a href="javascript:void(0);"  title="Eliminar cotización" data-toggle="modal" data-target="#delete" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                             @endcan
                         </div>
                     </div> <!-- end col-->

@@ -15,7 +15,7 @@
                             <label for="NoEmpleado" class="col-md-4 col-form-label text-md-right">{{ __('No. Empleado') }}</label>
 
                             <div class="col-md-6">
-                                <input id="NoEmpleado" type="text" class="form-control @error('NoEmpleado') is-invalid @enderror" name="NoEmpleado" value="{{ old('NoEmpleado') }}" required autocomplete="NoEmpleado" autofocus>
+                                <input id="NoEmpleado" type="text" class="form-control @error('NoEmpleado') is-invalid @enderror" name="email" value="{{ old('NoEmpleado') }}" required autocomplete="NoEmpleado" autofocus>
 
                                 @error('NoEmpleado')
                                     <span class="invalid-feedback" role="alert">
@@ -70,5 +70,4 @@
         </div>
     </div>
 </div>
-<script src="{{asset('assets/libs/parsleyjs/parsley.min.js'}}"></script>
 @endsection

@@ -11,7 +11,7 @@
                     <li class="breadcrumb-item active">DETALLES DE ORDEN</li>
                 </ol>
             </div>
-            <h4 class="page-title">Ticket #752</h4>
+            <h4 class="page-title"></h4>
         </div>
     </div>
 </div>
@@ -87,7 +87,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label class="mt-2 mb-1">Unidad Administrativa:</label>
-                        <p></p>
+                        <p>{{ $orden->detail->unit_administrative }}</p>
                     </div> <!-- end col -->
 
                     <div class="col-md-6">
@@ -102,7 +102,7 @@
                     <div class="col-md-6">
                         <!-- Status -->
                         <label class="mt-2 mb-1">No. Requisición :</label>
-                        <p>{{ $orden->detail->requisition->folio}}</p>
+                        <p>{{ $orden->detail->requisition->folio ?? ''}}</p>
                         <!-- end Status -->
                     </div> <!-- end col -->
                 </div> <!-- end row -->
@@ -148,18 +148,16 @@
             </div> <!-- end card-body-->
 
         </div> <!-- end card-->
-
         <div class="card">
             <div class="card-body">
+                <h5>Observación</h5>
                 <div class="border rounded mt-4">
-                    <form action="#" class="comment-area-box">
-                        <textarea rows="3" class="form-control border-0 resize-none" placeholder="Your message..."></textarea>
+                    <form action="{{route('ordenes.update', $orden->id)}}" method="POST" class="comment-area-box">
+                        @csrf
+                        @method('PUT')
+                        <textarea rows="3" class="form-control border-0 resize-none" name="observation" placeholder="Ingresa una observación">{{ $orden->observation}}</textarea>
                         <div class="p-2 bg-light d-flex justify-content-between align-items-center">
-                            <div>
-                                <a href="#" class="btn btn-sm px-1 btn-light"><i class='mdi mdi-upload'></i></a>
-                                <a href="#" class="btn btn-sm px-1 btn-light"><i class='mdi mdi-at'></i></a>
-                            </div>
-                            <button type="submit" class="btn btn-sm btn-success"><i class='uil uil-message mr-1'></i>Submit</button>
+                            <button type="submit" class="btn btn-sm btn-success"><i class='uil uil-message mr-1'></i>Enviar</button>
                         </div>
                     </form>
                 </div> <!-- end .border-->
@@ -180,23 +178,25 @@
                 <div class="card mb-1 shadow-none border">
                     <div class="p-2">
                         <div class="row align-items-center">
-                            <div class="col-auto">
-                                <div class="avatar-sm">
-                                    <span class="avatar-title badge-blue rounded">
-                                        {{ $quote_ext }}
-                                    </span>
+                            @foreach($cotizacion as $i => $cot)
+                                <div class="col-auto">
+                                    <div class="avatar-sm">
+                                        <span class="avatar-title badge-blue rounded">
+                                            {{ $quote_ext[$i]}}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col pl-0">
-                                <a href="javascript:void(0);" class="text-muted font-weight-bold">{{ $cotizacion->quote_file }}</a>
-                               <!-- <p class="mb-0 font-12">2.3 MB</p> -->
-                            </div>
-                            <div class="col-auto">
-                                <!-- Button -->
-                                <a href="" download class="btn btn-link font-16 text-muted">
-                                    <i class="dripicons-download"></i>
-                                </a>
-                            </div>
+                                <div class="col pl-0">
+                                    <a href="javascript:void(0);" class="text-muted font-weight-bold">{{ $cot->quote_file }}</a>
+                                   <!-- <p class="mb-0 font-12">2.3 MB</p> -->
+                                </div>
+                                <div class="col-auto">
+                                    <!-- Button -->
+                                    <a href="{{asset('requisitions/cotizadas/'.$cot->quote_file) }}" target="_blank" class="btn btn-link font-16 text-muted">
+                                        <i class="dripicons-download"></i>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -204,23 +204,25 @@
                 <div class="card mb-1 shadow-none border">
                     <div class="p-2">
                         <div class="row align-items-center">
-                            <div class="col-auto">
-                                <div class="avatar-sm">
-                                    <span class="avatar-title badge-blue rounded">
-                                       {{$req_ext}}
-                                    </span>
+                            @foreach($cotizacion as $i => $cot)
+                                <div class="col-auto">
+                                    <div class="avatar-sm">
+                                        <span class="avatar-title badge-blue rounded">
+                                           {{$req_ext[$i]}}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col pl-0">
-                                <a href="javascript:void(0)" class="text-muted font-weight-bold">{{ $cotizacion->requisition->folio}}</a>
-                                <!-- <p class="mb-0 font-12">0.25 MB</p> -->
-                            </div>
-                            <div class="col-auto">
-                                <!-- Button -->
-                                <a href="" download class="btn btn-link font-16 text-muted">
-                                    <i class="dripicons-download"></i>
-                                </a>
-                            </div>
+                                <div class="col pl-0">
+                                    <a href="javascript:void(0)" class="text-muted font-weight-bold">{{ $cot->requisition->file_req }}</a>
+                                    <!-- <p class="mb-0 font-12">0.25 MB</p> -->
+                                </div>
+                                <div class="col-auto">
+                                    <!-- Button -->
+                                    <a href="{{asset('requisitions/autorizadas/'.$cot->requisition->file_req) }}" target="_blank" class="btn btn-link font-16 text-muted">
+                                        <i class="dripicons-download"></i>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

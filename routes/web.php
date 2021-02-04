@@ -11,6 +11,7 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 /* Route home */
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home/daterange', 'HomeController@daterange')->name('daterange');
 /* Route areas devuelve las relaciones de las coordinaciones y departamentos*/
 Route::get('/areas', 'CoordinationController@areas')->name('areas.index');
 Route::get('/areas/{area}/edit', 'CoordinationController@editareas')->name('areas.edit');
@@ -28,7 +29,9 @@ Route::get('requisiciones/{requisicione}/requisition-pdf', 'RequisitionControlle
 //Subir Autorizacion (view)
 Route::get('requisiciones/{requisicione}/upload', 'RequisitionController@upload')->name('requisiciones.upload');
 //Guardar Autorizacion
-Route::put('requisiciones/{requisicione}/file_upload', 'RequisitionController@file_upload')->name('requisiciones.file_upload');
+Route::put('requisiciones/{requisicione}/file_upload', 'RequisitionController@file_upload')->name('requisiciones.file_upload');//Guardar Autorizacion
+//ELIMINAR AUTORIZACION
+Route::get('requisiciones/{requisicione}/eliminar/autorizacion', 'RequisitionController@deleteautorizacion')->name('requisiciones.deleteautorizacion');
 //Ver Requisicion Autorizada (view)
 Route::get('requisiciones/autorizadas/{requisicione}', 'RequisitionController@requisitionauthorized')->name('requisiciones.authorized');
 

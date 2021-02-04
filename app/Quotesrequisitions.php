@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Quotesrequisitions extends Model
 {
     protected $fillable = [
+        'department_id',
         'requisition_id',
         'provider_id',
         'quote_file',

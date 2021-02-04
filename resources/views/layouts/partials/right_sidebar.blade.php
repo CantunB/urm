@@ -355,7 +355,7 @@
                         <label class="custom-control-label" for="compact-check">Compact <small>(Small size)</small></label>
                     </div>
 
-                    <!-- User info -->
+                    <!-- UserSeeder info -->
                     <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">Sidebar User Info</h6>
 
                     <div class="custom-control custom-switch mb-1">

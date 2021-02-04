@@ -15,285 +15,201 @@
         </div>
     </div>
 </div>
-<!-- end page title -->
-<!-- end row -->
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card-box">
-                <p class="sub-header">
-            <input type="radio" id="selectall" name="special"> Acceso Total <span><strong>(Esto seleccionara todos los permisos existentes)</strong></span>
-                <div class="form-group">
-                </p>
-    </div>
-              <div class="container">
-                    <form action="{{ action('RoleController@update', $roles->id) }}" method="POST" class="form-group">
-                        @csrf
-                        @method('PUT')
-                        <table data-toggle="table"
-                                data-page-size="10"
-                                data-buttons-class="xs btn-light"
-                                data-pagination="true" class="table-bordered">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th><input type="checkbox" class="case" id="selectallusers"> Usuarios</th>
-                                    <th><input type="checkbox" class="case" id="selectallroles"> Roles</th>
-                                    <th><input type="checkbox" class="case" id="selectallpermisos"> Permisos</th>
-                                    <th><input type="checkbox" class="case" id="selectallelectores"> Departamentos</th>
-                                </tr>
-                            </thead>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+          <!---  <h4 class="header-title">Borderless table</h4>
+            <p class="sub-header">
+                For basic styling—light padding and only horizontal dividers—add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.
+            </p>
+            -->
+
+            <div class="table-responsive">
+                <form action="{{ action('RoleController@update', $roles->id) }}" method="POST" class="form-group">
+                    @csrf
+                    @method('PUT')
+                    <table class="table table-borderless mb-0">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>#</th>
+                            <th style="text-align: center">Crear</th>
+                            <th style="text-align: center">Leer</th>
+                            <th style="text-align: center">Actualizar</th>
+                            <th style="text-align: center">Eliminar</th>
+                        </tr>
+                        </thead>
                             <tbody>
                                 <tr>
-                                    <td>
+                                    <td>Usuarios</td>
                                     @foreach ($permisos as $item => $val )
                                         @if($item < "4")
-                                                <li>
-                                                <label>
-                                                    <input type="checkbox"
-                                                        class="chkusers case"
-                                                        name="permission[]"
-                                                        value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                    ><strong> {{ $val->name   }}</strong>
-                                                </label>
-                                                </li>
+                                            <td style="text-align: center">
+                                                <div class="checkbox checkbox-blue mb-2">
+                                                    <input class="chkusers case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                           value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
                                         @endif
                                     @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach ($permisos as $item => $val )
-                                            @if($item < "8")
+                                </tr>
+                                <tr>
+                                    <td>Roles</td>
+                                    @foreach ($permisos as $item => $val )
+                                        @if($item < "8")
                                             @continue($item < "4")
-                                                    <li>
-                                                    <label>
-
-                                                        <input type="checkbox"
-                                                            class="chkroles case"
-                                                            name="permission[]"
-                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                        ><strong> {{ $val->name   }}</strong>
-                                                    </label>
-                                                    </li>
-
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach ($permisos as $item => $val )
-                                            @if($item < "12")
+                                            <td style="text-align: center">
+                                                <div class="checkbox checkbox-blue mb-2">
+                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                           value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
+                                        @endif
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    <td>Permisos</td>
+                                    @foreach ($permisos as $item => $val )
+                                        @if($item < "12")
                                             @continue($item < "8")
-                                                    <li>
-                                                    <label>
-
-                                                        <input type="checkbox"
-                                                            class="chkpermisos case"
-                                                            name="permission[]"
-                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                        ><strong> {{ $val->name   }}</strong>
-                                                    </label>
-                                                    </li>
-
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach ($permisos as $item => $val )
-                                            @if($item < "16")
+                                            <td style="text-align: center">
+                                                <div class="checkbox checkbox-blue mb-2">
+                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                           value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
+                                        @endif
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    <td>Departamentos</td>
+                                    @foreach ($permisos as $item => $val )
+                                        @if($item < "16")
                                             @continue($item < "12")
-                                                    <li>
-                                                    <label>
-
-                                                        <input type="checkbox"
-                                                            class="chkelectores case"
-                                                            name="permission[]"
-                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                        ><strong> {{ $val->name   }}</strong>
-                                                    </label>
-                                                    </li>
-
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table data-toggle="table"
-                                data-page-size="10"
-                                data-buttons-class="xs btn-light"
-                                data-pagination="true" class="table-bordered">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th><input type="checkbox" class="case" id="selectallanf"> Coordinaciones</th>
-                                    <th><input type="checkbox" class="case" id="selectallsim"> Requisiciones</th>
-                                    <th><input type="checkbox" class="case" id="selectallrs"> Cotizaciones</th>
-                                    <th><input type="checkbox" class="case" id="selectallrm"> Proveedores</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                @foreach ($permisos as $item => $val )
-                                @if($item < "20")
-                                @continue($item < "16")
-                                            <li>
-                                            <label>
-                                                <input type="checkbox"
-                                                    class="chkanf case"
-                                                    name="permission[]"
-                                                    value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                ><strong> {{ $val->name   }}</strong>
-                                            </label>
-                                            </li>
-                                @endif
-                                @endforeach
-                                </td>
-                                <td>
-                                    @foreach ($permisos as $item => $val )
-                                    @if($item < "24")
-                                    @continue($item < "20")
-                                                <li>
-                                                <label>
-                                                    <input type="checkbox"
-                                                        class="chksim case"
-                                                        name="permission[]"
-                                                        value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                    ><strong> {{ $val->name   }}</strong>
-                                                </label>
-                                                </li>
-                                    @endif
+                                            <td style="text-align: center">
+                                                <div class="checkbox checkbox-blue mb-2">
+                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                           value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
+                                        @endif
                                     @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach ($permisos as $item => $val )
+                                </tr>
+                                <tr>
+                                    <td>Coordinaciones</td>
+                                    @foreach ($permisos as $item => $val )
+                                        @if($item < "20")
+                                            @continue($item < "16")
+                                            <td style="text-align: center">
+                                                <div class="checkbox checkbox-blue mb-2">
+                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                           value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
+                                        @endif
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    <td>Requisiciones</td>
+                                    @foreach ($permisos as $item => $val )
+                                        @if($item < "24")
+                                            @continue($item < "20")
+                                            <td style="text-align: center">
+                                                <div class="checkbox checkbox-blue mb-2">
+                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                           value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
+                                        @endif
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    <td>Cotizaciones</td>
+                                    @foreach ($permisos as $item => $val )
                                         @if($item < "28")
-                                        @continue($item < "24")
-                                                    <li>
-                                                    <label>
-                                                        <input type="checkbox"
-                                                            class="chkrs case"
-                                                            name="permission[]"
-                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                        ><strong> {{ $val->name   }}</strong>
-                                                    </label>
-                                                    </li>
+                                            @continue($item < "24")
+                                            <td style="text-align: center">
+                                                <div class="checkbox checkbox-blue mb-2">
+                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                           value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
                                         @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                    @foreach ($permisos as $item => $val )
-                                    @if($item < "32")
-                                    @continue($item < "28")
-                                                <li>
-                                                <label>
-                                                    <input type="checkbox"
-                                                        class="chkrm case"
-                                                        name="permission[]"
-                                                        value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                    ><strong> {{ $val->name   }}</strong>
-                                                </label>
-                                                </li>
-                                    @endif
                                     @endforeach
-                                    </td>
                                 </tr>
-                            </tbody>
-                        </table>
-                        <table data-toggle="table"
-                                data-page-size="10"
-                                data-buttons-class="xs btn-light"
-                                data-pagination="true" class="table-bordered">
-                            <thead class="thead-light">
                                 <tr>
-                                    <th><input type="checkbox" class="case" id="selectallanf"> Compras</th>
-                                    <th><input type="checkbox" class="case" id="selectallsim"> Almacen</th>
-                                    <th><input type="checkbox" class="case" id="selectallanf"> &nbsp;</th>
-                                    <th><input type="checkbox" class="case" id="selectallanf"> &nbsp;</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                @foreach ($permisos as $item => $val )
-                                @if($item < "36")
-                                @continue($item < "32")
-                                            <li>
-                                            <label>
-                                                <input type="checkbox"
-                                                    class="chkseccion case"
-                                                    name="permission[]"
-                                                    value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                ><strong> {{ $val->name   }}</strong>
-                                            </label>
-                                            </li>
-                                @endif
-                                @endforeach
-                                </td>
-                                <td>
+                                    <td>Proveedores</td>
                                     @foreach ($permisos as $item => $val )
-                                    @if($item < "40")
-                                    @continue($item < "36")
-                                                <li>
-                                                <label>
-                                                    <input type="checkbox"
-                                                        class="chkmanzana case"
-                                                        name="permission[]"
-                                                        value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                    ><strong> {{ $val->name   }}</strong>
-                                                </label>
-                                                </li>
-                                    @endif
-                                    @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach ($permisos as $item => $val )
-                                        @if($item < "44")
-                                        @continue($item < "40")
-                                                    <li>
-                                                    <label>
-                                                        <input type="checkbox"
-                                                            class="case"
-                                                            name="permission[]"
-                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                        ><strong> {{ $val->name   }}</strong>
-                                                    </label>
-                                                    </li>
+                                        @if($item < "32")
+                                            @continue($item < "28")
+                                            <td style="text-align: center">
+                                                <div class="checkbox checkbox-blue mb-2">
+                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                           value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
                                         @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                    @foreach ($permisos as $item => $val )
-                                    @if($item < "48")
-                                    @continue($item < "44")
-                                                <li>
-                                                <label>
-                                                    <input type="checkbox"
-                                                        class=" case"
-                                                        name="permission[]"
-                                                        value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}
-                                                    ><strong> {{ $val->name   }}</strong>
-                                                </label>
-                                                </li>
-                                    @endif
                                     @endforeach
-                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Compras</td>
+                                    @foreach ($permisos as $item => $val )
+                                        @if($item < "36")
+                                            @continue($item < "32")
+                                            <td style="text-align: center">
+                                                <div class="checkbox checkbox-blue mb-2">
+                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                           value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
+                                        @endif
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    <td>Almacen</td>
+                                    @foreach ($permisos as $item => $val )
+                                        @if($item < "40")
+                                            @continue($item < "36")
+                                            <td style="text-align: center">
+                                                <div class="checkbox checkbox-blue mb-2">
+                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                           value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
+                                        @endif
+                                    @endforeach
                                 </tr>
                             </tbody>
-                        </table>
+                    </table>
+                    <div class="col-md-6 offset-md-4">
+                        <button type="submit" class="btn btn-success waves-effect waves-light">
+                            Actualizar<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
+                        </button>
+                        <a  href="{{ url()->previous() }}" class="btn btn-danger waves-effect waves-light">
+                            Cancelar<span class="btn-label-right"><i class="mdi mdi-close-outline"></i></span>
+                        </a>
+                    </div>
+                </form>
+            </div> <!-- end table-responsive-->
 
-                        <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-success waves-effect waves-light">
-                                    Actualizar<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                                </button>
-                                <a  href="{{ url()->previous() }}" class="btn btn-danger waves-effect waves-light">
-                                    Cancelar<span class="btn-label-right"><i class="mdi mdi-close-outline"></i></span>
-                                </a>
-                         </div>
+        </div> <!-- end card-box -->
+    </div> <!-- end col -->
+</div>
+<!--- end r
 
-                        </form>
-                </div>
-            </div> <!-- end card-box -->
-        </div> <!-- end col-->
-    </div>
-    <!-- end row-->
 @push('scripts')
+    <script>
+        var $table = $('#table')
+    </script>
   <script>
 /*---------------------CHECKBOX USUARIOS-------------------------------*/
 $("#selectallusers").on("click", function() {

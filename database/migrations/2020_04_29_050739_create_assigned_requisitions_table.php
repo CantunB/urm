@@ -16,8 +16,8 @@ class CreateAssignedRequisitionsTable extends Migration
         Schema::create('assigned_requisitions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('accountant');
-            $table->integer('department_id')->unsigned();
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+          /*  $table->integer('department_id')->unsigned();
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade'); */
             $table->unsignedBigInteger('user_id')->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
            // $table->integer('coordination_id')->unsigned();

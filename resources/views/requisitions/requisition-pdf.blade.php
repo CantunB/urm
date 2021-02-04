@@ -39,9 +39,30 @@
             font-family: Arial;
             text-transform: uppercase;
         }
-table, th {
-  border: 1px solid black;
-}
+        table.table-bordered{
+            border:1px solid black;
+            margin-top:20px;
+        }
+        table.table-bordered > thead > tr > th{
+            border:1px solid black;
+        }
+        table.table-bordered > tbody > tr > td {
+
+            border-top: 0px;
+            border-right: 1px solid black;
+            border-bottom: 0px;
+            border-left: 0px;
+        }
+        table.table-bordered > tfoot > tr > th{
+            border:1px solid black;
+        }
+        td {
+            padding: 5px;
+            border-top: 0px;
+            border-right: 0px;
+            border-bottom: 1px solid black;
+            border-left: 0px;
+        }
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>REQ. NO. {{ $requisition[0]->requisition->folio }}</title>
@@ -91,53 +112,64 @@ table, th {
                     </div>
                 </div>
             <br>
-
             <div class="row justify-content-start">
-                <div class="col-8">
+                <div class="col-12">
                       <p style="font-size:10px; line-height:20px">
                         <strong>DIRECCIÓN:  </strong>{{ $r->requisition->management }}<br>
-                        <strong>COORDINACIÓN:  </strong>{{$r->user->asignado->areas->coordinations->name}}<br>
-                        <strong>DEPARTAMENTO:  </strong>{{$r->user->asignado->areas->departments->name}}<br>
+                        <strong>COORDINACIÓN:  </strong>{{$r->requisition->coordinations->name}}<br>
+                        <strong>DEPARTAMENTO:  </strong>{{$r->requisition->departments->name}}<br>
                         <strong>UNIDAD ADMINISTRATIVA:  </strong>{{ $r->requisition->administrative_unit }} <br>
                         <strong>FECHA PARA REQUERIR MATERIAL: {{ Carbon\Carbon::parse($r->requisition->required_on)->format('d/m/Y')}}</strong><br>
                         <strong>ASUNTO:  </strong>{{ $r->requisition->issue }}<br>
                         <strong>PROGRAMA:</strong>
                       </p>
-
                 </div>
             </div>
                     <div class="row col-md-12 table-responsive table-sm">
-                        <table class="table table-bordered ">
+                        <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th style="font-size: 10px;text-align: center "WIDTH="10"> <i>PARTIDA</i></th>
-                                <th style="font-size: 10px;text-align: center "WIDTH="1"><i>CANTIDAD</i></th>
-                                <th style="font-size: 10px;text-align: center "WIDTH="10"><i>UNIDAD</i></th>
-                                <th style="font-size: 10px;text-align: center"><i>CONCEPTO</i></th>
+                                <th style="font-size: 10px;text-align: center; width: 30px">PARTIDA</th>
+                                <th style="font-size: 10px;text-align: center; width: 50px">CANTIDA</th>
+                                <th style="font-size: 10px;text-align: center; width: 30px">UNIDAD</th>
+                                <th style="font-size: 10px;text-align: center">CONCEPTO</th>
                             </tr>
                             </thead>
-                            @foreach ($requesteds as $req)
-                                <tbody>
+                            <tbody>
+                                @foreach ($requesteds as $req)
+                                    <tr>
+                                        <td style="font-size: 10px;text-align: center;">{{$req->requested->departure }}</td>
+                                        <td style="font-size: 10px;text-align: center ">{{ $req->requested->quantity}}</td>
+                                        <td style="font-size: 10px;text-align: center;">{{$req->requested->unit }}</td>
+                                        <td style="font-size: 10px;">{{$req->requested->concept }}</td>
+                                    </tr>
+                                @endforeach
                                 <tr>
-                                    <td style="font-size: 10px;text-align: center ">{{$req->requested->departure }}</td>
-                                    <td style="font-size: 10px;text-align: center ">{{ $req->requested->quantity}}</td>
-                                    <td style="font-size: 10px;text-align: center ">{{$req->requested->unit }}</td>
-                                    <td style="font-size: 10px">{{$req->requested->concept }}</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td style="text-align: center; font-size: x-small">
+                                            <strong>XXX ESPACIO CANCELADO XXX</strong>
+                                    </td>
                                 </tr>
-                                </tbody>
-                            @endforeach
-                            <br>
-                            <br>
-                            <thead>
-                              <tr>
-                            <th  style="font-size: 10px"colspan="4">
-                                <label> <strong>  OBSERVACIONES: </strong>
-                                    {{ $r->requisition->remark }}
-                                </label>
-
-                            </th>
-                          </tr>
-                            </thead>
+                                @for ($i = 0; $i < 7; $i++)
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                @endfor
+                            </tbody>
+                            <tfoot>
+                                  <tr>
+                                    <th  style="font-size: 10px"colspan="4">
+                                        <label> <strong>  OBSERVACIONES: </strong>
+                                            {{ $r->requisition->remark }}
+                                        </label>
+                                    </th>
+                                  </tr>
+                            </tfoot>
                         </table>
                         @endforeach
                     </div>

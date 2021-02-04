@@ -175,7 +175,7 @@ class AppName extends Command
     }
 
     /**
-     * Set the authentication User namespace.
+     * Set the authentication UserSeeder namespace.
      *
      * @return void
      */
@@ -183,13 +183,13 @@ class AppName extends Command
     {
         $this->replaceIn(
             $this->getConfigPath('auth'),
-            $this->currentRoot.'\\User',
-            $this->argument('name').'\\User'
+            $this->currentRoot. '\\UserSeeder',
+            $this->argument('name'). '\\UserSeeder'
         );
     }
 
     /**
-     * Set the services User namespace.
+     * Set the services UserSeeder namespace.
      *
      * @return void
      */
@@ -197,8 +197,8 @@ class AppName extends Command
     {
         $this->replaceIn(
             $this->getConfigPath('services'),
-            $this->currentRoot.'\\User',
-            $this->argument('name').'\\User'
+            $this->currentRoot. '\\UserSeeder',
+            $this->argument('name'). '\\UserSeeder'
         );
     }
 

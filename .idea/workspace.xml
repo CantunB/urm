@@ -1,7 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3abdff53-fed4-4009-a9bb-e23c437cc646" name="Default Changelist" comment="" />
+    <list default="true" id="3abdff53-fed4-4009-a9bb-e23c437cc646" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/AppName.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/AppName.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseInvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseInvoiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuotesrequisitionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuotesrequisitionsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/RequisitionRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/RequisitionRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Quotesrequisitions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Quotesrequisitions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requisition.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Requisition.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/datatables.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/datatables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_28_215556_create_requisitions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_29_050440_create_requisitions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_29_050739_create_assigned_requisitions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_29_050739_create_assigned_requisitions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_12_073217_create_pur_order_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_12_073217_create_pur_order_details_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/pages/tour.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/pages/tour.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/autorizadas/CAF_TI_001_2021.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/autorizadas/CAF_TI_002_2021.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/autorizadas/CAF_TI_003_2021.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/autorizadas/CAF_TI_1_2021.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/autorizadas/CAF_TI_2_2021.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/autorizadas/CAF_URM_002_2021.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/autorizadas/CAF_URM_2_2021.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade2.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/21.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/autorizadas/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/autorizadas/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/autorizadas/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/autorizadas/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/facturas/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/facturas/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/ordenes/details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/ordenes/details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/ordenes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/ordenes/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/ordenes/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/ordenes/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/ordenes/ordenescompra_pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/ordenes/ordenescompra_pdf.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/ordenes/purchaseorder.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/ordenes/purchaseorder.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cotizaciones/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cotizaciones/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cotizaciones/new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cotizaciones/new.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cotizaciones/partials/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cotizaciones/partials/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cotizaciones/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cotizaciones/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/left_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/left_sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/right_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/right_sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/topbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/topbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/authorized.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/authorized.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/autorizadas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/autorizadas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/partials/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/partials/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/requisition-pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/requisition-pdf.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/upload.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/upload.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/roles/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/roles/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/partials/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/partials/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/4db0984802c66c1626602ed484a53ffdfdb1933a.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/4db0984802c66c1626602ed484a53ffdfdb1933a.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/803546da557dc49a4f020cc608f6cb33e67fc8ea.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/803546da557dc49a4f020cc608f6cb33e67fc8ea.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/83a1dd171baf22d80e649fca162390b56d971360.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/83a1dd171baf22d80e649fca162390b56d971360.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/fd978d8071416e7d8c60aecbb52ee5b34c73bfad.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/fd978d8071416e7d8c60aecbb52ee5b34c73bfad.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,9 +92,25 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/CantunB/urm" />
+      </set>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -110,19 +209,33 @@
       <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/jenssegers/date" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
     </include_path>
   </component>
   <component name="ProjectId" id="1b6EOK3ONVQBC83smM1Lp0oEb07" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pos" />
+    <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -142,6 +255,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -195,45 +309,27 @@
       <workItem from="1594053160533" duration="6000" />
       <workItem from="1594090758010" duration="35000" />
       <workItem from="1594091068108" duration="206000" />
+      <workItem from="1611670053560" duration="71253000" />
+      <workItem from="1611894233238" duration="21363000" />
+      <workItem from="1612040481278" duration="65797000" />
+      <workItem from="1612325314208" duration="12501000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593876940598">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1593876940598" />
-    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1591711836951">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1591711836951" />
-    <state x="517" y="284" key="NewPhpFileDialog" timestamp="1591243294250">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="517" y="284" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1591243294250" />
-    <state x="184" y="7" key="SettingsEditor" timestamp="1594052931115">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="184" y="7" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594052931115" />
-    <state width="552" height="446" key="SwitcherDM" timestamp="1591243581997">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="552" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1591243581997" />
-    <state x="359" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1594052779830">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="359" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1594052779830" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1591419675751">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1591419675751" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1591507880121">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1591507880121" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -265,8 +361,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/requisitions/partials/form.blade.php</url>
-          <line>115</line>
+          <line>152</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/requisitions/list.blade.php</url>
+          <line>60</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php</url>
+          <line>390</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php</url>
+          <line>396</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php</url>
+          <line>639</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php</url>
+          <line>428</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/details.blade.php</url>
+          <line>25</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/details.blade.php</url>
+          <line>45</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

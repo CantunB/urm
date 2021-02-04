@@ -38,7 +38,6 @@
                         <thead>
                             <tr>
                                 <th scope="col" style="text-align: center; width:50px">No.Req.</th>
-                                <th scope="col" style="text-align: center">Solicitado</th>
                                 <th scope="col" style="text-align: center">Fecha para requerir</th>
                                 <th scope="col" style="text-align: center">Departamento</th>
                                 <th scope="col" style="text-align: center">Estado</th>
@@ -48,9 +47,8 @@
                              @foreach($requisitions as $r)
                                 <tbody>
                                 <td style="text-align: center">{{ $r->requisition->folio}}</td>
-                                <td style="text-align: center">{{ Carbon\Carbon::parse( $r->requisition->added_on)->format('Y/m/d') }}</td>
                                 <td style="text-align: center">{{ Carbon\Carbon::parse($r->requisition->required_on)->format('Y/m/d') }}</td>
-                                <td style="text-align: center">{{ $r->department->name}}</td>
+                                <td style="text-align: center">{{ $r->requisition->departments->name}}</td>
                                 <td style="text-align: center">
                                     @if( $r->requisition->status === 0)
                                         <span class="badge badge-secondary">Por autorizar</span>

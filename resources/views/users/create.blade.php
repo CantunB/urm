@@ -28,7 +28,7 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="settings">
-                    <form method="POST" action="{{ route('usuarios.store') }}" class="form-group">
+                    <form id="form" method="POST" action="{{ route('usuarios.store') }}" class="form-group">
                         @csrf
                         @method('POST')
                         <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i> Informacion Personal</h5>
@@ -36,13 +36,24 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Nombre completo</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Ingresa un nombre">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Ingresa un nombre" required value="{{old('name')}}">
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="NoEmpleado">No. Empleado</label>
-                                    <input type="text" class="form-control" id="NoEmpleado" name="NoEmpleado" placeholder="SMAXXX">
+                                    <input type="text" class="form-control @error('NoEmpleado') is-invalid @enderror" id="NoEmpleado" name="NoEmpleado" placeholder="SMAXXX"
+                                           value="{{old('NoEmpleado')}}" required>
+                                    @error('NoEmpleado')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
@@ -51,13 +62,13 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="no_seg_soc">No. Seguro Social</label>
-                                    <input type="text" class="form-control" id="no_seg_soc" name="no_seg_soc">
+                                    <input type="text" class="form-control" id="no_seg_soc" name="no_seg_soc" value="{{old('no_seg_soc')}}">
                                 </div>
                             </div> <!-- end col -->
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="userbio">Categoria</label>
-                                    <input type="text" class="form-control" id="categoria" name="categoria">
+                                    <input type="text" class="form-control" id="categoria" name="categoria" value="{{old('catergoria')}}">
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
@@ -66,22 +77,19 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="no_seg_soc">Coordinacion</label>
-                                    <select id="coordinacion" name="coordinacion" class="form-control">
-                                        @foreach ($coordinations as $i => $coordination )
-                                        <option value="{{  old('coordinacion') ?? $coordination->id}}"
-                                              selected
-                                            >{{$coordination->name}}</option>
-                                        @endforeach
+                                    <select id="coordinacion" name="coordinacion" class="form-control" required>
+                                        <option disabled selected>Selecciona una coordinacion </option>
+                                    @foreach ($coordinations as $i => $coordination )
+                                        <option value=" {{  old('coordinacion') ?? $coordination->id}} ">{{$coordination->name}}</option>
+                                    @endforeach
                                 </select>
                                 </div>
                             </div> <!-- end col -->
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="userbio">Departamento</label>
-                                    <select  id="departamento" name="departamento" class="form-control">
-                                        <option value="0" disabled="true" selected="true"
-                                        selected
-                                        ></option>
+                                    <select  id="departamento" name="departamento" class="form-control" required>
+                                        <option disabled selected>Selecciona un departamento </option>
                                     </select>
                                 </div>
                             </div> <!-- end col -->
@@ -126,15 +134,15 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email">Correo Electronico</label>
-                                    <input type="email" class="form-control" id="email" name="email">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email">
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password">
-                                </div>
-                            </div> <!-- end col -->
+
                         </div> <!-- end row -->
                         <div class="row">
                             <div class="col-md-6">
@@ -142,7 +150,7 @@
                                     <p class="text-muted mt-3 mb-2">Lista de roles</p>
                                     @foreach ($roles as $id => $rol)
                                         <div class="radio radio-info form-check-inline">
-                                            <input type="radio" id="roles" name="roles[]" value="{{ $id }}">
+                                            <input type="radio" id="roles" name="roles[]" value="{{ $id }}" required>
                                             <label for="roles">{{$rol }}</label>
                                         </div>
                                     @endforeach
@@ -195,6 +203,9 @@
             })
         });
         });
+</script>
+<script>
+    $('#form').parsley();
 </script>
 @endpush
 @endsection

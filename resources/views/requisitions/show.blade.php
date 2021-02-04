@@ -25,11 +25,9 @@
                         <div class="text-sm-left">
                                 @if( $requisition[0]->requisition->status <= 0)
                                     @can('create_requisicion')
-                                    <a class="btn btn-sm btn-soft-danger waves-effect waves-light mb-2" download
-                                        href="{{route('requisiciones.reqpdf',$requisition[0]->id)}}">
-                                        <i title="{{ $requisition[0]->requisition->folio }}" class="fas fa-file-pdf"
-                                            download="{{ route('requisiciones.reqpdf',$requisition[0]->id) }}">
-                                        </i> Imprimir</a>
+                                    <a class="btn btn-sm btn-soft-danger waves-effect waves-light mb-2"
+                                       href="{{route('requisiciones.reqpdf',$requisition[0]->id)}}"
+                                       target="_blank"><i class="fas fa-file-pdf"></i> Generar PDF</a>
                                         @endcan
                                     @can('update_requisicion')
                                         <a  class="btn btn-sm btn-info waves-effect waves-light mb-2"
@@ -82,14 +80,14 @@
                                         <div class="row justify-content-start">
                                             <div class="col-sm-8">
                                                 <label>
-                                                    <strong>COORDINACIÓN:  </strong>{{$r->user->asignado->areas->coordinations->name}}
+                                                    <strong>COORDINACIÓN:  </strong>{{$r->requisition->coordinations->name}}
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="row justify-content-start">
                                             <div class="col-sm-8">
                                                 <label>
-                                                    <strong>DEPARTAMENTO:  </strong>{{$r->user->asignado->areas->departments->name}}
+                                                    <strong>DEPARTAMENTO:  </strong>{{$r->requisition->departments->name}}
                                                 </label>
                                             </div>
                                         </div>

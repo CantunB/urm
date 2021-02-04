@@ -28,7 +28,7 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="settings">
-                    <form method="POST" action="{{ route('usuarios.update', $user->id) }}" class="form-group">
+                    <form id="form" method="POST" action="{{ route('usuarios.update', $user->id) }}" class="form-group">
                         @csrf
                         @method('PUT')
                         <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i> Informacion Personal</h5>
@@ -36,13 +36,23 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Nombre completo</label>
-                                    <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $user->name }}" required>
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="NoEmpleado">No. Empleado</label>
-                                    <input type="text" class="form-control" id="NoEmpleado" name="NoEmpleado" value="{{ $user->NoEmpleado }}">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="NoEmpleado" name="NoEmpleado" value="{{ $user->NoEmpleado }}" required>
+                                    @error('NoEmpleado')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
@@ -65,27 +75,33 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="no_seg_soc">Coordinacion</label>
-                                    <select id="coordinacion" name="coordinacion" class="form-control">
-                                        @foreach ($coordinations as $i => $coordination )
-                                        <option value="{{  old('coordinacion') ?? $coordination->id}}"
-                                            @if($coordination->id === $user->coordinacion )
-                                              selected
-                                            @endif
-                                            >{{$coordination->name}}</option>
-                                        @endforeach
+                                    <select id="coordinacion" name="coordinacion" class="form-control" required>
+                                        @if(true === ($user->asignado->areas->coordinations->id ?? null))
+                                            <option value="{{ $user->asignado->areas->coordinations->id}}" selected>
+                                                {{$user->asignado->areas->coordinations->name}}</option>
+                                        @else
+                                            <option disabled selected> Selecciona una coordinacion</option>
+                                            @foreach ($coordinations as $i => $coordination )
+                                                <option value="{{$coordination->id}}"
+                                                @if($coordination->id === ($user->asignado->areas->coordinations->id ?? null)) selected
+                                                @endif
+                                                >{{$coordination->name}}</option>
+                                            @endforeach
+                                        @endif
+
                                 </select>
                                 </div>
                             </div> <!-- end col -->
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="userbio">Departamento</label>
-                                    <select  id="departamento" name="departamento" class="form-control">
-                                        <option value="{{  old('coordinacion') ?? $coordination->id}}" disabled="true" selected="true"
-                                        @if($user->depto === $user->depto)
-                                        selected
+                                    <select  id="departamento" name="departamento" class="form-control" required>
+                                        @if(($user->asignado->areas->departments->id ?? null))
+                                        <option value="{{$user->asignado->areas->departments->id}}" selected >
+                                            {{ $user->asignado->areas->departments->name}}</option>
+                                        @else
+                                            <option selected disabled> Selecciona un departamento</option>
                                         @endif
-                                        >{{ $user->depto}}</option>
-                                        </option>
                                     </select>
                                 </div>
                             </div> <!-- end col -->
@@ -130,22 +146,14 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="email">Correo Electronico</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" autocomplete="off">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ $user->email }}" autocomplete="off" required>
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="password">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" name="password" autocomplete="off">
-                                </div>
-                            </div> <!-- end col -->
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="password">Confirmar contraseña</label>
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
-
-                                </div>
-                            </div> <!-- end col -->
                         </div> <!-- end row -->
                         <div class="row">
                             <div class="col-md-6">
@@ -205,6 +213,9 @@
             })
         });
         });
+</script>
+<script>
+    $('#form').parsley();
 </script>
 @endpush
 @endsection

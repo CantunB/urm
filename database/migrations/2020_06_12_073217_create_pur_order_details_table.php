@@ -24,7 +24,7 @@ class CreatePurOrderDetailsTable extends Migration
             $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
             $table->integer('department_id')->unsigned();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-            $table->unsignedBigInteger('requisition_id')->index();
+            $table->unsignedBigInteger('requisition_id')->index()->nullable();
             $table->foreign('requisition_id')->references('id')->on('requisitions')->onDelete('cascade');
             $table->timestamps();
         });

@@ -38,14 +38,14 @@
                         Debe completar los siguientes campos
                     </div>
                 @endif
-                <form action="{{route('requisiciones.file_upload',$requisition[0]->id) }}" class="form-group" method="POST" enctype="multipart/form-data">
+                <form id="form" action="{{route('requisiciones.file_upload',$requisition[0]->id) }}" class="form-group" method="POST" enctype="multipart/form-data" >
                     @method('PUT')
                     @csrf
                 <!--  <p class="sub-header">
                         Override your input files with style. Your so fresh input file — Default version.
                     </p>
                 -->
-                    <input  name="file_req" class="dropify @error('file_req') is-invalid @enderror" id="file_req" type="file" data-plugins="dropify" data-height="300" data-max-file-size="5M" />
+                    <input  name="file_req" class="dropify @error('file_req') is-invalid @enderror" id="file_req" type="file"  required data-plugins="dropify" data-height="300" data-max-file-size="5M" />
                     <p class="text-muted text-center mt-2 mb-0">*El tamaño maximo de archivo son 5MB</p>
                     @error('file_req')
                         <span class="invalid-feedback" role="alert">
@@ -70,16 +70,19 @@
     </div> <!-- end col -->
 </div>
 @push('scripts')
-        <script>
-            $('.dropify').dropify({
-                messages: {
-                    'default': 'Arrastre y suelte un archivo aquí o haga clic en',
-                    'replace': 'Drag and drop or click to replace',
-                    'remove':  'Remove',
-                    'error':   'Ooops, something wrong happended.'
-                }
-            });
-        </script>
+    <script>
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Arrastre y suelte un archivo aquí o haga clic para elegir un archivo',
+                'replace': 'Arrastra y suelta o haz clic para reemplazar',
+                'remove':  'Eliminar',
+                'error':   'Ooops, sucedió algo malo.'
+            }
+        });
+    </script>
+    <script>
+        $('#form').parsley();
+    </script>
 @endpush
 
 @endsection

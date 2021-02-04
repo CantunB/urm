@@ -5,6 +5,7 @@ namespace Smapac\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Smapac\AssignedRequisition;
 use Smapac\AssignedRequesteds;
+use Smapac\Coordination;
 use Smapac\Requisition;
 use Smapac\User;
 use Smapac\AssignedUserAreas;
@@ -40,7 +41,7 @@ class RequisitionController extends Controller
 
         if (auth()->user()->hasPermissionTo('update_requisicion'))
         {
-            $requisitions = AssignedRequisition::select('department_id')->distinct(['department_id'])->paginate(10);
+           /* $requisitions = AssignedRequisition::select('department_id')->distinct(['department_id'])->paginate(10);
             foreach ($requisitions as $key => $requisition) {
                 $array= array(
                 $counts[]= AssignedRequisition::where('department_id',$requisitions[$key]->department_id)
@@ -53,7 +54,9 @@ class RequisitionController extends Controller
             {
                 $counts;
             }
-            return view('requisitions.index', compact('requisitions','counts'));
+*/
+            $requisitions = AssignedRequisition::all();
+            return view('requisitions.index', compact('requisitions'));
         }
         else
         {
@@ -83,23 +86,25 @@ class RequisitionController extends Controller
 
         if (auth()->user()->hasPermissionTo('update_requisicion'))
         {
-          $requisitions = AssignedRequisition::select('department_id')->distinct(['department_id'])->paginate(10);
-            foreach ($requisitions as $i => $requisition) {
-            $department = AssignedRequisition::where('department_id',$requisition->department_id)->distinct(['department_id'])->get();
+          $requisitions = AssignedRequisition::where('status','1')->get();
+/**
+foreach ($requisitions as $i => $requisition) {
+$department = AssignedRequisition::where('department_id',$requisition->department_id)->distinct(['department_id'])->get();
 
-            foreach ($department as $j => $id) {
+foreach ($department as $j => $id) {
 
-                $counts[$i]= Requisition::where('status','1')->where('id',$id->requisition_id)->count();
+$counts[$i]= Requisition::where('status','1')->where('id',$id->requisition_id)->count();
 
-                if (empty($counts)){
-                    $counts = 0;
-                }else
-                {
-                    $counts;
-                }
-            }
-        }
-            return view('requisitions.autorizadas', compact('requisitions','counts'));
+if (empty($counts)){
+$counts = 0;
+}else
+{
+$counts;
+}
+}
+}
+ */
+            return view('requisitions.autorizadas', compact('requisitions'));
         }
     }
 
@@ -124,19 +129,20 @@ class RequisitionController extends Controller
     {
         if (auth()->check())
         {
-                $user = auth()->user();
-            $req = AssignedRequisition::all()->where('department_id',auth()->user()->depto);
-            $requi = $req->last();
-            if($requi === null) {
-                $requi = new Requisition();
-                $countreq = $requi->accountant = 1;
+            $user = auth()->user();
+          //  $req = AssignedRequisition::all()->where('department_id',auth()->user()->depto);
+             $requisicion = AssignedRequisition::all();
+            $last = $requisicion->last();
+            if($last === null) {
+                $requisicion = new Requisition();
+                $countreq = $requisicion->accountant = 1;
             }else {
-                $countreq = $requi->accountant + 1;
+                $countreq = $last->accountant + 1;
             }
 
-
+            $coordinaciones = Coordination::all();
         }
-        return view('requisitions.create',compact('user','countreq'));
+        return view('requisitions.create',compact('user','countreq', 'coordinaciones'));
     }
 
     /**
@@ -170,9 +176,7 @@ class RequisitionController extends Controller
         {
             $idrequesteds = $r->id;
             $requisition->requesteds()->attach
-            ($requisition->id,
-                ['requested_id'=>$idrequesteds,
-                    'created_at' => now()
+            ($requisition->id,['requested_id'=>$idrequesteds,'created_at' => now()
                 ]);
         }
 
@@ -182,7 +186,6 @@ class RequisitionController extends Controller
                  $request->input('user_id'),
                 [
                     'accountant' => $request->input('accountant'),
-                    'department_id' => auth()->user()->asignado->areas->departments->id ,
                     'created_at' => now()
                 ]
             );
@@ -293,6 +296,12 @@ class RequisitionController extends Controller
             $requisition->status        = 1;
             $requisition->save();
         }
+        $requisition = AssignedRequisition::where('requisition_id',$requisition->id)->get();
+        foreach ($requisition as $i => $req)
+        {
+            $req->status = 1;
+            $req->save();
+        }
         return redirect()->route('requisiciones.autorizadas')->with('success', 'Requisición autorizada');
     }
 
@@ -303,19 +312,13 @@ class RequisitionController extends Controller
     */
     public  function requisitionspdf( $id)
     {
-        //return $id;
         /** Consulta para obtener el director**/
-        //$director = Role::all()->where('slug','=','director')->first();
-        //$director = DB::table('role_user')->where('role_id','=',$director->id)->get();
-        //$director = AssignedUserAreas::where('user_id','=',$director[0]->user_id)->get();
         $director = 'Ing. Nicolas Hernandez Ynurreta Mancera';
         $coordinador = 'L.A.E Bianca Eugenia Saenz Ortega';
         $requisition = AssignedRequisition::where('id',$id)->get();
-
         $requesteds = AssignedRequesteds::orderBy('requested_id','ASC')->with('requested')->where('requisition_id','=',$requisition[0]->requisition_id)->get();
-     //   $requisitions = AssignedRequisition::;
         $pdf = PDF::loadView('requisitions.requisition-pdf', compact('requisition','requesteds','director','coordinador'));
-        return $pdf->download('REQ.'.$requisition[0]->requisition->folio.'.pdf');
+        return $pdf->stream('REQ.'.$requisition[0]->requisition->folio.'.pdf');
     }
 
     public  function requisitionauthorized($id)
@@ -334,6 +337,8 @@ class RequisitionController extends Controller
 
     }
 
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -342,8 +347,24 @@ class RequisitionController extends Controller
      */
     public function destroy($requisition)
     {
-        $requisition = Requisition::findOrFail($requisition);
-        $requisition->delete();
+        $requesteds = AssignedRequesteds::where('requisition_id', $requisition)->get();
+        foreach ($requesteds as $i => $requested){
+            Requested::where('id', $requested->requested_id)->delete();
+        }
+        $requisition = Requisition::findOrFail($requisition)->delete();
         return back()->with('destroy','Se han eliminado todos los registros de la requisición');
+    }
+
+
+    /**
+     * Eliminar la autorización de una requisicion
+     * Se elimina el campo file_req
+     **/
+    public function deleteautorizacion(Requested $requested, $requisition)
+    {
+        $requisicion = Requisition::where('id',$requisition)->update(['file_req' => null, 'status' => '0']);
+        $requisition = AssignedRequisition::where('requisition_id',$requisition)->update(['status' => '0']);
+
+        return redirect()->route('requisiciones.index');
     }
 }

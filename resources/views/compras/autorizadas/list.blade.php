@@ -57,7 +57,6 @@
                                             class="btn btn-ghost-info">
                                                 <i class="fas fa-eye "></i></a>
                                     @endcan
-                                    @elseif($purchaseorder->order->status <= 1)
                                       @can('update_compras')
                                           <a title="Subir Factura"
                                              href="{{route('facturas.edit',$purchaseorder->order->purchase[$key]->id)}}"

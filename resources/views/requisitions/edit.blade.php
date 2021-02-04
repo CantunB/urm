@@ -28,7 +28,7 @@
                         </div>
                     </div><!-- end col-->
                 </div>
-                    <form method="POST" action="{{ route('requisiciones.update', $requisition->requisition->id) }}">
+                    <form id="form" method="POST" action="{{ route('requisiciones.update', $requisition->requisition->id) }}">
                         @method('PUT')
                         @csrf
                         @if(is_null($requisition->requisition->file_req))
@@ -36,10 +36,9 @@
                                 <div class="form-group row col-md-12">
                                     <label><i class="mdi mdi-alert-circle-outline mr-2"></i>SELECCIONAR EL ESTADO DE LA REQUISICION</label>
                                     <div class="col-md-4">
-                                        <select type="text" name="status" class="selectpicker" data-style="btn-outline-primary" >
-                                            <option disabled>Selecciona el estado de la requisicion</option>
-                                            <option value="0">Autorizada</option>
-                                            <option VALUE="2">No Autorizada</option>
+                                        <select type="text" name="status" class="form-control" data-style="btn-outline-primary" >
+                                                <option value="0" @if($requisition->requisition->status === 0)selected @endif >Autorizada</option>
+                                                <option VALUE="2">No Autorizada</option>
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-success waves-effect waves-light"><i class="mdi mdi-check"></i></button>
@@ -48,44 +47,45 @@
                         @endif
                         <div class="row">
                             <div class="form-group row col-md-12">
-                                <label for="inputEmail3" class="col-md-2 offset-md-7 col-form-label"><strong>REQ. NO.</strong></label>
+                                <label for="folio" class="col-md-2 offset-md-7 col-form-label"><strong>REQ. NO.</strong></label>
                                 <div class="col-md-3">
-                                    <input   type="text" name="folio" class="form-control text-right" id="inputEmail3"
-                                            value="{{$requisition->requisition->folio}}">
+                                    <input   type="text" name="folio" class="form-control text-right" id="folio"
+                                            value="{{$requisition->requisition->folio}}" required>
                                 </div>
                             </div>
                             <div class="form-group row col-md-12">
-                                <label for="inputEmail3" class="col-md-2 offset-md-7 col-form-label">Fecha de solicitud</label>
+                                <label for="added_on" class="col-md-2 offset-md-7 col-form-label">Fecha de solicitud</label>
                                 <div class="col-md-3">
                                     <input type="text" name="added_on"
-                                           class="form-control" id="inputEmail3" disabled placeholder=""
-                                           value="{{ Carbon\Carbon::parse($requisition->requisition->added_on)->format('Y/m/d') }}">
+                                           class="form-control" id="added_on" placeholder=""
+                                           value="{{ Carbon\Carbon::parse($requisition->requisition->added_on)->format('Y/m/d') }}" required>
+
                                 </div>
                             </div>
                             <div class="form-group row col-md-12">
-                                <label for="inputEmail3" class="col-md-2 col-form-label">Direccion</label>
+                                <label for="management" class="col-md-2 col-form-label">Direccion</label>
                                 <div class="col-md-4">
-                                    <input type="text" name="management"
-                                           class="form-control" id="inputEmail3" placeholder="SMAPAC"   value="{{ $requisition->requisition->management }}">
+                                    <input type="text" name="management" class="form-control" id="management" required value="{{ $requisition->requisition->management }}">
                                 </div>
                             </div>
                             <div class="form-group row col-md-12">
-                                <label for="inputEmail3" class="col-md-2 col-form-label">Coordinación</label>
-                                <div class="col-md-4">
-                                    <input type="text"
-                                           class="form-control"  placeholder="" value="{{$requisition->department->area->coordinations->name }}">
+                                <label for="coordination" class="col-md-2 col-form-label">Coordinación</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" value="{{$requisition->requisition->coordinations->name }}" required>
+                                    <input type="hidden" class="form-control"  name="coordination_id" value="{{$requisition->requisition->coordinations->id }}" required>
                                 </div>
                             </div>
                             <div class="form-group row col-md-12">
-                                <label for="inputEmail3" class="col-md-2 col-form-label">Departamento</label>
-                                <div class="col-md-4">
-                                    <input type="text"  class="form-control"  placeholder="" value="{{ $requisition->department->name}}">
+                                <label for="department" class="col-md-2 col-form-label">Departamento</label>
+                                <div class="col-md-6">
+                                    <input type="text"  class="form-control" value="{{ $requisition->requisition->departments->name}}" required>
+                                    <input type="hidden"  class="form-control"  name="department_id" value="{{ $requisition->requisition->departments->id}}" required>
                                 </div>
                             </div>
                             <div class="form-group row col-md-12">
                                 <label for="inputEmail3" class="col-md-2 col-form-label">Unidad Administrativa</label>
                                 <div class="col-md-6">
-                                    <input type="text" name="administrative_unit"  class="form-control" id="inputEmail3" placeholder=""
+                                    <input type="text" name="administrative_unit"  class="form-control" id="inputEmail3" placeholder="" required
                                            value="{{$requisition->requisition->administrative_unit}}">
                                 </div>
                             </div>
@@ -93,13 +93,13 @@
                                 <label for="inputEmail3" class="col-md-2 col-form-label">Fecha Para Requerir Material</label>
                                 <div class="col-md-3">
                                     <input type="text" name="required_on"   class="form-control" id="inputEmail3" placeholder=""
-                                           value="{{ Carbon\Carbon::parse($requisition->requisition->required_on)->format('Y/m/d') }}">
+                                           value="{{ Carbon\Carbon::parse($requisition->requisition->required_on)->format('Y/m/d') }}" required>
                                 </div>
                             </div>
                             <div class="form-group row col-md-12">
                                 <label for="inputEmail3" class="col-md-2 col-form-label">Asunto</label>
                                 <div class="col-md-6">
-                                    <input type="text"  name="issue" class="form-control" id="inputEmail3" placeholder="" value="{{$requisition->requisition->issue}}">
+                                    <input type="text"  name="issue" class="form-control" id="inputEmail3" placeholder="" value="{{$requisition->requisition->issue}}" required>
                                 </div>
                             </div>
                             <div class="form-group row col-12">
@@ -117,16 +117,10 @@
                                         <tbody class="field_wrapper">
                                         @foreach($requisition->requested as $requested )
                                         <tr>
-                                            <td style="text-align: center"><textarea  min="0"
-                                                                                         name="departure[]"
-                                                                                     class="form-control">{{$requested->requested->departure }}</textarea></td>
-                                            <td style="text-align: center"><textarea min="0"
-                                                                                         name="quantity[]"
-                                                                                     class="form-control">{{$requested->requested->quantity}}</textarea></td>
-                                            <td style="text-align: center"><textarea name="unit[]" class="form-control">{{$requested->requested->unit}}</textarea></td>
-                                            <td style="width:30rem"><textarea
-                                                        name="concept[]"
-                                                                               class="form-control">{{$requested->requested->concept }}</textarea></td>
+                                            <td style="text-align: center"><textarea  min="0" name="departure[]" class="form-control" required>{{$requested->requested->departure }}</textarea></td>
+                                            <td style="text-align: center"><textarea min="0" name="quantity[]" class="form-control" required>{{$requested->requested->quantity}}</textarea></td>
+                                            <td style="text-align: center"><textarea name="unit[]" class="form-control" required>{{$requested->requested->unit}}</textarea></td>
+                                            <td style="width:30rem"><textarea name="concept[]" class="form-control" required>{{$requested->requested->concept }}</textarea></td>
                                         </tr>
                                             @endforeach
                                         </tbody>
@@ -135,9 +129,9 @@
                             </div>
 
                             <div class="form-group row col-md-12">
-                                <label for="inputEmail3" class="col-md-2 col-form-label">Observaciónes</label>
+                                <label for="remark" class="col-md-2 col-form-label">Observaciónes</label>
                                 <div class="col-md-10">
-                                    <input type="text" name="remark" disabled class="form-control" id="inputEmail3" placeholder="" value="{{$requisition->requisition->remark}}">
+                                    <input type="text" name="remark"  class="form-control" id="inputEmail3" required value="{{$requisition->requisition->remark}}">
                                 </div>
                             </div>
 
@@ -157,4 +151,9 @@
     </div> <!-- end col -->
 </div>
     <!-- end row -->
+@push('scripts')
+  <script>
+      $('#form').parsley();
+  </script>
+@endpush
 @endsection

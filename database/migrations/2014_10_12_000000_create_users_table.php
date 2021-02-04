@@ -15,21 +15,20 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('NoEmpleado');
+            $table->string('NoEmpleado')->unique();
             $table->string('name');
-            $table->string('no_seg_soc');
-            $table->string('categoria');
-            $table->string('coordinacion');
-            $table->string('depto')->nullable();
-            $table->string('nivel')->nullable();
-            $table->string('rfc')->nullable();
-            $table->string('curp')->nullable();
-            $table->string('fe_nacimiento')->nullable();
-            $table->string('fe_ingreso')->nullable();
+            $table->string('no_seg_soc')->nullable()->default('N/A');
+            $table->string('categoria')->nullable()->default('N/A');
+            $table->string('nivel')->nullable()->default('N/A');
+            $table->string('rfc')->nullable()->default('N/A');
+            $table->string('curp')->nullable()->default('N/A');
+            $table->string('fe_nacimiento')->nullable()->default('N/A');
+            $table->string('fe_ingreso')->nullable()->default('N/A');
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable()->default('$2y$10$MPnTD/M.2EGZzHbnRQafd.yUG.3bWAUi5d9dzfX/6PXOX0J4.hv/C');
-            $table->tinyInteger('status')->default('0');
+            $table->string('file_user')->default('default.png');
+            $table->tinyInteger('status')->default('1');
             $table->rememberToken();
             $table->timestamps();
         });

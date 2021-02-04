@@ -29,13 +29,13 @@
                     <form action="{{ action('QuotesrequisitionsController@store') }}" method="POST" enctype="multipart/form-data">
                         @method('POST')
                         @csrf
-                        <input type="text" class="form-control" name="requisition_id" value="{{$requisition->requisition->id}}" hidden>
-                        <input type="text" class="form-control" name="department_id" value="{{$requisition->department_id}}" hidden >
+                        <input type="hidden" class="form-control" name="requisition_id" value="{{$requisition->requisition->id}}">
+                        <input type="hidden" class="form-control" name="department_id" value="{{$requisition->requisition->department_id}}">
                         <div class="row contenedor">
                             <div class="form-group col-md-4">
                                 <label for="inputState">Proveedor #1</label>
-                                <select id="prov1"  name="provider_id[]" class="form-control sel ">
-                                    <option required disabled selected>Selecciona un proveedor</option>
+                                <select id="prov1"  name="provider_id[]" class="form-control " required>
+                                    <option disabled selected value="null">Selecciona un proveedor</option>
                                     @foreach($providers as $item => $prov)
                                         <option   data-name="{{$prov->address}}" data-rfc="{{$prov->rfc}}" value="{{$prov->id }}">{{ $prov->name}}</option>
                                     @endforeach
@@ -58,7 +58,7 @@
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-form-label">Cotización</label>
                                     <div class="custom-file">
-                                        <input type="file" data-plugins="dropify" id="file1" name="quote_file[]" data-max-file-size="3M" />
+                                        <input type="file" data-plugins="dropify" id="file1" name="quote_file[]" data-max-file-size="3M" required/>
                                         <p class="text-muted text-center mt-2 mb-0">Max File size</p>
                                         @if ($errors->has('prov_one_img'))
                                             <p style="color:red"> <strong>{{$errors->first('prov_one_img')}}</strong> </p>

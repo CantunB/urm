@@ -25,7 +25,7 @@
                         <div class="text-sm-right">
                         </div>
                         <div class="container">
-                            <form method="POST" action="{{ route('ordenes.store') }}">
+                            <form id="form" method="POST" action="{{ route('ordenes.store') }}">
                                 @csrf
                                 @method('POST')
                                 <div class="container col-md-12">
@@ -95,35 +95,35 @@
                                         </div>
                                         <br>
                                         <div class="row justify-content-start">
-                                            <div class="col-4">
+                                            <div class="col-6">
                                                 <label>
                                                     <strong>Coordinacion:  </strong>
                                                 </label>
-                                                <input type="text" class="form-control" name="coordination" value="{{$r->requisition->asignado[0]->user->asignado->areas->coordinations->name}}">
+                                                <input required type="text" class="form-control"  value="{{$r->requisition->coordinations->name}}">
+                                                <input required type="hidden" class="form-control" name="coordination" value="{{$r->requisition->coordinations->id}}">
                                             </div>
                                             <div class="col-md-4 offset-2">
                                                 <label>
                                                     <strong>Unidad Administrativa:  </strong>
                                                 </label>
-                                                <input name="unit_admnistrative" id="unit_administrative" class="form-control" value="{{ $r->requisition->administrative_unit }}">
+                                                <input required name="unit_admnistrative" id="unit_administrative" class="form-control" value="{{ $r->requisition->administrative_unit }}">
                                             </div>
                                         </div>
                                         <br>
                                         <div class="row justify-content-start">
-                                            <div class="col-md-4">
+                                            <div class="col-md-5">
                                                 <label>
                                                     <strong>Departamento:  </strong>
                                                 </label>
-                                                <input name="department" class="form-control" value="{{$r->requisition->asignado[0]->user->asignado->areas->departments->name}}">
-                                                <input class="form-control" type="text" name="department_id" id="requisition_id" hidden value="
-                                                {{$r->requisition->asignado[0]->user->asignado->areas->departments->id}}">
+                                                <input type="text" required class="form-control"  value="{{$r->requisition->departments->name}}">
+                                                <input type="hidden" required name="department" class="form-control"  value="{{$r->requisition->departments->id}}">
                                             </div>
                                             <div class="col-md-4 offset-2">
                                                 <label>
                                                     <strong>No. De Requisición:  </strong>
                                                 </label>
-                                                {{ $r->requisition->folio }}
-                                                <input class="form-control" type="text" name="requisition_id" id="requisition_id" hidden value="{{$r->requisition->id}}">
+                                                <input required class="form-control" type="text" readonly  value="{{$r->requisition->folio}}">
+                                                <input required class="form-control" type="hidden" name="requisition_id" id="requisition_id"  value="{{$r->requisition->id}}">
 
                                             </div>
                                         </div>
@@ -230,14 +230,14 @@
                                                                         <tr>
                                                                             <td>Desc</td>
                                                                             <td>
-                                                                                <input class="form-control desc"
+                                                                                <input required class="form-control desc"
                                                                                        onblur="descuento();"
                                                                                        type="text"
                                                                                        name="desc" id="desc"
                                                                                        value="{{old('desc')}}">
                                                                             </td>
                                                                             <td>
-                                                                                <input class="form-control"  type="text"
+                                                                                <input required class="form-control"  type="text"
                                                                                        name="val_desc" id="val_desc"
                                                                                        value="" >
                                                                             </td>
@@ -246,7 +246,7 @@
                                                                             <td>Sub-total</td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <input class="form-control"  type="text"
+                                                                                <input required class="form-control"  type="text"
                                                                                        name="subtotal" id="subtotal"
                                                                                        value="">
                                                                             </td>
@@ -254,12 +254,12 @@
                                                                         <tr>
                                                                             <td>I.V.A</td>
                                                                             <td>
-                                                                                <input class="form-control val_iva"
+                                                                                <input required class="form-control val_iva"
                                                                                        onblur="calculo_iva();" type="text"
                                                                                        name="iva" id="iva" value="" >
                                                                             </td>
                                                                             <td>
-                                                                                <input class="form-control "
+                                                                                <input required class="form-control "
                                                                                        type="text"
                                                                                        name="Total_iva" id="Total_iva" value="" >
                                                                             </td>
@@ -268,7 +268,7 @@
                                                                             <td>Total</td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <input class="form-control "
+                                                                                <input  required class="form-control "
                                                                                        type="text"
                                                                                        name="total" id="total" value="" >
                                                                             </td>
@@ -295,7 +295,7 @@
                                                             <th>A) TIEMPO DE ENTREGA DEL BIEN O SERVICIO: </th>
                                                             <th></th>
                                                             <th>
-                                                                <input class="form-control "
+                                                                <input required class="form-control "
                                                                        type="text"
                                                                        name="entrega" id="entrega" value="" placeholder="Inmediato" >
                                                             </th>
@@ -304,7 +304,7 @@
                                                             <th>B) MATERIAL EN EXISTENCIA: </th>
                                                             <th></th>
                                                             <th>
-                                                                <input class="form-control "
+                                                                <input required class="form-control "
                                                                        type="text"
                                                                        name="existencia" id="existencia" value="" placeholder="N/A" >
                                                             </th>
@@ -313,7 +313,7 @@
                                                             <th>C) FORMA DE PAGO: </th>
                                                             <th></th>
                                                             <th>
-                                                                <input class="form-control "
+                                                                <input required class="form-control "
                                                                        type="text"
                                                                        name="forma_pago" id="forma_pago" value="" placeholder="Contado" >
                                                             </th>
@@ -322,16 +322,16 @@
                                                             <th>D) VIGENCIA DEL(OS) PRECIO(S): </th>
                                                             <th></th>
                                                             <th>
-                                                                <input class="form-control "
+                                                                <input required class="form-control "
                                                                        type="text"
-                                                                       name="vigencia" id="vigencia" value="" placeholder="15 Días" >
+                                                                       name="vigencia" id="vigencia" value="" placeholder="Días" >
                                                             </th>
                                                         </tr>
                                                         <tr>
                                                             <th>E) OTRAS: </th>
                                                             <th></th>
                                                             <th>
-                                                                <textarea class="form-control "
+                                                                <textarea required class="form-control "
                                                                        type="text"
                                                                           name="otras" id="otras" value="" placeholder="N/A"></textarea>
                                                             </th>
@@ -340,7 +340,7 @@
                                                             <th>Programa: </th>
                                                             <th></th>
                                                             <th>
-                                                                <textarea class="form-control "
+                                                                <textarea required class="form-control "
                                                                           type="text"
                                                                           name="programa" id="programa" value=""></textarea>
                                                             </th>
@@ -349,7 +349,7 @@
                                                             <th>Apliacion: </th>
                                                             <th></th>
                                                             <th>
-                                                                <textarea class="form-control "
+                                                                <textarea required class="form-control "
                                                                           type="text"
                                                                           name="aplicacion" id="aplicacion" value=""></textarea>
                                                             </th>
@@ -358,7 +358,7 @@
                                                             <th>Vehículo: </th>
                                                             <th></th>
                                                             <th>
-                                                                <textarea class="form-control "
+                                                                <textarea required class="form-control "
                                                                         type="text"
                                                                         name="vehiculo" id="vehiculo" value=""></textarea>
                                                             </th>
@@ -387,8 +387,7 @@
         </div> <!-- end card-->
     </div> <!-- end col -->
 </div>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/app.js') }}" ></script>
+@push('scripts')
     <script type="text/javascript">
         function deleteRow(r) {
             var i = r.parentNode.parentNode.rowIndex;
@@ -419,13 +418,13 @@
         });
 
         $("input:file").change(function () {
-    var filenames = '';
-    for (var i = 0; i < this.files.length; i++) {
-        filenames += '<li>' + this.files[i].name + '</li>';
-    }
-    $(".filename").html('<  ul>' + filenames +
-    '<button type="button" value="Delete" onclick="deleteRow(this)" class="btn btn-danger btn-sm"><i class="fas fa-minus-circle">' +' </ul>');
-});
+            var filenames = '';
+            for (var i = 0; i < this.files.length; i++) {
+                filenames += '<li>' + this.files[i].name + '</li>';
+            }
+            $(".filename").html('<  ul>' + filenames +
+                '<button type="button" value="Delete" onclick="deleteRow(this)" class="btn btn-danger btn-sm"><i class="fas fa-minus-circle">' +' </ul>');
+        });
     </script>
     <script>
 
@@ -462,12 +461,12 @@
 
 
 
-            var departure = '<input type="number" min="0" value="'+departure+'" id="departure[]" name="departure[]" class="form-control">';
-            var quantity = '<input class="form-control cantidad"  type="text" onblur="cantidad();" name="quantity[]"  id="quantity'+nuevoid+'" value="'+valqua+'">';
-            var unit = '<input type="text" value="'+valunit+'" id="unit[]" name="unit[]" class="form-control">';
-            var concept = '<textarea type="text" id="concept[]" name="concept[]" class="form-control">'+valcon+'</textarea>';
-            var unit_price = '<input type="text" value="'+valupri+'" onblur="cantidad();" id="unit_price'+nuevoid+'" name="unit_price[]" class="form-control ">';
-            var importe = '<input type="text"  value="'+valimp+'"  id="importe'+nuevoid+'" name="importe[]" onblur="sumar();" class="form-control importe">';
+            var departure = '<input required type="number" min="0" value="'+departure+'" id="departure[]" name="departure[]" class="form-control">';
+            var quantity = '<input required class="form-control cantidad"  type="text" onblur="cantidad();" name="quantity[]"  id="quantity'+nuevoid+'" value="'+valqua+'">';
+            var unit = '<input required type="text" value="'+valunit+'" id="unit[]" name="unit[]" class="form-control">';
+            var concept = '<textarea required type="text" id="concept[]" name="concept[]" class="form-control">'+valcon+'</textarea>';
+            var unit_price = '<input required type="text" value="'+valupri+'" onblur="cantidad();" id="unit_price'+nuevoid+'" name="unit_price[]" class="form-control ">';
+            var importe = '<input required type="text"  value="'+valimp+'"  id="importe'+nuevoid+'" name="importe[]" onblur="sumar();" class="form-control importe">';
             var button = '<button type="button" value="Delete" onclick="deleteRow(this)" class="btn btn-danger btn-sm"><i class="fas fa-minus-circle">';
             // get the html table
             // 0 = the first table
@@ -641,19 +640,22 @@
     <script>
         function activar(chk)
         {
-                if(chk.checked){
-                    document.getElementsByClassName("analysis")[0].style.display = "";
-                    document.getElementsByClassName("analysis")[1].style.display = "";
-                    document.getElementsByClassName("analysis")[2].style.display = "";
-                    document.getElementsByClassName("analysis")[3].style.display = "";
-                }else{
-                    document.getElementsByClassName("analysis")[0].style.display = "none";
-                    document.getElementsByClassName("analysis")[1].style.display = "none";
-                    document.getElementsByClassName("analysis")[2].style.display = "none";
-                    document.getElementsByClassName("analysis")[3].style.display = "none";
-                }
+            if(chk.checked){
+                document.getElementsByClassName("analysis")[0].style.display = "";
+                document.getElementsByClassName("analysis")[1].style.display = "";
+                document.getElementsByClassName("analysis")[2].style.display = "";
+                document.getElementsByClassName("analysis")[3].style.display = "";
+            }else{
+                document.getElementsByClassName("analysis")[0].style.display = "none";
+                document.getElementsByClassName("analysis")[1].style.display = "none";
+                document.getElementsByClassName("analysis")[2].style.display = "none";
+                document.getElementsByClassName("analysis")[3].style.display = "none";
+            }
         }
     </script>
-
+    <script>
+        $('#form').parsley();
+    </script>
+@endpush
 @endsection
 

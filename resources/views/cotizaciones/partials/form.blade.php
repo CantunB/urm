@@ -1,5 +1,6 @@
 @csrf
-<input type="text" class="form-control" name="requisition_id" value="{{$requisition->requisition->id}}" hidden>
+<input type="hidden" class="form-control" name="requisition_id" value="{{$requisition->requisition->id}}">
+<input type="hidden" class="form-control" name="department_id" value="{{$requisition->requisition->department_id}}">
 <div class="form-group col-md-4 ">
     <label for="inputState">Proveedor</label>
     <select id="prov1"  name="provider_id" class="form-control sel " required>

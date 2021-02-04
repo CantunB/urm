@@ -20,15 +20,13 @@ class User extends Authenticatable
         'name',
         'no_seg_soc',
         'categoria',
-        'coordinacion',
-        'depto',
         'nivel',
         'rfc',
         'curp',
         'fe_nacimiento',
         'fe_ingreso',
         'email',
-        'password'
+        'file_user'
     ];
     /**
      * The attributes that should be hidden for arrays.

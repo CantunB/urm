@@ -104,49 +104,83 @@ class PurchaseInvoiceController extends Controller
      */
     public function update(Request $request,  $purchaseorder)
     {
-    //return $request->all();
-    $purchaseorders = Purchase::where('id',$purchaseorder)->get();
-      foreach ($purchaseorders as $key => $v){
-        // return $v;
-      // $pur = Purchase::where('purchase_order_id', $v->id)->get();
-           if($request->hasFile('invoice_file')) {
-               foreach ($request->invoice_file as $key => $value) {
-                $invoice_filename = $request->invoice_file[$key]->getClientOriginalName();
-                 //   $ext = $req = $request->invoice_file[$key]->clientExtension();
-                   $data2=array(
-                       'type' => $request->type,
-                       'department_id' => $request->department_id,
-                       'purchase_id' => $request->purchase_id,
-                       'amount' => $request->amount[$key],
-                       'invoice_file' => $invoice_filename[$key],
-                       'observation' => $request->observation[$key],
-                       'total_purchase' => $request->amount[$key],
-                       'created_at' => now(),
-                   );
-                   $request->invoice_file[$key]->move(public_path('ordenes/facturas'), $invoice_filename);
-               $purchase = PurchaseInvoice::insert($data2);
-                   // $purchase = Purchase::updateOrCreater->where('id',$p->id)->update($data2);
-                   // Requested::where('id','=',$requesteds[$item]->requested->id)->update($data2);
-               }
-       //         return  $data2;
-           }
+   // return $request->all();
+        if ($request->type === 'Completa') {
+            $purchaseorders = Purchase::where('id',$purchaseorder)->get();
+            foreach ($purchaseorders as $key => $v){
+                // return $v;
+                // $pur = Purchase::where('purchase_order_id', $v->id)->get();
+                if($request->hasFile('invoice_file')) {
+                    foreach ($request->invoice_file as $key => $value) {
+                        $invoice_filename = $request->invoice_file[$key]->getClientOriginalName();
+                        //   $ext = $req = $request->invoice_file[$key]->clientExtension();
+                        $data2=array(
+                            'type' => $request->type,
+                            'department_id' => $request->department_id,
+                            'purchase_id' => $request->purchase_id,
+                            'amount' => $request->amount[$key],
+                            'invoice_file' => $invoice_filename[$key],
+                            'observation' => $request->observation[$key],
+                            'total_purchase' => $request->amount[$key],
+                            'created_at' => now(),
+                        );
+                        $request->invoice_file[$key]->move(public_path('ordenes/facturas'), $invoice_filename);
+                        $purchase = PurchaseInvoice::insert($data2);
+                        // $purchase = Purchase::updateOrCreater->where('id',$p->id)->update($data2);
+                        // Requested::where('id','=',$requesteds[$item]->requested->id)->update($data2);
+                    }
+                    //         return  $data2;
+                }
+                // foreach ($purchaseorder as $key => $orderupdate) {
+                //
+                // }
+                $purchaseautorize = Purchase::where('purchase_order_id', $v->purchase_order_id)->get();
+                foreach($purchaseautorize as $pur_autorize){
+                    $pur_autorize->status = 1;
+                    $pur_autorize->save();
+                    $purchaseorder = PurchaseOrder::where('id',$pur_autorize->purchase_order_id)->get();
+                    $purchaseorder = PurchaseOrder::where('pur_order_details_id',$purchaseorder[0]->pur_order_details_id)->get();
+                    foreach ($purchaseorder as $key => $order_update) {
+                        $order_update->status = 2;
+                        $order_update->save();
+                    }
 
-          // foreach ($purchaseorder as $key => $orderupdate) {
-          //
-          // }
-          $purchaseautorize = Purchase::where('purchase_order_id', $v->purchase_order_id)->get();
-      foreach($purchaseautorize as $pur_autorize){
-         $pur_autorize->status = 1;
-         $pur_autorize->save();
-            $purchaseorder = PurchaseOrder::where('id',$pur_autorize->purchase_order_id)->get();
-         $purchaseorder = PurchaseOrder::where('pur_order_details_id',$purchaseorder[0]->pur_order_details_id)->get();
-            foreach ($purchaseorder as $key => $order_update) {
-              $order_update->status = 2;
-              $order_update->save();
+                }
             }
+        }else{
+            $purchaseorders = Purchase::where('id',$purchaseorder)->get();
+            foreach ($purchaseorders as $key => $v){
+                if($request->hasFile('invoice_file')) {
+                    foreach ($request->invoice_file as $key => $value) {
+                        $invoice_filename = $request->invoice_file[$key]->getClientOriginalName();
+                        $data2=array(
+                            'type' => $request->type,
+                            'department_id' => $request->department_id,
+                            'purchase_id' => $request->purchase_id,
+                            'amount' => $request->amount[$key],
+                            'invoice_file' => $invoice_filename[$key],
+                            'observation' => $request->observation[$key],
+                            'total_purchase' => $request->amount[$key],
+                            'created_at' => now(),
+                        );
+                        $request->invoice_file[$key]->move(public_path('ordenes/facturas'), $invoice_filename);
+                        $purchase = PurchaseInvoice::insert($data2);
+                    }
+                }
+                $purchaseautorize = Purchase::where('purchase_order_id', $v->purchase_order_id)->get();
+                foreach($purchaseautorize as $pur_autorize){
+                    $pur_autorize->status = 1;
+                    $pur_autorize->save();
+                    $purchaseorder = PurchaseOrder::where('id',$pur_autorize->purchase_order_id)->get();
+                    $purchaseorder = PurchaseOrder::where('pur_order_details_id',$purchaseorder[0]->pur_order_details_id)->get();
+                    foreach ($purchaseorder as $key => $order_update) {
+                        $order_update->status = 1;
+                        $order_update->save();
+                    }
 
-       }
-      }
+                }
+            }
+        }
 
 
        return redirect()->route('facturas.index')->with('success', 'Facturas Almacenadas');

@@ -15,9 +15,9 @@ use Illuminate\Http\Request;
 
 //
 // Route::middleware('auth:api')->get('/api/users', function () {
-//     return datatables()->eloquent(User::query())->toJson();
+//     return datatables()->eloquent(UserSeeder::query())->toJson();
 // });
 
 // Route::get('users', function(){
-// return Datatables::of(User::query())->make(true);
+// return Datatables::of(UserSeeder::query())->make(true);
 // })->name('users.list');

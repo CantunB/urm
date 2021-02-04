@@ -36,9 +36,8 @@
                                 <th style="text-align: center" >ID</th>
                                 <th style="text-align: center">No.Empleado</NoEmpleadoth>
                                 <th style="text-align: center">Nombre</th>
-                                <th style="text-align: center">RFC</th>
                                 <th style="text-align: center">Correo</th>
-                                <th style="text-align: center">Acciones</th>
+                                <th style="text-align: center">&nbsp;</th>
                             </tr>
                         </thead>
                     </table>
@@ -61,7 +60,6 @@
             {data: 'id', name : 'id'},
             {data: 'NoEmpleado', name : 'NoEmpleado'},
             {data: 'name', name : 'name'},
-            {data: 'rfc', name : 'rfc'},
             {data: 'email', name : 'email'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ]

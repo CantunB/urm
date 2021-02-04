@@ -185,7 +185,7 @@ class QuotesrequisitionsController extends Controller
     public function destroy($quotesrequisitions)
     {
       //  return  $quotesrequisitions;
-       // User::where('in_black_list', true)->get()->each->delete();
+       // UserSeeder::where('in_black_list', true)->get()->each->delete();
         $quotes = Quotesrequisitions::where('requisition_id','=',$quotesrequisitions)->get()->each->delete();
 //        $requisition = Requisition::findOrFail($quotesrequisitions);
 //        $requisition->status = '1';

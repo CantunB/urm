@@ -23,6 +23,10 @@
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <div class="text-sm-right">
+                            @can('create_compras')
+                                <a href="{{ route('ordenes.create') }}"
+                                   class="btn btn-sm btn-info waves-effect waves-light mb-2"><i class="fas fa-plus-square" ></i> Generar Orden de compra</a> &nbsp;&nbsp;&nbsp;
+                            @endcan
                         </div>
                     </div><!-- end col-->
                 </div>

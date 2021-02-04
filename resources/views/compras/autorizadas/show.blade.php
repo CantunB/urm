@@ -1,9 +1,4 @@
 @extends('layouts.app')
-@section('title','Archivos de la orden de compra')
-@section('button')
-   <a class="btn btn btn-outline-danger float-right" href="{{ url()->previous() }}">
-        <i class="fas fa-times-circle" ></i> Regresar</a>
-@endsection
 @section('content')
 <div class="row">
     <div class="col-12">
@@ -23,7 +18,7 @@
     @foreach($purchases as $purchase)
     <div class="col-md-4">
         <div class="card">
-            <input type="file" data-plugins="dropify" data-default-file="{{ asset('/ordenes/autorizadas/'. $purchase->order_file) }}" disabled="disabled" />
+            <input type="file" class="dropify"  data-default-file="{{ asset('/ordenes/autorizadas/'. $purchase->order_file) }}" disabled="disabled" />
             <div class="card-body">
                 <h5 class="card-title">{{ $purchase->order->detail->order_folio }}</h5>
                 <p class="card-text">This is a wider card with supporting text below as a
@@ -31,8 +26,7 @@
                     longer.</p>
                 <p class="card-text">
                     <small class="text-muted">{{ $purchase->created_at->diffForHumans() }}</small> <a style="text-align: center"
-                    href="{{ asset('ordenes/autorizadas/'.$purchase->order_file) }}" download
-                    class="btn btn-ghost-success btn-descargar"  title="" target="_blank">
+                    href="{{ asset('ordenes/autorizadas/'.$purchase->order_file) }}" class="btn btn-ghost-success"  title="" target="_blank">
                     <i class="fas fa-download"></i> Descargar
                 </a>
                 </p>
@@ -41,4 +35,9 @@
     </div> <!-- end col -->
     @endforeach
 </div>
+@push('scripts')
+    <script>
+        $('.dropify').dropify();
+    </script>
+@endpush
 @endsection

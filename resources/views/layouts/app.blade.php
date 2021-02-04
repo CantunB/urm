@@ -11,12 +11,6 @@
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
         <!-- Plugins css -->
-        <link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/libs/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/libs/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/libs/dropify/css/dropify.min.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- third party css -->
         <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
@@ -26,13 +20,17 @@
         <!-- third party css end -->
          <!-- Bootstrap Tables css -->
         <link href="{{ asset('assets/libs/bootstrap-table/bootstrap-table.min.css') }}" rel="stylesheet" type="text/css" />
-
+        <link href="{{asset('assets/libs/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/libs/dropify/css/dropify.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/libs/flatpickr/flatpickr.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/libs/selectize/css/selectize.bootstrap3.css')}}" rel="stylesheet" type="text/css" />
         <!-- App css -->
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
         <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
         <link href="{{ asset('assets/css/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
         <link href="{{ asset('assets/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+        <link href="{{ asset('assets/libs/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- icons -->
         <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -90,50 +88,31 @@
             <!-- End Page content -->
             <!-- ============================================================== -->
 
-
         </div>
-        <!-- END wrapper -->
-
-        <!-- Right Sidebar -->
-        <!-- /Right-bar -->
-
-        <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
-
         <!-- Vendor js -->
-        <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
+        <script src="{{asset('assets/js/vendor.min.js')}}"></script>
         <!-- Plugins js-->
-        <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-
-        <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/disableautofill/src/jquery.disableAutoFill.min.js"></script>
-        <!-- Dashboard init-->
-        <script src="{{ asset('assets/js/pages/dashboard-1.init.js') }}"></script>
-        <script src="{{ asset('assets/libs/morris.js06/morris.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/raphael/raphael.min.js') }}"></script>
-        <script src="{{ asset('assets/js/pages/dashboard-4.init.js') }}"></script>
-           <!-- Sweet Alerts js -->
+        <script src="{{asset('assets/libs/flatpickr/flatpickr.min.js')}}"></script>
+        <script src="{{asset('assets/libs/apexcharts/apexcharts.min.js')}}"></script>
+        <script src="{{asset('assets/libs/selectize/js/standalone/selectize.min.js')}}"></script>
+        <!-- Sweet Alerts js -->
         <script src="{{asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
         <!-- Sweet alert init js-->
         <script src="{{asset('assets/js/pages/sweet-alerts.init.js')}}"></script>
-                <!-- Plugins js -->
+        <!-- Plugins js -->
         <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
         <script src="{{asset('assets/libs/dropify/js/dropify.min.js')}}"></script>
-        <script src="{{asset('assets/js/pages/form-fileuploads.init.js')}}"></script>
-
+        <script src="{{asset('assets/libs/parsleyjs/parsley.min.js')}}"></script>
+        <script src="{{asset('assets/libs/parsleyjs/i18n/es.js')}}"></script>
         <!-- App js-->
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
         <script src="{{asset('js/alerts.js')}}" defer></script>
-<script src="//code.jquery.com/jquery.js"></script>
         @stack('scripts')
 
         <!-- SELECTPICKER -->
         <script src="{{ asset('assets/libs/multiselect/js/jquery.multi-select.js') }}"></script>
         <script src="{{ asset('assets/libs/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
-
-        <!-- DataTables -->
-
 
         <!-- DATATABLES -->
         <script src="{{asset('assets/libs/bootstrap-table/bootstrap-table.min.js')}}"></script>

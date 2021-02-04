@@ -35,26 +35,75 @@
                     <table id="requi-table" class="table dt-responsive nowrap w-100">
                         <thead>
                             <tr>
-                                <th scope="col" style="text-align: center;">Departamentos</th>
-                                <th scope="col" style="text-align: center; width: 15px"> Numero de requisiciones </th>
+                                <th scope="col" style="text-align: center; width: 15px"> Folio de requisiciones </th>
+                                <th scope="col" style="text-align: center;">Fecha de registro</th>
+                                <th scope="col" style="text-align: center;">Departamento</th>
+                                <th scope="col" style="text-align: center;">Fecha para requerir</th>
+                                <th scope="col" style="text-align: center;">Status</th>
                                 <th scope="col" style="text-align: center; width: 10px">Opciones</th>
                             </tr>
                             </thead>
                             @foreach($requisitions as $key => $r)
                                 <tbody>
-                                <td style="text-align: center"><strong>{{ $r->department->name}}</strong></td>
-                                <td style="text-align: center; color: #2eb85c">
-                                    <button type="button" class="btn btn-pill btn-sm btn-info    "><strong>{{ '' ?: $counts[$key]  }}</strong></button></td>
-{{--                                <td>--}}
-{{--                                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#view">--}}
-{{--                                        <i class="fas fa-eye"></i>--}}
-{{--                                    </button>--}}
-{{--                                </td>--}}
-                                <td style="text-align: center; width: 10px">
-                                    <a href="{{route('requisiciones.list',$r->department->id)}}"
-                                       class="action-icon  btn btn-soft-info ">
-                                        <i class="mdi mdi-currency-eth"></i></a>
-                                    </a>
+                                <td style="text-align: center"><strong>{{ $r->requisition->folio}}</strong></td>
+                                <td style="text-align: center"><strong>{{ $r->requisition->added_on}}</strong></td>
+                                <td style="text-align: center"><strong>{{ $r->requisition->departments->name}}</strong></td>
+                                <td style="text-align: center"><strong>{{ $r->requisition->required_on}}</strong></td>
+                                <td style="text-align: center">
+                                    @if( $r->requisition->status === 0)
+                                        <span class="badge badge-secondary">Por autorizar</span>
+                                    @elseif($r->requisition->status <= 1)
+                                        <span class="badge badge-info">Autorizada</span>
+                                    @elseif($r->requisition->status <= 2)
+                                        <span class="badge badge-danger">No autorizada</span>
+                                    @endif
+                                </td>
+                                <td style="text-align: center">
+                                    @can('update_requisicion')
+                                        @if( $r->requisition->status <= 0)
+                                            <a href="{{route('requisiciones.edit',$r->id)}}"
+                                               title="Editar Requisicion"
+                                               class="action-icon">
+                                                <i class="mdi mdi-square-edit-outline"></i></a>
+                                            <a href="{{route('requisiciones.upload',$r->requisition->id)}}"
+                                               title="Subir Firmada"
+                                               class="action-icon">
+                                                <i class="mdi mdi-file-upload"></i></a>
+                                            </a>
+                                        @elseif($r->requisition->status === 2)
+                                            <a href="{{route('requisiciones.edit',$r->id)}}"
+                                               title="Editar Requisicion"
+                                               class="action-icon">
+                                                <i class="mdi mdi-square-edit-outline"></i></a>
+                                        @endif
+                                    @endcan
+                                    @can('read_requisicion')
+                                        @if( $r->requisition->status <= 0)
+                                            <a href="{{route('requisiciones.show',$r->id)}}"
+                                               title="Ver requisicion"
+                                               class="action-icon">
+                                                <i class="mdi mdi-monitor-eye"></i></a>
+                                            </a>
+                                        @elseif($r->requisition->status <= 1)
+                                            <a href="{{route('requisiciones.authorized',$r->id)}}"
+                                               class="action-icon">
+                                                <i  class="mdi mdi-monitor-eye"></i></a>
+                                        @elseif($r->requisition->status <= 2)
+                                            <a href="{{route('requisiciones.show',$r->id)}}"
+                                               class="action-icon">
+                                                <i class="mdi mdi-monitor-eye"></i></a>
+                                        @endif
+                                    @endcan
+                                    @can('delete_requisicion')
+                                        <a href="{{route('requisiciones.destroy',$r->requisition->id)}}" class="action-icon" onclick="event.preventDefault();
+                                        document.getElementById('delete-form').submit();">
+                                            <i class="mdi mdi-trash-can"></i>
+                                        </a>
+                                        <form id="delete-form" action="{{ route('requisiciones.destroy', $r->requisition->id) }}" method="POST" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                    @endcan
                                 </td>
                                 </tbody>
                             @endforeach

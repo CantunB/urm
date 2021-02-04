@@ -1,4 +1,4 @@
-@extends('layouts.CoreUi.index')
+@extends('layouts.index')
 @section('title', 'Nueva Cotizacion')
 @section('content')
     <style>

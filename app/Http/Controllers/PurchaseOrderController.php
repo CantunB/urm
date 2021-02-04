@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Smapac\AssignedRequesteds;
 use Smapac\AssignedUserAreas;
 use Smapac\AssignedAreas;
+use Smapac\Coordination;
 use Smapac\Providers;
 use Smapac\Purchase;
 use Smapac\PurchaseOrder;
@@ -76,6 +77,19 @@ class PurchaseOrderController extends Controller
 
     public function create()
     {
+        $compra = PurchaseOrder::all()->last();
+        if($compra === null) {
+            $compra = new PurchaseOrder();
+            $compra = $compra->accountant = 1;
+        }else {
+            $compra = $compra->accountant + 1;
+        }
+
+       // $data = AssignedRequesteds::distinct()->where('requisition_id', '=', $purchaseOrder)->get(['requisition_id']);
+        $providers = Providers::all();
+        //$requesteds = AssignedRequesteds::where('requisition_id', '=', $purchaseOrder)->orderBy('id', 'DESC')->where('status', '0')->get();
+        $coordinations = Coordination::all();
+        return view('compras.ordenes.new', compact('compra','providers','coordinations'));
     }
 
     public function details($orden)
@@ -87,12 +101,15 @@ class PurchaseOrderController extends Controller
         //$cotizacion_archivo = Quotesrequisitions::where('provider_id', $provider_id)->get();
         $cotizacion = Quotesrequisitions::where('requisition_id', $requisition_id)
                         ->where('provider_id',$provider_id)->get();
-
         //$quote_info = pathinfo(storage_path().'/requisitions/cotizadas/'. $cotizacion[0]->quote_file);
         //$quote_ext = $quote_info['extension'];
-        $quote_ext = pathinfo(storage_path().'/requisitions/cotizadas/'. $cotizacion[0]->quote_file, PATHINFO_EXTENSION);
-        $req_ext = pathinfo(storage_path().'/requisitions/cotizadas/'. $cotizacion[0]->requisition->file_req, PATHINFO_EXTENSION);
-
+        $req_ext = [];
+        $quote_ext = [];
+        foreach ($cotizacion as $key => $cot)
+        {
+            $quote_ext[] = pathinfo(storage_path().'/requisitions/cotizadas/'. $cot->quote_file, PATHINFO_EXTENSION);
+            $req_ext[] = pathinfo(storage_path().'/requisitions/cotizadas/'. $cot->requisition->file_req, PATHINFO_EXTENSION);
+        }
         $materials = PurchaseOrder::where('pur_order_details_id',$orden->pur_order_details_id)->orderBy('id','ASC')->get();
        // foreach ($materials as $key => $material) {
         //    $materials = PurchaseOrderMaterial::where('id',$material[$key]->pur_order_material_id)->orderBy('id','ASC')->get();
@@ -185,7 +202,7 @@ class PurchaseOrderController extends Controller
         $detalles->department = $request->department;
         $detalles->unit_administrative= $request->unit_admnistrative;
         $detalles->provider_id = $request->provider_id;
-        $detalles->department_id = $request->department_id;
+        $detalles->department_id = $request->department;
         $detalles->requisition_id = $request->requisition_id;
         $detalles->save();
 
@@ -241,7 +258,7 @@ class PurchaseOrderController extends Controller
                 $detalles,
                 [
                     'accountant' => $request->count_or,
-                    'department_id' => $request->department_id,
+                    'department_id' => $request->department,
                     'pur_order_details_id' => $detalles,
                     'pur_order_material_id' => $mat->id,
                     'pur_order_features_id' => $extras,
@@ -250,7 +267,7 @@ class PurchaseOrderController extends Controller
             );
         }
 
-        return redirect()->route('ordenes.list', $request->department_id)->with('success', 'Orden de compra generada');
+        return redirect()->route('ordenes.list', $request->department)->with('success', 'Orden de compra generada');
     }
 
     /**
@@ -303,7 +320,8 @@ class PurchaseOrderController extends Controller
         $materials = PurchaseOrder::where('pur_order_details_id',$id)->orderBy('id','DESC')->get();
         $folio = PurchaseOrderDetail::where('id',$purchaseorder->pur_order_details_id)->get();
         $pdf = PDF::loadView('compras.ordenes.ordenescompra_pdf',compact('purchaseorder','materials','director','coordinador','titular'));
-        return $pdf->download('Orden de compra No.'.$folio[0]->order_folio.$purchaseorder->pdf.'.pdf');
+       // return $pdf->download('Orden de compra No.'.$folio[0]->order_folio.$purchaseorder->pdf.'.pdf');
+        return $pdf->stream('Orden de compra No.'.$folio[0]->order_folio.$purchaseorder->pdf.'.pdf');
     }
 
     /*** Vista para subir Factura ***/
@@ -340,7 +358,16 @@ class PurchaseOrderController extends Controller
      */
     public function update(Request $request, $purchaseorder)
     {
+     $orden =  PurchaseOrder::findOrFail($purchaseorder);
+     $orden = $orden->pur_order_details_id;
+     $orden = PurchaseOrder::where('pur_order_details_id',$orden)->get();
+     foreach ($orden as $i => $ord)
+     {
+         $ord->observation = $request->observation;
+         $ord->save();
+     }
 
+     return redirect()->route('home');
     }
 
     /**

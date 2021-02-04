@@ -2,7 +2,7 @@
 
     <div class="h-100" data-simplebar>
 
-        <!-- User box -->
+        <!-- UserSeeder box -->
         <div class="user-box text-center">
             <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-img" title="Mat Helme"
                 class="rounded-circle avatar-md">
