@@ -182,6 +182,11 @@ class DepartmentSeeder extends Seeder
             'name' => 'Apoyo en Pipas',
             'slug' => 'LAMA'
             ]);
+        Department::create([
+            'id' => '32',
+            'name' => 'Administrador',
+            'slug' => 'Administrador'
+        ]);
 
     }
 }

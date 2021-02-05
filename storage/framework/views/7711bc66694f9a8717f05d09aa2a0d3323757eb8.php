@@ -1,12 +1,11 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- start page title -->
 <div class="row">
     <div class="col-12">
         <div class="page-title-box">
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name', 'SMAPAC') }}</a></li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo e(config('app.name', 'SMAPAC')); ?></a></li>
                     <li class="breadcrumb-item"><a href="javascript: void(0);">PROVEEDORES</a></li>
                     <li class="breadcrumb-item active">LISTA</li>
                 </ol>
@@ -42,9 +41,9 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="text-lg-right mt-3 mt-lg-0">
-                        @can('create_proveedores')
+                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create_proveedores')): ?>
                         <button type="button" class="btn btn-danger waves-effect waves-light mb-2" data-toggle="modal" data-target="#custom-modal"><i class="mdi mdi-plus mr-1"></i>Nuevo Proveedor</button>
-                        @endcan
+                        <?php endif; ?>
                     </div>
                 </div><!-- end col-->
             </div> <!-- end row -->
@@ -54,47 +53,49 @@
 <!-- end row -->
 
 <div class="row">
-    @foreach($providers as $key => $u)
+    <?php $__currentLoopData = $providers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $u): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col-lg-4">
         <div class="card-box bg-pattern">
             <div class="text-center">
-                <img src="{{ asset('assets/images/companies/'.$u->provider_file) }}" alt="logo" class="avatar-xl rounded-circle mb-3">
-                <h4 class="mb-1 font-20">{{ $u->name }}</h4>
-                <p class="text-muted  font-14">{{ $u->rfc }}</p>
+                <img src="<?php echo e(asset('assets/images/companies/'.$u->provider_file)); ?>" alt="logo" class="avatar-xl rounded-circle mb-3">
+                <h4 class="mb-1 font-20"><?php echo e($u->name); ?></h4>
+                <p class="text-muted  font-14"><?php echo e($u->rfc); ?></p>
             </div>
 
             <p class="font-14 text-center text-muted">
-               Direccion: {{ $u->address }}
+               Direccion: <?php echo e($u->address); ?>
+
             </p>
             <p class="font-14 text-center text-muted">
-               Telefono: {{ $u->phone }}
+               Telefono: <?php echo e($u->phone); ?>
+
             </p>
             <p class="font-24 text-center text-muted">
-             <a href="{{ $u->website }}" target="_blank" rel="noopener noreferrer"><i class="mdi mdi-web"></i></a>
+             <a href="<?php echo e($u->website); ?>" target="_blank" rel="noopener noreferrer"><i class="mdi mdi-web"></i></a>
             </p>
-            @can('update_proveedores')
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('update_proveedores')): ?>
             <div class="text-center">
-                <a href="{{route('proveedores.edit',$u->id)}}" class="btn btn-sm btn-info">Detalles</a>
+                <a href="<?php echo e(route('proveedores.edit',$u->id)); ?>" class="btn btn-sm btn-info">Detalles</a>
             </div>
             <div class="row mt-4 text-center">
                 <div class="col-6">
                     <h5 class="font-weight-normal text-muted">No.Cotizaciones</h5>
-                    <h4>{{ $counts_cot['0']}}</h4>
+                    <h4><?php echo e($counts_cot['0']); ?></h4>
                 </div>
                 <div class="col-6">
                     <h5 class="font-weight-normal text-muted">No.Compras</h5>
-                    <h4>{{ $counts_com['0'] }}</h4>
+                    <h4><?php echo e($counts_com['0']); ?></h4>
                 </div>
             </div>
-            @endcan
+            <?php endif; ?>
         </div> <!-- end card-box -->
     </div><!-- end col -->
-    @endforeach
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
 <!-- end row -->
-@include('proveedores.partials.create')
+<?php echo $__env->make('proveedores.partials.create', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
         $('#form-create').parsley();
 </script>
@@ -102,7 +103,7 @@
     $(document).ready(function () {
         var formulario = $("#form-create");
         $("#registrar").on("click", function () {
-            var url = "{!! route('proveedores.store') !!}";
+            var url = "<?php echo route('proveedores.store'); ?>";
                 $.ajax({
                 type: "POST",
                 url: url,
@@ -114,5 +115,7 @@
         });
     });
 </script>
-@endpush
-@endsection
+<?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/urm/resources/views/proveedores/index.blade.php ENDPATH**/ ?>

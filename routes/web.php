@@ -11,7 +11,7 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 /* Route home */
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/home/daterange', 'HomeController@daterange')->name('daterange');
+Route::post('/home/daterange', 'HomeController@daterange')->name('home.daterange');
 /* Route areas devuelve las relaciones de las coordinaciones y departamentos*/
 Route::get('/areas', 'CoordinationController@areas')->name('areas.index');
 Route::get('/areas/{area}/edit', 'CoordinationController@editareas')->name('areas.edit');

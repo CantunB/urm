@@ -27,7 +27,10 @@ class AssignedAreas extends Model
         return $this->belongsToMany(AssignedUserAreas::class);
     }
 
-
+    public function userareas()
+    {
+        return $this->hasMany(AssignedUserAreas::class,'areas_id');
+    }
     public static function getDepartments($coor){
         return  AssignedAreas::select('department_id')
                   ->where('coordination_id', $coor)

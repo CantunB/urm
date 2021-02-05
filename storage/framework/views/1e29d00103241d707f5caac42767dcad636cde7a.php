@@ -1,7 +1,7 @@
 <html>
 <head>
     <style>
-        @page {
+        @page  {
             margin: 0cm 0cm;
             font-family: Arial;
         }
@@ -65,14 +65,14 @@
         }
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>REQ. NO. {{ $requisition[0]->requisition->folio }}</title>
+    <title>REQ. NO. <?php echo e($requisition[0]->requisition->folio); ?></title>
 </head>
 <body>
 <header><br>
     <div class="container" >
         <div class="row">
             <div class="col-md-2" style="text-align: start ">
-                <img src="{{ public_path('img/smapac-logo.png') }}" width="100" height="70" alt="A 200x200 image" class="img">
+                <img src="<?php echo e(public_path('img/smapac-logo.png')); ?>" width="100" height="70" alt="A 200x200 image" class="img">
             </div>
             <div class="col-8 offset-2" style="text-align: center; color: #000000;">
          <p style="font-size: 12px; text-align: center">
@@ -83,11 +83,11 @@
             <strong>COORDINACIÓN ADMINISTRACIÓN Y FINANZAS</strong>
           </p>
           <p style="font-size:12px; text-transform:uppercase; text-align:center; line-height:15px">
-          <strong>{{$requisition[0]->user->asignado->areas->departments->name}}</strong>
+          <strong><?php echo e($requisition[0]->user->asignado->areas->departments->name); ?></strong>
           </p>
             </div>
             <div class="col-md-2 offset-10" style="text-align:right ">
-                <img src="{{ public_path('img/carmen_logo.png') }}" width="80" height="70" alt="A 200x200 image" class="img">
+                <img src="<?php echo e(public_path('img/carmen_logo.png')); ?>" width="80" height="70" alt="A 200x200 image" class="img">
             </div>
             <div class="row">
                 <div class="col-12" style=" font-size:x-small; color: #000000; margin-top: 70px">
@@ -103,11 +103,11 @@
 <main>
     <div class="container col-md-10 table-responsive" style="margin-top: 170px">
         <div class="row-cols-xl-6">
-        @foreach($requisition as $r)
+        <?php $__currentLoopData = $requisition; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="row" style="float: end">
                     <div class="col-md-4 col-md-offset-8" style="text-align:right; float: right">
-                    <p style="font-size:x-small"><strong>REQ. NO. {{ $r->requisition->folio }}</strong><br>
-                      <strong> {{ Carbon\Carbon::parse($r->requisition->added_on)->format('d/m/Y')}}</strong>
+                    <p style="font-size:x-small"><strong>REQ. NO. <?php echo e($r->requisition->folio); ?></strong><br>
+                      <strong> <?php echo e(Carbon\Carbon::parse($r->requisition->added_on)->format('d/m/Y')); ?></strong>
                     </p>
                     </div>
                 </div>
@@ -115,12 +115,12 @@
             <div class="row justify-content-start">
                 <div class="col-12">
                       <p style="font-size:10px; line-height:20px">
-                        <strong>DIRECCIÓN:  </strong>{{ $r->requisition->management }}<br>
-                        <strong>COORDINACIÓN:  </strong>{{$r->requisition->coordinations->name}}<br>
-                        <strong>DEPARTAMENTO:  </strong>{{$r->requisition->departments->name}}<br>
-                        <strong>UNIDAD ADMINISTRATIVA:  </strong>{{ $r->requisition->administrative_unit }} <br>
-                        <strong>FECHA PARA REQUERIR MATERIAL: {{ Carbon\Carbon::parse($r->requisition->required_on)->format('d/m/Y')}}</strong><br>
-                        <strong>ASUNTO:  </strong>{{ $r->requisition->issue }}<br>
+                        <strong>DIRECCIÓN:  </strong><?php echo e($r->requisition->management); ?><br>
+                        <strong>COORDINACIÓN:  </strong><?php echo e($r->requisition->coordinations->name); ?><br>
+                        <strong>DEPARTAMENTO:  </strong><?php echo e($r->requisition->departments->name); ?><br>
+                        <strong>UNIDAD ADMINISTRATIVA:  </strong><?php echo e($r->requisition->administrative_unit); ?> <br>
+                        <strong>FECHA PARA REQUERIR MATERIAL: <?php echo e(Carbon\Carbon::parse($r->requisition->required_on)->format('d/m/Y')); ?></strong><br>
+                        <strong>ASUNTO:  </strong><?php echo e($r->requisition->issue); ?><br>
                         <strong>PROGRAMA:</strong>
                       </p>
                 </div>
@@ -136,14 +136,14 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($requesteds as $req)
+                                <?php $__currentLoopData = $requesteds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $req): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <td style="font-size: 10px;text-align: center;">{{$req->requested->departure }}</td>
-                                        <td style="font-size: 10px;text-align: center ">{{ $req->requested->quantity}}</td>
-                                        <td style="font-size: 10px;text-align: center;">{{$req->requested->unit }}</td>
-                                        <td style="font-size: 10px;">{{$req->requested->concept }}</td>
+                                        <td style="font-size: 10px;text-align: center;"><?php echo e($req->requested->departure); ?></td>
+                                        <td style="font-size: 10px;text-align: center "><?php echo e($req->requested->quantity); ?></td>
+                                        <td style="font-size: 10px;text-align: center;"><?php echo e($req->requested->unit); ?></td>
+                                        <td style="font-size: 10px;"><?php echo e($req->requested->concept); ?></td>
                                     </tr>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
@@ -152,26 +152,27 @@
                                             <strong>XXX ESPACIO CANCELADO XXX</strong>
                                     </td>
                                 </tr>
-                                @for ($i = 0; $i < 7; $i++)
+                                <?php for($i = 0; $i < 7; $i++): ?>
                                     <tr>
                                         <td>&nbsp;</td>
                                         <td>&nbsp;</td>
                                         <td>&nbsp;</td>
                                         <td>&nbsp;</td>
                                     </tr>
-                                @endfor
+                                <?php endfor; ?>
                             </tbody>
                             <tfoot>
                                   <tr>
                                     <th  style="font-size: 10px"colspan="4">
                                         <label> <strong>  OBSERVACIONES: </strong>
-                                            {{ $r->requisition->remark }}
+                                            <?php echo e($r->requisition->remark); ?>
+
                                         </label>
                                     </th>
                                   </tr>
                             </tfoot>
                         </table>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
             </div>
     </div>
@@ -185,9 +186,10 @@
                     <br>
                     <br>
                         ____________________<br>
-                    {{$requisition[0]->requisition->departments->area->userareas[0]->user->name}}
+                    <?php echo e($requisition[0]->requisition->departments->area->userareas[0]->user->name); ?>
+
                     <br>
-                       &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Jefe del Departamento {{$requisition[0]->requisition->departments->name}}<br>
+                       &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Jefe del Departamento <?php echo e($requisition[0]->requisition->departments->name); ?><br>
                 </strong>
                 </div>
                 <div style="text-align:center; font-size: smaller" class="col-md-4 offset-4">
@@ -195,7 +197,7 @@
                     <br>
                     <br>
                         ____________________<br>
-                        {{$coordinador}}<br>
+                        <?php echo e($coordinador); ?><br>
                         &nbsp; &nbsp; Titular de la Coordinacion de Administración y Finanzas<br></strong>
                 </div>
                 <div style="text-align:center; font-size: smaller" class="col-md-4 offset-8">
@@ -203,7 +205,7 @@
                     <br>
                     <br>
                         ____________________<br>
-                        {{$director}}<br>
+                        <?php echo e($director); ?><br>
                         Director General
                 </div>
             </div>
@@ -211,3 +213,4 @@
 </footer>
 </body>
 </html>
+<?php /**PATH /Users/bernacantun/Documents/Proyectos/urm/resources/views/requisitions/requisition-pdf.blade.php ENDPATH**/ ?>

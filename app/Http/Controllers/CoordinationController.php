@@ -186,20 +186,32 @@ class CoordinationController extends Controller
     public function areas(Request $request)
     {
         if ($request->ajax()) {
-            $areas = AssignedAreas::select(['id','department_id', 'coordination_id','slug']);
+            $areas = AssignedAreas::select(['id','department_id', 'coordination_id','slug'])->groupBy('coordination_id');
            // $coordinations = Coordination::select(['id', 'name', 'slug', 'created_at', 'updated_at']);
             return Datatables::of($areas)
-            ->editColumn('coordination_id', function($areas) {
-                $coordination = $areas->coordinations->name;
-                return $coordination;
-           })
+                ->rawColumns(['action','department_id'])
+                ->editColumn('coordination_id', function($areas) {
+               // $coordination = AssignedAreas::select(['coordination_id'])->groupBy('coordination_id')->get();
+                return $areas->coordinations->name;
+                })
             ->editColumn('department_id', function($areas) {
-                $department = $areas->departments->name;
+                $departments = AssignedAreas::with('departments')->select('department_id')
+                    ->where('coordination_id',$areas->coordinations->id)
+                    ->get();
+                foreach ($departments as $key => $department){
+                    $department = $department->departments->name;
+                }
+                $department = '<ul>';
+                    for ($i=0; $i<count($departments); $i++){
+                        $department .= '<li>'.$departments[$i]->departments->name.'</li>';
+                    }
+                $department .= '</ul>';
                 return $department;
            })
+
             ->addColumn('action', function ($areas) {
                 return '
-                <a href="' . route('areas.edit', $areas->id) . '"
+                <a href="' . route('coordinaciones.edit', $areas->id) . '"
                  class="btn btn-sm btn-warning"
                  title="Editar" >
                  <i class="fas fa-pencil-alt "></i>

@@ -53,5 +53,11 @@ class CoordinationSeeder extends Seeder
             'name' => 'Direccion',
             'slug' => 'DG'
         ]);
+
+        $ad = Coordination::create([
+            'id' => '6',
+            'name' => 'Administrador',
+            'slug' => 'Administrador'
+        ]);
     }
 }

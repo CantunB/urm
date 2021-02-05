@@ -107,8 +107,20 @@ class ProvidersController extends Controller
             $proveedor->provider_file = $filename;
             $proveedor->save();
         }
+
+        if ($proveedor == true){
+            $success = true;
+            $message = 'Proovedor Registrado';
+        }else{
+            $success = true;
+            $message = 'Fallo el registro';
+        }
         //  $coordinations->save();
-        return redirect()->route('proveedores.index')->with('success','Proveedor Creado');
+        return response()->json([
+            'success' => $success,
+            'message' => $message,
+        ]);
+        //return redirect()->route('proveedores.index')->with('success','Proveedor Creado');
     }
 
     /**

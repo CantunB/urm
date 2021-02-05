@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <style>
         #toolbar {
         margin: 0;
@@ -43,7 +42,7 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="text-right">
-                                                <h3 class="mt-1">$<span data-plugin="counterup">{{ $total }}</span></h3>
+                                                <h3 class="mt-1">$<span data-plugin="counterup"><?php echo e($total); ?></span></h3>
                                                 <p class="text-muted mb-1 text-truncate">Total Salida</p>
                                             </div>
                                         </div>
@@ -61,7 +60,7 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="text-right">
-                                                <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ $count_ordenes }}</span></h3>
+                                                <h3 class="text-dark mt-1"><span data-plugin="counterup"><?php echo e($count_ordenes); ?></span></h3>
                                                 <p class="text-muted mb-1 text-truncate">Ventas de Hoy</p>
                                             </div>
                                         </div>
@@ -85,7 +84,7 @@
                                         <button id="btn_dis" class="btn btn-danger btn-sm"><i class="mdi mdi-close-thick mr-1"></i>No autorizar</button>
                                       </div>
                                       <form id="ordenes" >
-                                          @csrf
+                                          <?php echo csrf_field(); ?>
                                     <table id="ordenes"  data-toggle="table"
                                            data-toolbar="#herramientas"
                                            data-search="true"
@@ -108,29 +107,29 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($ordenes as $orden)
+                                            <?php $__currentLoopData = $ordenes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orden): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="chk[]" value="{{ $orden->id }}"></td>
-                                                    <td>{{ $orden->department->name }}</td>
-                                                    <td>{{ $orden->detail->order_folio }}</td>
-                                                    <td>{{ $orden->detail->provider->name }}</td>
-                                                    <td>${{ $orden->material->total_order }}</td>
+                                                    <td><input type="checkbox" name="chk[]" value="<?php echo e($orden->id); ?>"></td>
+                                                    <td><?php echo e($orden->department->name); ?></td>
+                                                    <td><?php echo e($orden->detail->order_folio); ?></td>
+                                                    <td><?php echo e($orden->detail->provider->name); ?></td>
+                                                    <td>$<?php echo e($orden->material->total_order); ?></td>
                                                     <td>
-                                                        @if( $orden->status === 0)
+                                                        <?php if( $orden->status === 0): ?>
                                                             <span class="badge badge-secondary">Por autorizar</span>
-                                                        @elseif($orden->status === 1)
+                                                        <?php elseif($orden->status === 1): ?>
                                                             <span class="badge badge-info">Autorizada</span>
-                                                        @endif
+                                                        <?php endif; ?>
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('ordenes.details', $orden->id) }}"
+                                                        <a href="<?php echo e(route('ordenes.details', $orden->id)); ?>"
                                                             title="Detalles"
                                                             class="action-icon">
                                                             <i class="mdi mdi-monitor-eye"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                @endforeach
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </tbody>
                                     </table>
 
@@ -142,7 +141,7 @@
                         <!-- end row-->
 
                     </div> <!-- container -->
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
     $("#dash-daterange").flatpickr(
         {
@@ -164,7 +163,7 @@
             onChange: function(selectedDates, dateStr, instance)     {
                // alert(dateStr);
                 console.log(dateStr);
-                var url="{!! route('home.daterange') !!}";
+                var url="<?php echo route('home.daterange'); ?>";
                     $.ajax({
                         type:"POST",
                         url: url,
@@ -198,7 +197,7 @@
         $("#btn_aut").on("click",function(){
            // event.preventDefault();
         //   var url="http://127.0.0.1:8000/compras/ordenes/autorizar";
-           var url="{!! route('ordenes.autorizar_ordenes') !!}";
+           var url="<?php echo route('ordenes.autorizar_ordenes'); ?>";
             $.ajax({
                 type:"POST",
                 url: url,
@@ -213,7 +212,7 @@
         var formulario = $("#ordenes");
         $("#btn_dis").on("click",function(){
            // event.preventDefault();
-           var url="{!! route('ordenes.ordenes_no_autorizar') !!}";
+           var url="<?php echo route('ordenes.ordenes_no_autorizar'); ?>";
             $.ajax({
                 type:"POST",
                 url: url,
@@ -229,5 +228,7 @@
         });
 
 </script>
-@endpush
-@endsection
+<?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/urm/resources/views/home.blade.php ENDPATH**/ ?>

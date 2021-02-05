@@ -19,9 +19,9 @@ class CreateProvidersTable extends Migration
             $table->string('email');
             $table->string('rfc');
             $table->string('address');
-            $table->string('phone');
-            $table->string('website')->nullable();
-            $table->string('description')->nullable();
+            $table->string('phone')->default('N/A');
+            $table->string('website')->nullable()->default('N/A');
+            $table->string('description')->nullable()->default('N/A');
             $table->string('provider_file')->default('providers.png');
             $table->tinyInteger('status')->default('0');
             $table->timestamps();

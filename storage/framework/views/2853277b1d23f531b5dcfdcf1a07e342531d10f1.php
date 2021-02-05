@@ -1,11 +1,10 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="row">
     <div class="col-12">
         <div class="page-title-box">
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name', 'SMAPAC') }}</a></li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo e(config('app.name', 'SMAPAC')); ?></a></li>
                     <li class="breadcrumb-item"><a href="javascript: void(0);">AREAS</a></li>
                     <li class="breadcrumb-item active">RELACION</li>
                 </ol>
@@ -39,7 +38,7 @@
         </div> <!-- end col-->
 </div>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
    <script>
         $(document).ready( function () {
       $('#coordinations-table').DataTable( {
@@ -48,7 +47,7 @@
         language: {
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
         },
-        ajax: '{!! route('areas.index') !!}',
+        ajax: '<?php echo route('areas.index'); ?>',
         columns:[
             {data: 'id', name: 'id'},
             {data: 'coordination_id', name: 'coordination_id'},
@@ -58,6 +57,8 @@
       } );
     } );
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/urm/resources/views/coordinaciones/areas.blade.php ENDPATH**/ ?>

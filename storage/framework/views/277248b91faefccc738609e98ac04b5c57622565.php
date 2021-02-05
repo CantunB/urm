@@ -4,7 +4,7 @@
 
         <!-- UserSeeder box -->
         <div class="user-box text-center">
-            <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-img" title="Mat Helme"
+            <img src="<?php echo e(asset('assets/images/users/user-1.jpg')); ?>" alt="user-img" title="Mat Helme"
                 class="rounded-circle avatar-md">
             <div class="dropdown">
                 <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
@@ -44,21 +44,21 @@
         <div id="sidebar-menu">
 
             <ul id="side-menu">
-                @if(Auth::user()->hasRole(['super-admin','admin']))
+                <?php if(Auth::user()->hasRole(['super-admin','admin'])): ?>
                 <li class="menu-title">Menu</li>
                  <li>
-                    <a href="{{ route('home') }}">
+                    <a href="<?php echo e(route('home')); ?>">
                         <i data-feather="droplet" class="icon-dual-info"></i>
                         <span> Inicio </span>
                     </a>
                 </li>
 
-                @endif
+                <?php endif; ?>
 
 
                 <li class="menu-title mt-2">Acceso</li>
 
-                @canany(['read_users','read_roles','read_permisos'])
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['read_users','read_roles','read_permisos'])): ?>
                 <li>
                     <a href="#sidebarCrm" data-toggle="collapse">
                         <i data-feather="shield" class="icon-dual-dark"></i>
@@ -68,21 +68,21 @@
                     <div class="collapse" id="sidebarCrm">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('usuarios.index') }}">Empleados</a>
+                                <a href="<?php echo e(route('usuarios.index')); ?>">Empleados</a>
                             </li>
                             <li>
-                                <a href="{{ route('roles.index') }}">Roles</a>
+                                <a href="<?php echo e(route('roles.index')); ?>">Roles</a>
                             </li>
                             <li>
-                                <a href="{{ route('permisos.index') }}">Permisos individuales</a>
+                                <a href="<?php echo e(route('permisos.index')); ?>">Permisos individuales</a>
                             </li>
                         </ul>
                     </div>
                 </li>
-                @endcan
+                <?php endif; ?>
 
 
-                @canany(['read_coordinaciones','read_departamentos'])
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['read_coordinaciones','read_departamentos'])): ?>
                 <li>
                     <a href="#sidebarAreas" data-toggle="collapse">
                         <i data-feather="home" class="icon-dual-blue"></i>
@@ -92,29 +92,29 @@
                     <div class="collapse" id="sidebarAreas">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('areas.index') }}">Areas</a>
+                                <a href="<?php echo e(route('areas.index')); ?>">Areas</a>
                             </li>
                             <li>
-                                <a href="{{ route('coordinaciones.index') }}">Coordinaciones</a>
+                                <a href="<?php echo e(route('coordinaciones.index')); ?>">Coordinaciones</a>
                             </li>
                             <li>
-                                <a href="{{ route('departamentos.index') }}">Departamentos</a>
+                                <a href="<?php echo e(route('departamentos.index')); ?>">Departamentos</a>
                             </li>
                         </ul>
                     </div>
                 </li>
-                @endcan
+                <?php endif; ?>
 
-                @can('read_proveedores')
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read_proveedores')): ?>
                 <li>
-                    <a href="{{ route('proveedores.index') }}">
+                    <a href="<?php echo e(route('proveedores.index')); ?>">
                         <i data-feather="truck" class="icon-dual-warning"></i>
                         <span> Proveedores </span>
                     </a>
                 </li>
-                @endcan
+                <?php endif; ?>
 
-                @canany(['read_requisicion','update_requisicion'])
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['read_requisicion','update_requisicion'])): ?>
                 <li>
                     <a href="#sidebarRequisicion" data-toggle="collapse">
                         <i data-feather="file-text" class="icon-dual-success"></i>
@@ -123,31 +123,31 @@
                     </a>
                     <div class="collapse" id="sidebarRequisicion">
                         <ul class="nav-second-level">
-                            @can('read_requisicion')
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read_requisicion')): ?>
                                 <li>
-                                    <a href="{{ route('requisiciones.index') }}">Requisiciones</a>
+                                    <a href="<?php echo e(route('requisiciones.index')); ?>">Requisiciones</a>
                                 </li>
-                            @endcan
-                            @can('update_requisicion')
+                            <?php endif; ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('update_requisicion')): ?>
                                 <li>
-                                    <a href="{{ route('requisiciones.autorizadas') }}">Requisiciones Autorizadads</a>
+                                    <a href="<?php echo e(route('requisiciones.autorizadas')); ?>">Requisiciones Autorizadads</a>
                                 </li>
-                            @endcan
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </li>
-                @endcan
+                <?php endif; ?>
 
-                @can('read_quotes')
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read_quotes')): ?>
                 <li>
-                    <a href="{{ route('cotizaciones.index') }}">
+                    <a href="<?php echo e(route('cotizaciones.index')); ?>">
                         <i data-feather="archive" class="icon-dual-danger"></i>
                         <span> Cotizaciones </span>
                     </a>
                 </li>
-                @endcan
+                <?php endif; ?>
 
-                @canany(['read_compras'])
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['read_compras'])): ?>
                 <li>
                     <a href="#sidebarCompras" data-toggle="collapse">
                         <i data-feather="shopping-cart" class="icon-dual-pink"></i>
@@ -157,19 +157,19 @@
                     <div class="collapse" id="sidebarCompras">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{route('ordenes.index')}}">Ordenes de Compras</a>
+                                <a href="<?php echo e(route('ordenes.index')); ?>">Ordenes de Compras</a>
                             </li>
                             <li>
-                                <a href="{{route('autorizadas.index')}}">Ordenes Autorizadas</a>
+                                <a href="<?php echo e(route('autorizadas.index')); ?>">Ordenes Autorizadas</a>
                             </li>
                             <li>
-                                <a href="{{route('facturas.index')}}">Facturas de compras</a>
+                                <a href="<?php echo e(route('facturas.index')); ?>">Facturas de compras</a>
                             </li>
 
                         </ul>
                     </div>
                 </li>
-                @endcan
+                <?php endif; ?>
 
 
             </ul>
@@ -183,3 +183,4 @@
     <!-- Sidebar -left -->
 
 </div>
+<?php /**PATH /Users/bernacantun/Documents/Proyectos/urm/resources/views/layouts/partials/left_sidebar.blade.php ENDPATH**/ ?>
