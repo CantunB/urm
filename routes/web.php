@@ -73,7 +73,7 @@ Route::put('compras/ordenes/{ordenes}/autorizada', 'PurchaseOrderController@uplo
 /* ORDENES AUTORIZADAS*/
 //Listar ordenes autorizadas dependiendo el departamento
 Route::get('compras/autorizadas/{autorizada}/list', 'PurchaseController@list')->name('autorizadas.list');
-
+Route::delete('compras/{autorizadas}/eliminar/autorizacion', 'PurchaseController@deleteautorizacion')->name('autorizadas.deleteautorizacion');
 
 /* FACTURAS DE ORDENES AUTORIZADAS*/
 //Listar ordenes autorizadas dependiendo el departamento

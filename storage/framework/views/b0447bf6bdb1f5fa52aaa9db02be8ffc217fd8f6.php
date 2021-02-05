@@ -1,12 +1,11 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- start page title -->
 <div class="row">
     <div class="col-12">
         <div class="page-title-box">
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name','SMAPAC') }}</a></li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo e(config('app.name','SMAPAC')); ?></a></li>
                     <li class="breadcrumb-item"><a href="javascript: void(0);">COTIZACIONES</a></li>
                     <li class="breadcrumb-item active">CREAR</li>
                 </ol>
@@ -25,11 +24,11 @@
                         <div class="text-sm-right">
                         </div>
                         <div class="container">
-                            <form id="form" method="POST" action="{{ route('ordenes.store') }}">
-                                @csrf
-                                @method('POST')
+                            <form id="form" method="POST" action="<?php echo e(route('ordenes.store')); ?>">
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('POST'); ?>
                                 <div class="container col-md-12">
-                                    @foreach($data as $r)
+                                    <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <div class="container">
                                                 <div class="row justify-content-end">
                                                     <div class="col-xs-12 col-md-8">
@@ -42,9 +41,9 @@
                                                                     <option value="OC2">OC2</option>
                                                                 </select>
                                                                 <span class="input-group-addon">-</span>
-                                                                <input name="count_or" id="count_or" type="number" required class="form-control" value="{{ $compra }}">
+                                                                <input name="count_or" id="count_or" type="number" required class="form-control" value="<?php echo e($compra); ?>">
                                                                 <span class="input-group-addon">-</span>
-                                                                <input name="date_or" id="date_or" type="text" required class="form-control" value="{{date('Y')  }}">
+                                                                <input name="date_or" id="date_or" type="text" required class="form-control" value="<?php echo e(date('Y')); ?>">
 
                                                             </div>
                                                             <br>
@@ -63,11 +62,11 @@
                                                         <br>
                                                         <br>
                                                         <div class="input-group" >
-                                                            <input name="folio_analysis" id="folio_analysis" type="text"  class="form-control analysis" placeholder="SMAPAC-{{ auth()->user()->asignado->areas->coordinations->slug}}" style="display:none">
+                                                            <input name="folio_analysis" id="folio_analysis" type="text"  class="form-control analysis" placeholder="SMAPAC-<?php echo e(auth()->user()->asignado->areas->coordinations->slug); ?>" style="display:none">
                                                             <input name="type_anaylysis" id="type_anaylysis" type="text" class="form-control analysis" value="" style="display:none">
                                                             <span class="input-group-addon">-</span>
                                                             <input name="count_analysis" id="count_analysis" type="number" class="form-control analysis" style="display:none" >
-                                                            <input name="date_analysis" id="date_analysis" type="text" class="form-control analysis" placeholder="{{date('Y')  }}" style="display:none">
+                                                            <input name="date_analysis" id="date_analysis" type="text" class="form-control analysis" placeholder="<?php echo e(date('Y')); ?>" style="display:none">
 
                                                         </div>
                                                     </div>
@@ -80,9 +79,9 @@
                                                     <strong>Proveedor:
                                                         <select class="form-control col sel" id="prov1"  name="provider_id" required>
                                                             <option selected disabled>Proveedor</option>
-                                                            @foreach($providers as $provider)
-                                                                <option data-rfc="{{$provider->rfc}}" value="{{$provider->id}}">{{$provider->name}}</option>
-                                                            @endforeach
+                                                            <?php $__currentLoopData = $providers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $provider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                <option data-rfc="<?php echo e($provider->rfc); ?>" value="<?php echo e($provider->id); ?>"><?php echo e($provider->name); ?></option>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </select>
                                                 </label>
                                             </div>
@@ -99,14 +98,14 @@
                                                 <label>
                                                     <strong>Coordinacion:  </strong>
                                                 </label>
-                                                <input required type="text" class="form-control"  value="{{$r->requisition->coordinations->name}}">
-                                                <input required type="hidden" class="form-control" name="coordination" value="{{$r->requisition->coordinations->id}}">
+                                                <input required type="text" class="form-control"  value="<?php echo e($r->requisition->coordinations->name); ?>">
+                                                <input required type="hidden" class="form-control" name="coordination" value="<?php echo e($r->requisition->coordinations->id); ?>">
                                             </div>
                                             <div class="col-md-4 offset-2">
                                                 <label>
                                                     <strong>Unidad Administrativa:  </strong>
                                                 </label>
-                                                <input required name="unit_admnistrative" id="unit_administrative" class="form-control" value="{{ $r->requisition->administrative_unit }}">
+                                                <input required name="unit_admnistrative" id="unit_administrative" class="form-control" value="<?php echo e($r->requisition->administrative_unit); ?>">
                                             </div>
                                         </div>
                                         <br>
@@ -115,15 +114,15 @@
                                                 <label>
                                                     <strong>Departamento:  </strong>
                                                 </label>
-                                                <input type="text" required class="form-control"  value="{{$r->requisition->departments->name}}">
-                                                <input type="hidden" required name="department" class="form-control"  value="{{$r->requisition->departments->id}}">
+                                                <input type="text" required class="form-control"  value="<?php echo e($r->requisition->departments->name); ?>">
+                                                <input type="hidden" required name="department" class="form-control"  value="<?php echo e($r->requisition->departments->id); ?>">
                                             </div>
                                             <div class="col-md-4 offset-2">
                                                 <label>
                                                     <strong>No. De Requisición:  </strong>
                                                 </label>
-                                                <input required class="form-control" type="text" readonly  value="{{$r->requisition->folio}}">
-                                                <input required class="form-control" type="hidden" name="requisition_id" id="requisition_id"  value="{{$r->requisition->id}}">
+                                                <input required class="form-control" type="text" readonly  value="<?php echo e($r->requisition->folio); ?>">
+                                                <input required class="form-control" type="hidden" name="requisition_id" id="requisition_id"  value="<?php echo e($r->requisition->id); ?>">
 
                                             </div>
                                         </div>
@@ -132,7 +131,7 @@
                                             <table class="table table-hover table-sm"  style="width:100%">
                                                 <thead>
                                                 <tr>
-                                                    {{--                            <th style="width: 5%">Partida</th>--}}
+                                                    
                                                     <th style="width: 5%">Cantidad</th>
                                                     <th style="width: 15%">Unidad</th>
                                                     <th style="width: 35%">Concepto</th>
@@ -165,32 +164,32 @@
                                                         <th style="text-align: center; width: 20%"><i>IMPORTE</i></th>
                                                     </tr>
                                                     </thead class="field_wrapper">
-                                                        @foreach ($requesteds as $key => $req)
+                                                        <?php $__currentLoopData = $requesteds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $req): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <tbody>
                                                             <tr>
                                                                 <td><p id="demo">
-                                                                        <input class="form-control" type="number" name="departure[]" id="departure[]" value="{{$req->requested->departure }}">
+                                                                        <input class="form-control" type="number" name="departure[]" id="departure[]" value="<?php echo e($req->requested->departure); ?>">
                                                                     </p>
                                                                 </td>
                                                                 <td><p id="demo">
-                                                                        <input class="form-control cantidad" type="text"  onblur="cantidad();"  name="quantity[]" id="quantity{{$key}}" value="{{$req->requested->quantity}}">
+                                                                        <input class="form-control cantidad" type="text"  onblur="cantidad();"  name="quantity[]" id="quantity<?php echo e($key); ?>" value="<?php echo e($req->requested->quantity); ?>">
                                                                     </p></td>
                                                                 <td>
                                                                     <p id="demo">
-                                                                        <input class="form-control " type="text" name="unit[]" id="unit[]" value="{{$req->requested->unit }}">
+                                                                        <input class="form-control " type="text" name="unit[]" id="unit[]" value="<?php echo e($req->requested->unit); ?>">
                                                                     </p></td>
                                                                 <td>
                                                                     <p id="demo">
-                                                                        <textarea class="form-control" name="concept[]" id="concept[]" rows="3" >{{$req->requested->concept }}</textarea>
+                                                                        <textarea class="form-control" name="concept[]" id="concept[]" rows="3" ><?php echo e($req->requested->concept); ?></textarea>
                                                                     </p></td>
                                                                 <td >
                                                                     <p id="demo">
-                                                                        <input class="form-control "  onblur="cantidad();" type="text" name="unit_price[]" id="unit_price{{$key}}"   min="1" value="{{old('unit_price') ?: '0'}} " required>
+                                                                        <input class="form-control "  onblur="cantidad();" type="text" name="unit_price[]" id="unit_price<?php echo e($key); ?>"   min="1" value="<?php echo e(old('unit_price') ?: '0'); ?> " required>
                                                                     </p>
                                                                 </td>
                                                                 <td >
                                                                     <p id="demo">
-                                                                        <input class="form-control importe"  type="text" name="importe[]" onblur="sumar();" id="importe{{$key}}"  min="100" required>
+                                                                        <input class="form-control importe"  type="text" name="importe[]" onblur="sumar();" id="importe<?php echo e($key); ?>"  min="100" required>
                                                                     </p>
                                                                 </td>
                                                                 <td style="text-align: center">
@@ -199,7 +198,7 @@
                                                                 </td>
                                                             </tr>
                                                             </tbody>
-                                                        @endforeach
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     <thead>
                                                     <th colspan="6" style="width: 100%">
                                                         <div class="container">
@@ -234,7 +233,7 @@
                                                                                        onblur="descuento();"
                                                                                        type="text"
                                                                                        name="desc" id="desc"
-                                                                                       value="{{old('desc')}}">
+                                                                                       value="<?php echo e(old('desc')); ?>">
                                                                             </td>
                                                                             <td>
                                                                                 <input required class="form-control"  type="text"
@@ -288,7 +287,7 @@
 
                                                 </table>
 
-                                                @endforeach
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 <div class="col-12 col-md-8">
                                                     <table>
                                                         <tr>
@@ -371,7 +370,7 @@
                                                 <button type="submit" class="btn btn-success waves-effect waves-light">
                                                     Generar Orden<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
                                                 </button>
-                                                <a  href="{{ url()->previous() }}" class="btn btn-danger waves-effect waves-light">
+                                                <a  href="<?php echo e(url()->previous()); ?>" class="btn btn-danger waves-effect waves-light">
                                                     Cancelar<span class="btn-label-right"><i class="mdi mdi-close-outline"></i></span>
                                                 </a>
                                             </div>
@@ -387,7 +386,7 @@
         </div> <!-- end card-->
     </div> <!-- end col -->
 </div>
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
     <script type="text/javascript">
         function deleteRow(r) {
             var i = r.parentNode.parentNode.rowIndex;
@@ -656,6 +655,8 @@
     <script>
         $('#form').parsley();
     </script>
-@endpush
-@endsection
+<?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/urm/resources/views/compras/ordenes/show.blade.php ENDPATH**/ ?>

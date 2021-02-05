@@ -3,6 +3,7 @@
 namespace Smapac\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Smapac\PurchaseOrder;
 use Smapac\Purchase;
 use Smapac\PurchaseInvoice;
@@ -119,7 +120,7 @@ class PurchaseInvoiceController extends Controller
                             'department_id' => $request->department_id,
                             'purchase_id' => $request->purchase_id,
                             'amount' => $request->amount[$key],
-                            'invoice_file' => $invoice_filename[$key],
+                            'invoice_file' => $invoice_filename,
                             'observation' => $request->observation[$key],
                             'total_purchase' => $request->amount[$key],
                             'created_at' => now(),
@@ -192,8 +193,28 @@ class PurchaseInvoiceController extends Controller
      * @param  \Smapac\Models\PurchaseInvoice  $purchaseInvoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $purchaseInvoice)
+    public function destroy($purchaseInvoice)
     {
-        //
+        $facturas = PurchaseInvoice::findorFail($purchaseInvoice);
+        if($facturas->type === 'Completa'){
+            Storage::delete(public_path('ordenes/facturas/'),$facturas->invoice_file);
+            $compra = Purchase::where('id',$facturas->purchase_id)->get();
+            foreach ($compra as $key => $value) {
+                $value->status = 0;
+                $value->save();
+
+                //return $value;
+                $order = PurchaseOrder::where('id', $value->purchase_order_id)->first();
+                $order = PurchaseOrder::where('pur_order_details_id', $order->pur_order_details_id)->get();
+                foreach ($order as $key => $value) {
+                    $value->status = 1;
+                    $value->save();
+                }
+            }
+            $facturas->delete();
+        }
+
+        return redirect()->route('autorizadas.index');
+        
     }
 }

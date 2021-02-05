@@ -228,15 +228,13 @@ $counts;
     public function upload ($requisition)
     {
         $requisition = Requisition::findOrFail($requisition);
-        //return $requisitions->file_req;
-        //  return $requisitions;
         if (is_null($requisition->file_req)) {
             //return 'No Existe imagen' ;
-            $requisition = Requisition::findOrFail($requisition);
+            $requisition = $requisition;
             return view('requisitions.upload', compact('requisition'));
         }else{
             // return 'Existe imagen';
-            $requisition = Requisition::findOrFail($requisition);
+            $requisition = $requisition;
             return view('requisitions.authorized', compact('requisition'));
         }
     }

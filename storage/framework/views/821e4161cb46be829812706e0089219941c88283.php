@@ -19,7 +19,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h1 style="text-transform:uppercase;" class="header-title"><strong> REQUISICIÓN No. <?php echo e($requisition[0]->folio); ?></strong></h1>
+                <h1 style="text-transform:uppercase;" class="header-title"><strong> REQUISICIÓN No. <?php echo e($requisition->folio); ?></strong></h1>
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <div class="text-sm-right">
@@ -37,7 +37,7 @@
                         Debe completar los siguientes campos
                     </div>
                 <?php endif; ?>
-                <form id="form" action="<?php echo e(route('requisiciones.file_upload',$requisition[0]->id)); ?>" class="form-group" method="POST" enctype="multipart/form-data" >
+                <form id="form" action="<?php echo e(route('requisiciones.file_upload',$requisition->id)); ?>" class="form-group" method="POST" enctype="multipart/form-data" >
                     <?php echo method_field('PUT'); ?>
                     <?php echo csrf_field(); ?>
                 <!--  <p class="sub-header">

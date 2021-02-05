@@ -1,17 +1,16 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- start page title -->
 <div class="row">
     <div class="col-12">
         <div class="page-title-box">
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name', 'SMAPAC') }}</a></li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo e(config('app.name', 'SMAPAC')); ?></a></li>
                     <li class="breadcrumb-item"><a href="javascript: void(0);">COTIZACIONES</a></li>
                     <li class="breadcrumb-item active"></li>
                 </ol>
             </div>
-            <h4 class="page-title">FACTURAS DE LA COMPRA {{$purchasesinvoices[0]->purchaseautorize->order->detail->order_folio}}</h4>
+            <h4 class="page-title">FACTURAS DE LA COMPRA <?php echo e($purchasesinvoices[0]->purchaseautorize->order->detail->order_folio); ?></h4>
         </div>
     </div>
 </div>
@@ -32,12 +31,12 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="text-sm-right">
-                            <a href="{{ url()->previous() }}"
+                            <a href="<?php echo e(url()->previous()); ?>"
                                 class="btn btn-sm btn-danger waves-effect waves-light mb-2">
                                 <i class="mdi mdi-menu-left-outline"></i> Regresar</a>
                         </div>
                     </div><!-- end col-->
-                    @if(!$purchasesinvoices[0]->type === 'Completa')
+                    <?php if(!$purchasesinvoices[0]->type === 'Completa'): ?>
                     <div class="col-md-12">
                         <br>
                         <table class="table">
@@ -63,58 +62,58 @@
 
                         </table>
                     </div>
-                    @endif
+                    <?php endif; ?>
 
                 </div>
             </div> <!-- end card-body-->
         </div> <!-- end card-->
-        @foreach ($purchasesinvoices as $key => $invoice)
+        <?php $__currentLoopData = $purchasesinvoices; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $invoice): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="card-box mb-2">
                 <div class="row align-items-center">
                     <div class="col-sm-4">
                         <div class="media">
-                            <img class="d-flex align-self-center mr-3 rounded-circle" src="{{ asset('assets/images/companies/'.$invoice->purchaseautorize->order->detail->provider->provider_file) }}" alt="Generic placeholder image" height="64">
+                            <img class="d-flex align-self-center mr-3 rounded-circle" src="<?php echo e(asset('assets/images/companies/'.$invoice->purchaseautorize->order->detail->provider->provider_file)); ?>" alt="Generic placeholder image" height="64">
                             <div class="media-body">
-                                <h4 class="mt-0 mb-2 font-16">{{ $invoice->purchaseautorize->order->detail->provider->name }}</h4>
-                                <p class="mb-1"><b>Direccion:</b>{{ $invoice->purchaseautorize->order->detail->provider->address }}</p>
+                                <h4 class="mt-0 mb-2 font-16"><?php echo e($invoice->purchaseautorize->order->detail->provider->name); ?></h4>
+                                <p class="mb-1"><b>Direccion:</b><?php echo e($invoice->purchaseautorize->order->detail->provider->address); ?></p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="text-center my-3 my-sm-0">
-                            <p class="mb-0 text-muted"><b>Tipo:</b> {{ $invoice->type }}</p>
+                            <p class="mb-0 text-muted"><b>Tipo:</b> <?php echo e($invoice->type); ?></p>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="text-center button-list">
                             <div class="text-center my-3 my-sm-0">
-                                <p class="mb-0 text-muted"><b>Costo:</b>{{ $invoice->total_purchase }}</p>
+                                <p class="mb-0 text-muted"><b>Costo:</b><?php echo e($invoice->total_purchase); ?></p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-2">
                         <div class="text-sm-right text-center mt-2 mt-sm-0">
-                            <a href="{{ asset('ordenes/facturas/'. $invoice->invoice_file )}}" target="_blank" class="action-icon"> <i class="mdi mdi-package-down"></i></a>
+                            <a href="<?php echo e(asset('ordenes/facturas/'. $invoice->invoice_file )); ?>" target="_blank" class="action-icon"> <i class="mdi mdi-package-down"></i></a>
                              <a href="javascript:void(0);"
                                 title="Eliminar Factura"
                                 class="action-icon"
                                 onclick="event.preventDefault();
                                 document.getElementById('delete-form').submit();" > <i class="mdi mdi-trash-can-outline"></i></a>
                             <form id="delete-form"
-                                  action="{{route('facturas.destroy',$invoice->id)}}"
+                                  action="<?php echo e(route('facturas.destroy',$invoice->id)); ?>"
                                   method="POST" style="display: none;">
-                                @csrf
-                                @method('DELETE')
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('DELETE'); ?>
                             </form>
                         </div>
                     </div> <!-- end col-->
                 </div> <!-- end row -->
             </div> <!-- end card-box-->
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div> <!-- end col -->
 </div>
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script type="text/javascript">
     $(document).ready(function(){
         var maxField = 20; //Limitación de incremento de campos de entrada
@@ -148,5 +147,7 @@
 
     });
 </script>
-@endpush
-@endsection
+<?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/urm/resources/views/compras/facturas/show.blade.php ENDPATH**/ ?>

@@ -376,8 +376,19 @@ class PurchaseOrderController extends Controller
      * @param  \Smapac\PurchaseOrder  $purchaseOrder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PurchaseOrder $purchaseOrder)
+    public function destroy( $purchaseOrder)
     {
-        //
+        $order =  PurchaseOrder::findOrFail($purchaseOrder);
+            $order_details = $order->pur_order_details_id;
+        $orders = PurchaseOrder::where('pur_order_details_id', $order_details)->get();
+        foreach ($orders as $key => $order ){
+            $order_material = PurchaseOrderMaterial::where('id',$order->pur_order_material_id)->delete();
+            $order_features = PurchaseOrderFeauture::where('id',$order->pur_order_features_id)->delete();
+            $order_details = PurchaseOrderDetail::where('id',$order->pur_order_details_id)->delete();
+            $order->delete();
+        }
+        return redirect()->route('ordenes.index');
     }
+
+
 }

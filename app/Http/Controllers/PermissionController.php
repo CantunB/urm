@@ -30,15 +30,9 @@ class PermissionController extends Controller
      */
     public function index(Request $request)
     {
-
-
         if ($request->ajax()) {
-            $users = User::all();
+            $users = User::select(['id','NoEmpleado','name']);
                 return DataTables::of($users)
-                ->editColumn('created_at', function( $user) {
-                    return $user->created_at->locale('es')->toFormattedDateString();
-
-                 })
                  ->addColumn('action', function ($user) {
                     $actions = '';
                     $auth = Auth::user();

@@ -37,7 +37,6 @@
                                 <tr>
                                     <th style="text-align: center">Nombre</th>
                                     <th style="text-align: center">Correo</th>
-                                    <th style="text-align: center">Fecha</th>
                                     <th style="text-align: center">&nbsp;</th>
                                 </tr>
                             </thead>
@@ -60,9 +59,10 @@
         },
         ajax: '{!! route('permisos.index') !!}',
         columns:[
+            {data: 'NoEmpleado', name: 'NoEmpleado'},
             {data: 'name', name : 'name'},
-            {data: 'email', name : 'email'},
-            {data: 'created_at', name : 'created_at'},
+           // {data: 'email', name : 'email'},
+           // {data: 'created_at', name : 'created_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false , width : "5%"}
         ]
       } );

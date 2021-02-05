@@ -1,68 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3abdff53-fed4-4009-a9bb-e23c437cc646" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/requisitions/cotizadas/Formato_Cotización_PDF.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/proveedores/partials/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/0c52e34a0641ccc083a24b9057d780999abdf3e3.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/101b816a9c87eed83ad47a01329ff97b1986dc71.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/12ed30083edbc4cd7ba1deb9cd6c3c5b01ca0d18.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/19b0748656b8a0fd6dfef72a6286f1e7bb218e21.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/1bc83e090b588bf9e1de989979ab04a5b68f2d06.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/1e29d00103241d707f5caac42767dcad636cde7a.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/26d360406e0a64e659149f932275fcd3b94f01da.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/277248b91faefccc738609e98ac04b5c57622565.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/2853277b1d23f531b5dcfdcf1a07e342531d10f1.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/2c1fc9d3e0efe6b150ebc31310c8a5cc3ed64e72.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/2d526ae03155ca4d5ece6ffdc4a072f0cc6b8286.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/35b36b20cd8038190cfd1a906a3c0aa013eea65c.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/413abc3e31fab29b6484e5e9e0e969428876c8bd.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/4e1190178ae3337602b157b584d51114073f8d53.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/4ea8a4edc5bef8b7cf399c9abd846cfc2a520080.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/561a7aa820ac1068f79efd3751ff8c7a9dad6ebd.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/5d0db08d35020c29513792ea3555ffec38230a03.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/5f36aec13e1e626b72ef58196fad7694c0908ec2.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/62ef79907d060cc376887fdf67d8221b085b5a4b.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/75571b1d9ee0c98b8e3183e6ffdd6c93ee9c2a1c.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/7711bc66694f9a8717f05d09aa2a0d3323757eb8.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/7bb86b463dd0764e177ab2aaa72ebd3ea3d0105d.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/821e4161cb46be829812706e0089219941c88283.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/89b37012f3db6e8ab57a58110962db701d2eb62b.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/9f9ecdc91113252031f0c5f16ab6243a70e145a4.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/a4758ad0cdd4acd75dd3f158b29784df4e5fee3a.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/aaad3aeb69126d8ac9b371873985e32a300ddb21.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/aabb38f4f3aba7752c0faaabce9a43bafad583c6.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/ae654a74d73e88c55e81a3d238090493efe3663d.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/aedfd372220985de3ee1f7b9519b2b87e4bdbb22.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/afbaa6c72c3756f421d31a03e9f5d048353d4087.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/c0e7f7328cd0ae1940f2c7ee863a7ded9a97bb62.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/cc7c059ac216f8e05004c751fdeeb14b82f7f02e.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/d4a4c35f6f97b19cd7df23fadefc4ca7c5ddbbdd.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/d59978a61cb9e8f46ecf94cdb9254f270c97b39e.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/da70d786b65660cbff9e002470f39deef4b2012f.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/df5731bfec7b0e124088150da35e21ba48f7f14c.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/eb2ea5324af7446096bd846419c72b6b1def7b92.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/efe18f746cfa611b1eb5be26e193d1cbdc3f1064.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/f23957f839ad848d68baf5b0b789fa77a64293c1.php" afterDir="false" />
+    <list default="true" id="3abdff53-fed4-4009-a9bb-e23c437cc646" name="Default Changelist" comment="Modificacion de la vista de areas, integración de modales con ajax">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/AssignedAreas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AssignedAreas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/AssignedUserAreas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AssignedUserAreas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CoordinationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CoordinationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProvidersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProvidersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_09_065736_create_providers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_09_065736_create_providers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/CoordinationSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/CoordinationSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DepartmentSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DepartmentSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/coordinaciones/areas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/coordinaciones/areas.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/left_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/left_sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/proveedores/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/proveedores/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/requisition-pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/requisition-pdf.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/roles/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/roles/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermissionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PermissionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseInvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseInvoiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/autorizadas/100639885_2837976736448447_1975275422438391808_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/autorizadas/100683036_2569006496535187_4603944447250530304_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/autorizadas/Orden de compra No.SMAPAC-CAF_OC1-2-2021.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/autorizadas/fbd8ad4e-fae8-41db-aba8-85607792829a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/100639885_2837976736448447_1975275422438391808_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/100683036_2569006496535187_4603944447250530304_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/153688.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/Modelo-factura-encima.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/Orden de compra No.SMAPAC-CAF_OC2-103-2021.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/REQ.CAF_TI_001_2021.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/REQ.CAF_TI_002_2021.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/modelo_factura.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/autorizadas/SMAPAC-CAF_1_2021.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/61062257857-1224568693-entrada.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/Documento de impresora redirigido de escritorio remoto.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/Formato_Cotización_PDF.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/Formato_Cotización_PDF.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/JURAM. ETICA 2020.ppt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/cotizacion-3-59caea67aba9a.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/of 042_TI 3er InfFinanciero.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/autorizadas/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/autorizadas/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/facturas/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/facturas/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/ordenes/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/ordenes/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cotizaciones/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cotizaciones/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cotizaciones/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cotizaciones/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/permisos/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/permisos/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/authorized.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/authorized.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/autorizadas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/autorizadas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/upload.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/upload.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/5f36aec13e1e626b72ef58196fad7694c0908ec2.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/5f36aec13e1e626b72ef58196fad7694c0908ec2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/62ef79907d060cc376887fdf67d8221b085b5a4b.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/62ef79907d060cc376887fdf67d8221b085b5a4b.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/821e4161cb46be829812706e0089219941c88283.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/821e4161cb46be829812706e0089219941c88283.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,8 +274,17 @@
       <workItem from="1611894233238" duration="21363000" />
       <workItem from="1612040481278" duration="65797000" />
       <workItem from="1612325314208" duration="12501000" />
-      <workItem from="1612409600236" duration="25455000" />
+      <workItem from="1612409600236" duration="46267000" />
+      <workItem from="1612554903052" duration="3197000" />
     </task>
+    <task id="LOCAL-00001" summary="Modificacion de la vista de areas, integración de modales con ajax">
+      <created>1612512157408</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1612512157408</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,6 +301,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Modificacion de la vista de areas, integración de modales con ajax" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modificacion de la vista de areas, integración de modales con ajax" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

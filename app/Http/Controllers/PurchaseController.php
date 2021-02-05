@@ -3,6 +3,8 @@
 namespace Smapac\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\File;
 use NunoMaduro\Collision\Provider;
 use Smapac\AssignedRequesteds;
 use Smapac\AssignedRequisition;
@@ -174,5 +176,20 @@ class PurchaseController extends Controller
     public function destroy( $purchase)
     {
 
+    }
+
+    public function deleteautorizacion($id)
+    {
+        $purchases = Purchase::where('purchase_order_id',$id)->get();
+            foreach ($purchases as $key => $purchase){
+                Storage::delete(public_path('ordenes/autorizadas/'),$purchase->orde_file);
+                $purchase->delete();
+            }
+        $purchase = PurchaseOrder::where('pur_order_details_id', $id)->get();
+            foreach ($purchase as $key => $value){
+                $value->status = 0;
+                $value->save();
+            }
+    return redirect()->back();
     }
 }

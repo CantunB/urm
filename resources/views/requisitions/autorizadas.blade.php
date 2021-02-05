@@ -53,7 +53,7 @@
                                             <a href="{{route('cotizaciones.edit',$r->id)}}"
                                                title="Cotizar Requisicion"
                                                class="action-icon">
-                                                <i class="mdi mdi-file-upload"></i></a>
+                                                <i class="mdi mdi-archive-arrow-up"></i></a>
                                             </a>
                                         <!--  @elseif($r->status === 2)
                                         <a href="{{route('requisiciones.edit',$r->id)}}"
@@ -67,7 +67,7 @@
                                                 <a href="{{route('requisiciones.authorized',$r->id)}}"
                                                    title="Ver requisicion"
                                                    class="action-icon">
-                                                    <i class="mdi mdi-monitor-eye"></i></a>
+                                                    <i class="mdi mdi-clipboard-file-outline"></i></a>
                                                 </a>
                                             @elseif($r->status <= 2)
                                                 <a href="{{route('requisiciones.show',$r->id)}}"

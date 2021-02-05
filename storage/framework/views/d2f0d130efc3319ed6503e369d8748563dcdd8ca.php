@@ -1,12 +1,11 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- start page title -->
 <div class="row">
     <div class="col-12">
         <div class="page-title-box">
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name','SMAPAC') }}</a></li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo e(config('app.name','SMAPAC')); ?></a></li>
                     <li class="breadcrumb-item"><a href="javascript: void(0);">ORDENES AUTORIZADAS</a></li>
                     <li class="breadcrumb-item active">LISTA</li>
                 </ol>
@@ -35,36 +34,37 @@
                             <th style="text-align: center">Opciones</th>
                             </thead>
 
-                            @foreach($purchaseorders as $key => $purchaseorder)
+                            <?php $__currentLoopData = $purchaseorders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $purchaseorder): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tbody>
-                                <td style="text-align: center">{{ $purchaseorder->order->detail->order_folio}}</td>
+                                <td style="text-align: center"><?php echo e($purchaseorder->order->detail->order_folio); ?></td>
                                 <td style="text-align: center">
-                {{--                    {{$purchaseorder->order->purchase[0]->created_at}}--}}
-                                    {{ \Carbon\Carbon::parse($purchaseorder->order->created_at)->format('Y/m/d') }}
+                
+                                    <?php echo e(\Carbon\Carbon::parse($purchaseorder->order->created_at)->format('Y/m/d')); ?>
+
                                 </td>
                                 <td style="text-align:center">
-                                  @if ($purchaseorder->order->purchase[$key]->status === 0 )
+                                  <?php if($purchaseorder->order->purchase[$key]->status === 0 ): ?>
                                     <span class="badge badge-info">En espera de factura(s)...</span>
-                                  @elseif ($purchaseorder->order->purchase[$key]->status === 1 )
+                                  <?php elseif($purchaseorder->order->purchase[$key]->status === 1 ): ?>
                                     <span class="badge badge-primary">Compra finalizada</span>
-                                  @endif
+                                  <?php endif; ?>
                                 </td>
                                 <td style="text-align: center">
-                                    @if ($purchaseorder->order->purchase[$key]->status === 0 )
-                                    @can('read_compras')
+                                    <?php if($purchaseorder->order->purchase[$key]->status === 0 ): ?>
+                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read_compras')): ?>
                                             <a title="Ver Autorizacion"
-                                            href="{{route('autorizadas.show',$purchaseorder->order->id)}}"
+                                            href="<?php echo e(route('autorizadas.show',$purchaseorder->order->id)); ?>"
                                             class="action-icon">
                                                 <i class="mdi mdi-clipboard-file-outline"></i></a>
-                                    @endcan
-                                    @can('update_compras')
+                                    <?php endif; ?>
+                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('update_compras')): ?>
                                         <a title="Subir Factura"
-                                           href="{{route('facturas.edit',$purchaseorder->order->purchase[$key]->id)}}"
+                                           href="<?php echo e(route('facturas.edit',$purchaseorder->order->purchase[$key]->id)); ?>"
                                             class="action-icon">
                                             <i class="mdi mdi-clipboard-pulse-outline"></i></a>
-                                    @endcan
-                                    @can('delete_compras')
-                                        <a href="{{route('autorizadas.deleteautorizacion',$purchaseorder->order->purchase[$key]->purchase_order_id)}}"
+                                    <?php endif; ?>
+                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete_compras')): ?>
+                                        <a href="<?php echo e(route('autorizadas.deleteautorizacion',$purchaseorder->order->purchase[$key]->purchase_order_id)); ?>"
                                            onclick="event.preventDefault();
                                            document.getElementById('delete-form').submit();"
                                            class="action-icon"
@@ -72,18 +72,18 @@
                                             <i class="mdi mdi-trash-can"></i>
                                         </a>
                                             <form id="delete-form"
-                                                  action="{{route('autorizadas.deleteautorizacion',$purchaseorder->order->purchase[$key]->purchase_order_id)}}"
+                                                  action="<?php echo e(route('autorizadas.deleteautorizacion',$purchaseorder->order->purchase[$key]->purchase_order_id)); ?>"
                                                   method="POST" style="display: none;">
-                                                @csrf
-                                                @method('DELETE')
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('DELETE'); ?>
                                             </form>
 
-                                    @endcan
+                                    <?php endif; ?>
 
-                                    @endif
+                                    <?php endif; ?>
                                 </td>
                                 </tbody>
-                              @endforeach
+                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </table>
                 </div>
             </div> <!-- end card-body-->
@@ -91,7 +91,7 @@
     </div> <!-- end col -->
 </div>
 <!-- end row -->
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
     <script>
         $(document).ready(function() {
             $('#compras-table').DataTable({
@@ -101,5 +101,7 @@
             });
         } );
     </script>
-@endpush
-@endsection
+<?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/urm/resources/views/compras/autorizadas/list.blade.php ENDPATH**/ ?>
