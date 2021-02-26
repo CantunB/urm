@@ -44,15 +44,15 @@
                             <tr>
                                 <td style="text-align: center"><strong><?php echo e($r->requisition->folio); ?></strong></td>
                                 <td style="text-align: center"><strong><?php echo e($r->requisition->departments->name); ?></strong></td>
-                                <td style="text-align: center"><strong><?php echo e($r->requisition->required_on); ?></strong></td>
-                                <td style="text-align: center"><strong><?php echo e($r->requisition->updated_at); ?></strong></td>
+                                <td style="text-align: center"><strong><?php echo e(\Carbon\Carbon::parse($r->requisition->required_on)->format('Y-m-d')); ?></strong></td>
+                                <td style="text-align: center"><strong><?php echo e(\Carbon\Carbon::parse($r->requisition->updated_at)->format('Y-m-d')); ?></strong></td>
                                 <td style="text-align: center">
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('update_requisicion')): ?>
                                         <?php if( $r->status <= 1): ?>
                                             <a href="<?php echo e(route('cotizaciones.edit',$r->id)); ?>"
                                                title="Cotizar Requisicion"
                                                class="action-icon">
-                                                <i class="mdi mdi-file-upload"></i></a>
+                                                <i class="mdi mdi-archive-arrow-up"></i></a>
                                             </a>
                                         <!--  <?php elseif($r->status === 2): ?>
                                         <a href="<?php echo e(route('requisiciones.edit',$r->id)); ?>"
@@ -66,7 +66,7 @@
                                                 <a href="<?php echo e(route('requisiciones.authorized',$r->id)); ?>"
                                                    title="Ver requisicion"
                                                    class="action-icon">
-                                                    <i class="mdi mdi-monitor-eye"></i></a>
+                                                    <i class="mdi mdi-clipboard-file-outline"></i></a>
                                                 </a>
                                             <?php elseif($r->status <= 2): ?>
                                                 <a href="<?php echo e(route('requisiciones.show',$r->id)); ?>"

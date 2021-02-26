@@ -54,7 +54,6 @@
                             <div class="media-body">
                                 <h4 class="mt-0 mb-2 font-16"><a href="{{ route('proveedores.edit', $quote->provider->id) }}">{{ $quote->provider->name }}</a></h4>
                                 <p class="mb-1"><b>Direccion:</b> {{ $quote->provider->address }}</p>
-                                <p class="mb-0"><b>Category:</b> Ecommerce</p>
                             </div>
                         </div>
                     </div>

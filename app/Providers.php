@@ -16,4 +16,14 @@ class Providers extends Model
         'description',
         'provider_file',
     ];
+
+    public static function CountCot($provider)
+    {
+        return  Quotesrequisitions::where('provider_id',$provider)->count();
+    }
+
+    public static function CountCom($provider)
+    {
+        return PurchaseOrderDetail::where('provider_id',$provider)->count();
+    }
 }

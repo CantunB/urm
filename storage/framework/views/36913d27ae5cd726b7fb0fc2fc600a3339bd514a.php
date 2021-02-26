@@ -163,7 +163,7 @@
             onChange: function(selectedDates, dateStr, instance)     {
                // alert(dateStr);
                 console.log(dateStr);
-                    var url="<?php echo route('home.daterange'); ?>";
+                var url="<?php echo route('home.daterange'); ?>";
                     $.ajax({
                         type:"POST",
                         url: url,
@@ -175,7 +175,6 @@
                     return false;
             }
         });
-
 </script>
 <script>
 

@@ -35,7 +35,7 @@
                                                         <div class="form-group">
                                                             <label for=""><strong>ORDEN DE COMPRA</strong></label>
                                                             <div class="input-group" >
-                                                                <input name="folio_or" id="folio_or" type="text" required class="form-control" value="SMAPAC-<?php echo e(auth()->user()->asignado->areas->coordinations->slug); ?>/">
+                                                                <input name="folio_or" id="folio_or" type="text" required class="form-control" value="SMAPAC-CAF/">
                                                                 <select name="type_or" id="type_or" type="text" required class="form-control" >
                                                                     <option value="OC1">OC1</option>
                                                                     <option value="OC2">OC2</option>

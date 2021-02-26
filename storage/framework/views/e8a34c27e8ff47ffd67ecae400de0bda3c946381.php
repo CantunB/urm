@@ -53,7 +53,7 @@
                                 </td>
                                 <td><?php echo e($purchaseorder->purchaseorderid->observation); ?></td>
                                 <td style="text-align: center">
-                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read_quotes')): ?>
+                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read_compras')): ?>
                                                     <a title="Orden de Compra"
                                                         href="<?php echo e(route('ordenes.ordencompra',$purchaseorder->purchaseorderid->id)); ?>"
                                                         class="action-icon">
@@ -65,6 +65,20 @@
                                                         <i class="fas fa-eye fa-md"></i></a>
                                                     </a>
                                           -->
+                                    <?php endif; ?>
+                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete_compras')): ?>
+                                            <a class="action-icon"
+                                               title="Eliminar Orden"
+                                               onclick="event.preventDefault();
+                                               document.getElementById('delete-form').submit();">
+                                                <i class="mdi mdi-trash-can"></i></a>
+
+                                            <form id="delete-form"
+                                                  action="<?php echo e(route('ordenes.destroy',$purchaseorder->purchaseorderid->id)); ?>"
+                                                  method="POST" style="display: none;">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('DELETE'); ?>
+                                            </form>
                                     <?php endif; ?>
                                 </td>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

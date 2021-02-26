@@ -8,4 +8,5 @@ class PurchaseOrderMaterial extends Model
 {
     protected $table = 'pur_order_material';
 
+
 }

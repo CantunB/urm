@@ -44,9 +44,9 @@
                                         <?php if($item < "4"): ?>
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkusers case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input type="checkbox" id="chk<?php echo e($val->id); ?>" name="permission[]"
                                                            value="<?php echo e($val->id); ?>" <?php echo e($roles->permissions->pluck('id')->contains($val->id) ? 'checked' : ''); ?>>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk<?php echo e($val->id); ?>"></label>
                                                 </div>
                                             </td>
                                         <?php endif; ?>
@@ -59,9 +59,9 @@
                                             <?php if($item < "4") continue; ?>
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk<?php echo e($val->id); ?>" type="checkbox"  name="permission[]"
                                                            value="<?php echo e($val->id); ?>" <?php echo e($roles->permissions->pluck('id')->contains($val->id) ? 'checked' : ''); ?>>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk<?php echo e($val->id); ?>"></label>
                                                 </div>
                                             </td>
                                         <?php endif; ?>
@@ -74,9 +74,9 @@
                                             <?php if($item < "8") continue; ?>
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk<?php echo e($val->id); ?>" type="checkbox"  name="permission[]"
                                                            value="<?php echo e($val->id); ?>" <?php echo e($roles->permissions->pluck('id')->contains($val->id) ? 'checked' : ''); ?>>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk<?php echo e($val->id); ?>"></label>
                                                 </div>
                                             </td>
                                         <?php endif; ?>
@@ -89,9 +89,9 @@
                                             <?php if($item < "12") continue; ?>
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk<?php echo e($val->id); ?>" type="checkbox"  name="permission[]"
                                                            value="<?php echo e($val->id); ?>" <?php echo e($roles->permissions->pluck('id')->contains($val->id) ? 'checked' : ''); ?>>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk<?php echo e($val->id); ?>"></label>
                                                 </div>
                                             </td>
                                         <?php endif; ?>
@@ -104,9 +104,9 @@
                                             <?php if($item < "16") continue; ?>
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk<?php echo e($val->id); ?>" type="checkbox"  name="permission[]"
                                                            value="<?php echo e($val->id); ?>" <?php echo e($roles->permissions->pluck('id')->contains($val->id) ? 'checked' : ''); ?>>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk<?php echo e($val->id); ?>"></label>
                                                 </div>
                                             </td>
                                         <?php endif; ?>
@@ -119,9 +119,9 @@
                                             <?php if($item < "20") continue; ?>
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk<?php echo e($val->id); ?>" type="checkbox"  name="permission[]"
                                                            value="<?php echo e($val->id); ?>" <?php echo e($roles->permissions->pluck('id')->contains($val->id) ? 'checked' : ''); ?>>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk<?php echo e($val->id); ?>"></label>
                                                 </div>
                                             </td>
                                         <?php endif; ?>
@@ -134,9 +134,9 @@
                                             <?php if($item < "24") continue; ?>
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk<?php echo e($val->id); ?>" type="checkbox"  name="permission[]"
                                                            value="<?php echo e($val->id); ?>" <?php echo e($roles->permissions->pluck('id')->contains($val->id) ? 'checked' : ''); ?>>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk<?php echo e($val->id); ?>"></label>
                                                 </div>
                                             </td>
                                         <?php endif; ?>
@@ -149,9 +149,9 @@
                                             <?php if($item < "28") continue; ?>
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk<?php echo e($val->id); ?>" type="checkbox"  name="permission[]"
                                                            value="<?php echo e($val->id); ?>" <?php echo e($roles->permissions->pluck('id')->contains($val->id) ? 'checked' : ''); ?>>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk<?php echo e($val->id); ?>"></label>
                                                 </div>
                                             </td>
                                         <?php endif; ?>
@@ -164,9 +164,9 @@
                                             <?php if($item < "32") continue; ?>
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk<?php echo e($val->id); ?>" type="checkbox"  name="permission[]"
                                                            value="<?php echo e($val->id); ?>" <?php echo e($roles->permissions->pluck('id')->contains($val->id) ? 'checked' : ''); ?>>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk<?php echo e($val->id); ?>"></label>
                                                 </div>
                                             </td>
                                         <?php endif; ?>
@@ -179,9 +179,9 @@
                                             <?php if($item < "36") continue; ?>
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk<?php echo e($val->id); ?>" type="checkbox"  name="permission[]"
                                                            value="<?php echo e($val->id); ?>" <?php echo e($roles->permissions->pluck('id')->contains($val->id) ? 'checked' : ''); ?>>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk<?php echo e($val->id); ?>"></label>
                                                 </div>
                                             </td>
                                         <?php endif; ?>

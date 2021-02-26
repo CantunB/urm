@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-form-label">Cotización</label>
                                     <div class="custom-file">
-                                        <input type="file" data-plugins="dropify" id="file1" name="quote_file[]" data-max-file-size="3M" required/>
+                                        <input type="file" class="dropify" id="file1" name="quote_file[]" data-max-file-size="3M" required/>
                                         <p class="text-muted text-center mt-2 mb-0">Max File size</p>
                                         <?php if($errors->has('prov_one_img')): ?>
                                             <p style="color:red"> <strong><?php echo e($errors->first('prov_one_img')); ?></strong> </p>
@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-form-label">Cotización</label>
                                     <div class="custom-file">
-                                        <input type="file" data-plugins="dropify" id="file2" name="quote_file[]" data-max-file-size="3M" />
+                                        <input type="file" class="dropify" id="file2" name="quote_file[]" data-max-file-size="3M" />
                                         <p class="text-muted text-center mt-2 mb-0">Max File size</p>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-form-label">Cotización</label>
-                                        <input type="file" data-plugins="dropify" id="file3" name="quote_file[]" data-max-file-size="3M" />
+                                        <input type="file" class="dropify" id="file3" name="quote_file[]" data-max-file-size="3M" />
                                         <p class="text-muted text-center mt-2 mb-0">Max File size</p>
                                 </div>
                             </div>
@@ -187,6 +187,9 @@
         $('#prov3_address').val(name);
         $('#prov3_rfc').val(rfc);
     });
+</script>
+<script>
+    $('.dropify').dropify();
 </script>
 <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>

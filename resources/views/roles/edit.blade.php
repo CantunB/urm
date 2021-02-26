@@ -45,9 +45,9 @@
                                         @if($item < "4")
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input type="checkbox" id="chkuser" name="permission[]"
+                                                    <input type="checkbox" id="chk{{ $val->id }}" name="permission[]"
                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
-                                                    <label for="chkuser"></label>
+                                                    <label for="chk{{ $val->id }}"></label>
                                                 </div>
                                             </td>
                                         @endif
@@ -60,9 +60,9 @@
                                             @continue($item < "4")
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk{{ $val->id }}" type="checkbox"  name="permission[]"
                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk{{ $val->id }}"></label>
                                                 </div>
                                             </td>
                                         @endif
@@ -75,9 +75,9 @@
                                             @continue($item < "8")
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk{{ $val->id }}" type="checkbox"  name="permission[]"
                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk{{ $val->id }}"></label>
                                                 </div>
                                             </td>
                                         @endif
@@ -90,9 +90,9 @@
                                             @continue($item < "12")
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk{{ $val->id }}" type="checkbox"  name="permission[]"
                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk{{ $val->id }}"></label>
                                                 </div>
                                             </td>
                                         @endif
@@ -105,9 +105,9 @@
                                             @continue($item < "16")
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk{{ $val->id }}" type="checkbox"  name="permission[]"
                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk{{ $val->id }}"></label>
                                                 </div>
                                             </td>
                                         @endif
@@ -120,9 +120,9 @@
                                             @continue($item < "20")
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk{{ $val->id }}" type="checkbox"  name="permission[]"
                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk{{ $val->id }}"></label>
                                                 </div>
                                             </td>
                                         @endif
@@ -135,9 +135,9 @@
                                             @continue($item < "24")
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk{{ $val->id }}" type="checkbox"  name="permission[]"
                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk{{ $val->id }}"></label>
                                                 </div>
                                             </td>
                                         @endif
@@ -150,9 +150,9 @@
                                             @continue($item < "28")
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk{{ $val->id }}" type="checkbox"  name="permission[]"
                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk{{ $val->id }}"></label>
                                                 </div>
                                             </td>
                                         @endif
@@ -165,9 +165,9 @@
                                             @continue($item < "32")
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk{{ $val->id }}" type="checkbox"  name="permission[]"
                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk{{ $val->id }}"></label>
                                                 </div>
                                             </td>
                                         @endif
@@ -180,9 +180,9 @@
                                             @continue($item < "36")
                                             <td style="text-align: center">
                                                 <div class="checkbox checkbox-blue mb-2">
-                                                    <input class="chkpermisos case" id="checkbox3" type="checkbox"  name="permission[]"
+                                                    <input class="chkpermisos case" id="chk{{ $val->id }}" type="checkbox"  name="permission[]"
                                                            value="{{ $val->id }}" {{ $roles->permissions->pluck('id')->contains($val->id) ? 'checked' : '' }}>
-                                                    <label for="checkbox3"></label>
+                                                    <label for="chk{{ $val->id }}"></label>
                                                 </div>
                                             </td>
                                         @endif

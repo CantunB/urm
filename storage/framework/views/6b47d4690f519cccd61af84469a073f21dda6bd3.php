@@ -35,7 +35,7 @@
                     Override your input files with style. Your so fresh input file — Default version.
                 </p> -->
 
-                <input type="file" data-plugins="dropify" data-default-file="<?php echo e(asset('requisitions/autorizadas/'.$requisitions->requisition->file_req  )); ?>"
+                <input type="file" class="dropify" data-default-file="<?php echo e(asset('requisitions/autorizadas/'.$requisitions->requisition->file_req  )); ?>"
                     disabled="disabled"/>
                 <p class="text-muted text-center mt-2 mb-0"><?php echo e($requisitions->requisition->file_req); ?></p>
                 <br>
@@ -65,7 +65,9 @@
     </div><!-- end col -->
 </div>
 <?php $__env->startPush('scripts'); ?>
-
+    <script>
+        $('.dropify').dropify();
+    </script>
 <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 

@@ -53,7 +53,6 @@
                             <div class="media-body">
                                 <h4 class="mt-0 mb-2 font-16"><a href="<?php echo e(route('proveedores.edit', $quote->provider->id)); ?>"><?php echo e($quote->provider->name); ?></a></h4>
                                 <p class="mb-1"><b>Direccion:</b> <?php echo e($quote->provider->address); ?></p>
-                                <p class="mb-0"><b>Category:</b> Ecommerce</p>
                             </div>
                         </div>
                     </div>

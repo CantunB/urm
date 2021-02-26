@@ -45,8 +45,8 @@
                             <tr>
                                 <td style="text-align: center"><strong>{{ $r->requisition->folio}}</strong></td>
                                 <td style="text-align: center"><strong>{{ $r->requisition->departments->name}}</strong></td>
-                                <td style="text-align: center"><strong>{{ $r->requisition->required_on}}</strong></td>
-                                <td style="text-align: center"><strong>{{ $r->requisition->updated_at}}</strong></td>
+                                <td style="text-align: center"><strong>{{ \Carbon\Carbon::parse($r->requisition->required_on)->format('Y-m-d')}}</strong></td>
+                                <td style="text-align: center"><strong>{{ \Carbon\Carbon::parse($r->requisition->updated_at)->format('Y-m-d')}}</strong></td>
                                 <td style="text-align: center">
                                     @can('update_requisicion')
                                         @if( $r->status <= 1)

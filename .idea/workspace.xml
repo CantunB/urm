@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="3abdff53-fed4-4009-a9bb-e23c437cc646" name="Default Changelist" comment="Modificacion de la vista de areas, integración de modales con ajax">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermissionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PermissionController.php" afterDir="false" />
@@ -42,6 +43,12 @@
       <change beforePath="$PROJECT_DIR$/storage/framework/views/5f36aec13e1e626b72ef58196fad7694c0908ec2.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/5f36aec13e1e626b72ef58196fad7694c0908ec2.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/62ef79907d060cc376887fdf67d8221b085b5a4b.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/62ef79907d060cc376887fdf67d8221b085b5a4b.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/821e4161cb46be829812706e0089219941c88283.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/821e4161cb46be829812706e0089219941c88283.php" afterDir="false" />
+=======
+    <list default="true" id="3abdff53-fed4-4009-a9bb-e23c437cc646" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/36913d27ae5cd726b7fb0fc2fc600a3339bd514a.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/36913d27ae5cd726b7fb0fc2fc600a3339bd514a.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/a0b3310ecddf4cd64a6fcedcd746b1c686a123f9.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/a0b3310ecddf4cd64a6fcedcd746b1c686a123f9.php" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +58,9 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

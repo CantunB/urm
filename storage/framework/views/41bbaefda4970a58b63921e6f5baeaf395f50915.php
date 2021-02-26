@@ -91,7 +91,7 @@
                             <div class="form-group row col-md-12">
                                 <label for="inputEmail3" class="col-md-2 col-form-label">Fecha Para Requerir Material</label>
                                 <div class="col-md-3">
-                                    <input type="text" name="required_on"   class="form-control" id="inputEmail3" placeholder=""
+                                    <input type="text" name="required_on"   class="form-control" id="required_on" placeholder=""
                                            value="<?php echo e(Carbon\Carbon::parse($requisition->requisition->required_on)->format('Y/m/d')); ?>" required>
                                 </div>
                             </div>
@@ -153,6 +153,40 @@
 <?php $__env->startPush('scripts'); ?>
   <script>
       $('#form').parsley();
+  </script>
+  <script>
+      $("#required_on").flatpickr(
+          {
+              altInput:!0,
+              altFormat:"F j, y",
+              locale: {
+                  firstDayOfWeek: 1,
+                  weekdays: {
+                      shorthand: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+                      longhand: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                  },
+                  months: {
+                      shorthand: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Оct', 'Nov', 'Dic'],
+                      longhand: ['Enero', 'Febrero', 'Мarzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                  },
+              }
+          });
+      $("#added_on").flatpickr(
+          {
+              altInput:!0,
+              altFormat:"F j, y",
+              locale: {
+                  firstDayOfWeek: 1,
+                  weekdays: {
+                      shorthand: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+                      longhand: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                  },
+                  months: {
+                      shorthand: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Оct', 'Nov', 'Dic'],
+                      longhand: ['Enero', 'Febrero', 'Мarzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                  },
+              }
+          });
   </script>
 <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>

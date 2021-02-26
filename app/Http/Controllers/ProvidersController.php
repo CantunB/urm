@@ -5,6 +5,7 @@ namespace Smapac\Http\Controllers;
 use Illuminate\Http\Request;
 use Smapac\Providers;
 use Image;
+use Smapac\Purchase;
 use Smapac\PurchaseOrderDetail;
 use Smapac\Quotesrequisitions;
 
@@ -26,33 +27,7 @@ class ProvidersController extends Controller
     public function index()
     {
         $providers = Providers::where('status', '0')->paginate(10);
-      //  $cotizaciones = Quotesrequisitions::where('provider_id',$providers)->orderBy('requisition_id', 'ASC')->get();
-        $cotizaciones = Quotesrequisitions::select('department_id')->distinct(['department_id'])->get();
-        foreach ($cotizaciones as $key => $cotizacion) {
-            $array= array(
-                $counts_cot[$key]= Quotesrequisitions::where('department_id',$cotizacion->department_id)
-                    ->count()
-            );
-        }
-    if (empty($counts_cot)){
-            $counts_cot[] = 0;
-        }else{
-            $counts_cot;
-        }
-        $compras = PurchaseOrderDetail::select('provider_id')->distinct(['provider_id'])->get();
-        foreach ($compras as $key => $compra) {
-
-            $array= array(
-                $counts_com[]= PurchaseOrderDetail::where('provider_id',$compra->provider_id)
-                    ->count()
-            );
-        }
-        if (empty($counts_com)){
-            $counts_com[] = 0;
-        }else{
-             $counts_com;
-        }
-        return view('proveedores.index', compact('providers','counts_cot','counts_com'));
+        return view('proveedores.index', compact('providers'));
     }
 
     /**

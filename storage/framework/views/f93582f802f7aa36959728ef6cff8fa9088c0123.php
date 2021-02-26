@@ -220,7 +220,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <!-- Button -->
-                                    <a href="<?php echo e(asset('requisitions/autorizadas/'.$cot->requisition->file_req)); ?>" target="_blank" class="btn btn-link font-16 text-muted">
+                                    <a href="<?php echo e(asset('requisitions/autorizadas/'.$cot->requisition->file_req)); ?>"  target="_blank"  class="btn btn-link font-16 text-muted">
                                         <i class="dripicons-download"></i>
                                     </a>
                                 </div>

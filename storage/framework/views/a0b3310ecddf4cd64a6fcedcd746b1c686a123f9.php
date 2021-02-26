@@ -48,7 +48,7 @@
                 <li class="menu-title">Menu</li>
                  <li>
                     <a href="<?php echo e(route('home')); ?>">
-                        <i data-feather="airplay"></i>
+                        <i data-feather="droplet" class="icon-dual-info"></i>
                         <span> Inicio </span>
                     </a>
                 </li>
@@ -61,7 +61,7 @@
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['read_users','read_roles','read_permisos'])): ?>
                 <li>
                     <a href="#sidebarCrm" data-toggle="collapse">
-                        <i data-feather="users"></i>
+                        <i data-feather="shield" class="icon-dual-dark"></i>
                         <span> Administrador </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -85,7 +85,7 @@
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['read_coordinaciones','read_departamentos'])): ?>
                 <li>
                     <a href="#sidebarAreas" data-toggle="collapse">
-                        <i data-feather="users"></i>
+                        <i data-feather="home" class="icon-dual-blue"></i>
                         <span> Areas </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -108,7 +108,7 @@
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read_proveedores')): ?>
                 <li>
                     <a href="<?php echo e(route('proveedores.index')); ?>">
-                        <i data-feather="airplay"></i>
+                        <i data-feather="truck" class="icon-dual-warning"></i>
                         <span> Proveedores </span>
                     </a>
                 </li>
@@ -117,7 +117,7 @@
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['read_requisicion','update_requisicion'])): ?>
                 <li>
                     <a href="#sidebarRequisicion" data-toggle="collapse">
-                        <i data-feather="users"></i>
+                        <i data-feather="file-text" class="icon-dual-success"></i>
                         <span> Requisiciones </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -141,7 +141,7 @@
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read_quotes')): ?>
                 <li>
                     <a href="<?php echo e(route('cotizaciones.index')); ?>">
-                        <i data-feather="airplay"></i>
+                        <i data-feather="archive" class="icon-dual-danger"></i>
                         <span> Cotizaciones </span>
                     </a>
                 </li>
@@ -150,7 +150,7 @@
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['read_compras'])): ?>
                 <li>
                     <a href="#sidebarCompras" data-toggle="collapse">
-                        <i data-feather="mail"></i>
+                        <i data-feather="shopping-cart" class="icon-dual-pink"></i>
                         <span> Compras </span>
                         <span class="menu-arrow"></span>
                     </a>

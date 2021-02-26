@@ -186,8 +186,10 @@
                     <br>
                     <br>
                         ____________________<br>
-                    <?php echo e($requisition[0]->user->name); ?><br>
-                       &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Jefe del Departamento <?php echo e($requisition[0]->user->asignado->areas->departments->name); ?><br>
+                    <?php echo e($requisition[0]->requisition->departments->area->userareas[0]->user->name); ?>
+
+                    <br>
+                       &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Jefe del Departamento <?php echo e($requisition[0]->requisition->departments->name); ?><br>
                 </strong>
                 </div>
                 <div style="text-align:center; font-size: smaller" class="col-md-4 offset-4">
